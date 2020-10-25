@@ -32,6 +32,9 @@ namespace mukavemet
         string timeOfMeasurement;
         DateTime startTime;
         int chartWrite;
+        private float result;
+        private float[] valBuffer;
+        private TimeSpan[] timeBuffer;
 
 
 
@@ -78,25 +81,44 @@ namespace mukavemet
                 .TotalMilliseconds.ToString() + "ms",
                 Separator = new Separator
                 {
-                    Step = TimeSpan.FromMilliseconds(500).Ticks
+                    Step = TimeSpan.FromMilliseconds(1000).Ticks
                 }
             });
             cartesianChart1.AxisX[0].MaxValue = TimeSpan.FromMilliseconds(100).Ticks;
             cartesianChart1.AxisX[0].MinValue = TimeSpan.FromMilliseconds(0).Ticks;
-            cartesianChart1.AnimationsSpeed = TimeSpan.FromMilliseconds(10);
+            cartesianChart1.AnimationsSpeed = TimeSpan.FromMilliseconds(30);
             ////////////////////////////////////////////////////////////////////
+            ///
+            valBuffer = new float[0];
+            timeBuffer = new TimeSpan[0];
+        }
+
+        private void DrawFinalChart(TimeSpan[] t, float[] value)
+        {
+            for (int i = 0; i < 500; i++)
+            {
+                crtVls.Add(new MeasureModel
+                {
+                    Time = t[i],
+                    Value = value[i]
+                });
+            }
+
+            cartesianChart1.AxisX[0].MaxValue = crtVls[crtVls.Count - 1].Time.Ticks
+                + TimeSpan.FromMilliseconds(100).Ticks;
+            cartesianChart1.AxisX[0].MinValue = 0;  /// KALDIR
+            cartesianChart1.AxisY[0].MinValue = 0;  /// KALDIR
         }
 
         private void DrawChart(TimeSpan t, float value)
         {
+                crtVls.Add(new MeasureModel
+                {
+                    Time = t,
+                    Value = value
+                });
 
-            crtVls.Add(new MeasureModel
-            {
-                Time = t,
-                Value = value
-            });
-
-            cartesianChart1.AxisX[0].MaxValue = t.Ticks 
+            cartesianChart1.AxisX[0].MaxValue = crtVls[crtVls.Count - 1].Time.Ticks
                 + TimeSpan.FromMilliseconds(100).Ticks;
             cartesianChart1.AxisX[0].MinValue = 0;  /// KALDIR
             cartesianChart1.AxisY[0].MinValue = 0;  /// KALDIR
@@ -147,64 +169,66 @@ namespace mukavemet
 
         private void btMeasure_Click(object sender, EventArgs e)
         {
-            if (plc == null)
-            {
-                MessageBox.Show(msgNotConnected);
-            }
-            else
-            {
-                if (plc.IsConnected)
-                {
-                    if (Settings.Default.BendActAddr.Length != 0 
-                        && Settings.Default.BendMaxAddr.Length != 0
-                        && Settings.Default.PresActAddr.Length != 0 
-                        && Settings.Default.PresMaxAddr.Length != 0
-                        && Settings.Default.SelectAddr.Length != 0 
-                        && Settings.Default.MeasureAddr.Length != 0)
-                    {
-                        tbActMeasure.ResetText();
-                        if (chbBend.Checked && !chbPressure.Checked)
-                        {
-                            crtVls.Clear();
-                            cartesianChart1.Refresh();
-                            addressAct = Settings.Default.BendActAddr.ToUpper();
-                            addressMax = Settings.Default.BendMaxAddr.ToUpper();
-                            plc.Write(Settings.Default.SelectAddr.ToUpper(), true);
-                            plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
+            //if (plc == null)
+            //{
+            //    MessageBox.Show(msgNotConnected);
+            //}
+            //else
+            //{
+            //    if (plc.IsConnected)
+            //    {
+            //        if (Settings.Default.BendActAddr.Length != 0 
+            //            && Settings.Default.BendMaxAddr.Length != 0
+            //            && Settings.Default.PresActAddr.Length != 0 
+            //            && Settings.Default.PresMaxAddr.Length != 0
+            //            && Settings.Default.SelectAddr.Length != 0 
+            //            && Settings.Default.MeasureAddr.Length != 0)
+            //        {
+            //            tbActMeasure.ResetText();
+            //            if (chbBend.Checked && !chbPressure.Checked)
+            //            {
+            //                crtVls.Clear();
+            //                cartesianChart1.Refresh();
+            //                addressAct = Settings.Default.BendActAddr.ToUpper();
+            //                addressMax = Settings.Default.BendMaxAddr.ToUpper();
+            //                plc.Write(Settings.Default.SelectAddr.ToUpper(), true);
+            //                plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
                             startTime = DateTime.Now;
-                            chartWrite = 0;
-                            selection = "Eğilme";
-                            tmReadUpdate.Enabled = true;
-                        }
-                        else if (!chbBend.Checked && chbPressure.Checked)
-                        {
-                            crtVls.Clear();
-                            cartesianChart1.Refresh();
-                            addressAct = Settings.Default.PresActAddr.ToUpper();
-                            addressMax = Settings.Default.PresMaxAddr.ToUpper();
-                            plc.Write(Settings.Default.SelectAddr.ToUpper(), false);
-                            plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
-                            startTime = DateTime.Now;
-                            chartWrite = 0;
-                            selection = "Basınç";
-                            tmReadUpdate.Enabled = true;
-                        }
-                        else
-                        {
-                            MessageBox.Show(msgNotSelected);
-                        }
+            result = 0f;
 
-                    }
-                    else
-                    {
-                        MessageBox.Show(msgAddressLineEmpty);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(msgNotConnected);
-                }
-            }
+            //                chartWrite = 0;
+            //                selection = "Eğilme";
+            tmReadUpdate.Enabled = true;
+            //            }
+            //            else if (!chbBend.Checked && chbPressure.Checked)
+            //            {
+            //                crtVls.Clear();
+            //                cartesianChart1.Refresh();
+            //                addressAct = Settings.Default.PresActAddr.ToUpper();
+            //                addressMax = Settings.Default.PresMaxAddr.ToUpper();
+            //                plc.Write(Settings.Default.SelectAddr.ToUpper(), false);
+            //                plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
+            //                startTime = DateTime.Now;
+            //                chartWrite = 0;
+            //                selection = "Basınç";
+            //                tmReadUpdate.Enabled = true;
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show(msgNotSelected);
+            //            }
+
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show(msgAddressLineEmpty);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show(msgNotConnected);
+            //    }
+            //}
         }
 
         private void ConnectToPlc()
@@ -247,55 +271,73 @@ namespace mukavemet
 
         private void tmReadUpdate_Tick(object sender, EventArgs e)
         {
-            if (plc.IsConnected)
+            //if (plc.IsConnected)
+            //{
+            //    try
+            //    {
+            //        measuring = (bool)plc.Read(Settings.Default.MeasureAddr);
+            //        if (measuring)
+            //        {
+            //            uint uintRes = (uint)plc.Read(addressAct);
+            //            float result = uintRes.ConvertToFloat();
+            //            tbActMeasure.Text = result.ToString();
+            //            if (chartWrite % 10 == 0)
+            Array.Resize(ref valBuffer, valBuffer.Length + 1);
+            valBuffer[(int)result] = result;
+            Array.Resize(ref timeBuffer, timeBuffer.Length + 1);
+            timeBuffer[(int)result] = DateTime.Now.Subtract(startTime);
+            if ((int)result % 5 == 0)
             {
-                try
-                {
-                    measuring = (bool)plc.Read(Settings.Default.MeasureAddr);
-                    if (measuring)
-                    {
-                        uint uintRes = (uint)plc.Read(addressAct);
-                        float result = uintRes.ConvertToFloat();
-                        tbActMeasure.Text = result.ToString();
-                        if (chartWrite % 10 == 0)
-                            DrawChart(DateTime.Now.Subtract(startTime), result);
-                    }
-                    else
-                    {
-                        uint uintRes = (uint)plc.Read(addressMax);
-                        float result = uintRes.ConvertToFloat();
-                        maxMeasure = result.ToString(CultureInfo.InvariantCulture);
-                        tmReadUpdate.Enabled = false;
-                        tbActMeasure.ResetText();
-                        tbActMeasure.Text = result.ToString();
-                        float slope = CalculateLastSlope();
-                        TimeSpan lastTime = new TimeSpan(
-                            Convert.ToInt64((result - crtVls[crtVls.Count - 1].Value)
-                            / slope) + crtVls[crtVls.Count - 1].Time.Ticks
-                            );
-                        DrawChart(lastTime, result);
-                        timeOfMeasurement = DateTime.Now.ToString
-                            ("yyyy-MM-dd HH:mm:ss");
-                        SaveToDatabase();
-                    }
+                DrawChart(timeBuffer[(int)result], valBuffer[(int)result]);
+            }
 
-                }
-                catch (Exception ex)
-                {
-                    tmReadUpdate.Enabled = false;
-                    MessageBox.Show(ex.Message);
-                    tbActMeasure.ResetText();
-                    btStopMeasure.PerformClick();
-                }
-            }
-            else
+            if ((int)result % 500 == 499)
             {
-                btStopMeasure.PerformClick();
-                connected = false;
-                lbStatus.Text = msgDisconnected;
-                lbStatus.ForeColor = Color.Red;
+                crtVls.Clear();
+                cartesianChart1.Refresh();
+                DrawFinalChart(timeBuffer, valBuffer);
+                tmReadUpdate.Enabled = false;
             }
-            chartWrite++;
+
+            //                DrawChart(DateTime.Now.Subtract(startTime), result);
+            //        }
+            //        else
+            //        {
+            //            uint uintRes = (uint)plc.Read(addressMax);
+            //            float result = uintRes.ConvertToFloat();
+            //            maxMeasure = result.ToString(CultureInfo.InvariantCulture);
+            //            tmReadUpdate.Enabled = false;
+            //            tbActMeasure.ResetText();
+            //            tbActMeasure.Text = result.ToString();
+            //            float slope = CalculateLastSlope();
+            //            TimeSpan lastTime = new TimeSpan(
+            //                Convert.ToInt64((result - crtVls[crtVls.Count - 1].Value)
+            //                / slope) + crtVls[crtVls.Count - 1].Time.Ticks
+            //                );
+            //            DrawChart(lastTime, result);
+            //            timeOfMeasurement = DateTime.Now.ToString
+            //                ("yyyy-MM-dd HH:mm:ss");
+            //            SaveToDatabase();
+            //        }
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        tmReadUpdate.Enabled = false;
+            //        MessageBox.Show(ex.Message);
+            //        tbActMeasure.ResetText();
+            //        btStopMeasure.PerformClick();
+            //    }
+            //}
+            //else
+            //{
+            //    btStopMeasure.PerformClick();
+            //    connected = false;
+            //    lbStatus.Text = msgDisconnected;
+            //    lbStatus.ForeColor = Color.Red;
+            //}
+            //chartWrite++;
+            result++;
         }
 
         private float CalculateLastSlope()
@@ -314,6 +356,8 @@ namespace mukavemet
                 measuring = false;
                 tbActMeasure.ResetText();
             }
+            tmReadUpdate.Enabled = false;
+
         }
 
         private void SaveToDatabase()
@@ -388,6 +432,15 @@ namespace mukavemet
         {
             button1.Text = "Bağlantı Paneli";
 
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
         }
     }
 }

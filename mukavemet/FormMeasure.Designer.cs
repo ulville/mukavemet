@@ -66,6 +66,7 @@
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbProduct = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnConnection.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -197,7 +198,7 @@
             // 
             // tmReadUpdate
             // 
-            this.tmReadUpdate.Interval = 10;
+            this.tmReadUpdate.Interval = 20;
             this.tmReadUpdate.Tick += new System.EventHandler(this.tmReadUpdate_Tick);
             // 
             // lbStatus
@@ -532,6 +533,11 @@
             this.cbProduct.Size = new System.Drawing.Size(254, 28);
             this.cbProduct.TabIndex = 53;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // FormMeasure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -601,5 +607,6 @@
         public System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbUser;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

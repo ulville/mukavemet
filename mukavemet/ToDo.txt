@@ -1,3 +1,4 @@
 ﻿DataGridView Column Widths +++++
 Import Export Settings +++++++++
-Draw Graph
+Draw Graph +++++++++++++++++++++
+Graph with BackgroundWorker
