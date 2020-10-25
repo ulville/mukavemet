@@ -61,11 +61,13 @@ namespace mukavemet
                 else
                 {
                     DateTime dtFromDate = dtpFrom.Value.Date;
-                    DateTime dtToDate = dtpTo.Value.Date.AddDays(1) - TimeSpan.FromSeconds(1);
+                    DateTime dtToDate = dtpTo.Value.Date.AddDays(1) - 
+                        TimeSpan.FromSeconds(1);
                     string fromDate = dtFromDate.ToString("yyyy-MM-dd HH:mm:ss");
                     string toDate = dtToDate.ToString("yyyy-MM-dd HH:mm:ss");
 
-                    query = "SELECT * FROM mukayit WHERE Tarih BETWEEN \'" + fromDate + "\' AND \'" + toDate + "\'";
+                    query = "SELECT * FROM mukayit WHERE Tarih BETWEEN \'" + 
+                        fromDate + "\' AND \'" + toDate + "\'";
                 }
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 DataTable dt = new DataTable();
@@ -76,8 +78,14 @@ namespace mukavemet
                 dgwKayit.Visible = true;
                 dgwKayit.DataSource = dt;
                 connection.Close();
-                dgwKayit.ColumnHeadersDefaultCellStyle.Font = new Font(dgwKayit.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold);
-                dgwKayit.DefaultCellStyle.Font = new Font(dgwKayit.DefaultCellStyle.Font.FontFamily, 10.8f, FontStyle.Regular);
+                dgwKayit.ColumnHeadersDefaultCellStyle.Font = new Font(
+                    dgwKayit.ColumnHeadersDefaultCellStyle.Font.FontFamily,
+                    12f,
+                    FontStyle.Bold);
+                dgwKayit.DefaultCellStyle.Font = new Font(
+                    dgwKayit.DefaultCellStyle.Font.FontFamily,
+                    10.8f,
+                    FontStyle.Regular);
                 dgwKayit.AutoResizeRows();
                 dgwKayit.AutoResizeColumns();
                 dgwKayit.BackgroundColor = Color.White;
@@ -121,12 +129,14 @@ namespace mukavemet
             range = xlWorkSheet.UsedRange;
             range.Columns.AutoFit();
             string time = DateTime.Now.ToString().Replace('.', '_').Replace(':', '-');
-            string directory = Environment.GetEnvironmentVariable("USERPROFILE") + @"\Documents\MukavemetRaporları";
+            string directory = Environment.GetEnvironmentVariable("USERPROFILE") + 
+                @"\Documents\MukavemetRaporları";
+
             if (!Directory.Exists(directory))
-            {
                 Directory.CreateDirectory(directory);
-            }
+
             object filename = directory + @"\Mukavemet_Ölçüm_Raporu " + time;
+
             xlWorkBook.SaveAs(filename);
             //            xlWorkBook.Close();
         }
@@ -155,24 +165,33 @@ namespace mukavemet
         {
 
             string[] noValues = GetNoValues(dgwKayit.SelectedCells);
-            StringBuilder message = new StringBuilder("Şu numaralı kayıtlar silinecek: ");
+            StringBuilder message = new StringBuilder(
+                "Şu numaralı kayıtlar silinecek: ");
+
             foreach (string noValue in noValues)
             {
                 message.Append(noValue);
                 if (noValue != noValues[noValues.Length - 1])
                     message.Append(", ");
                 else
-                    message.Append(". Devam etmek istediğinizden emin misiniz?\n(Bu işlem geri alınamaz!)");
+                    message.Append(". Devam etmek istediğinizden emin misiniz?\n" +
+                        "(Bu işlem geri alınamaz!)");
             }
 
-            var result = MessageBox.Show(message.ToString(), "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            var result = MessageBox.Show(
+                message.ToString(),
+                "Dikkat",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
                 try
                 {
                     connection.Open();
-                    StringBuilder query = new StringBuilder("DELETE FROM mukayit WHERE No in (");
+                    StringBuilder query = new StringBuilder(
+                        "DELETE FROM mukayit WHERE No in (");
+
                     foreach (string noValue in noValues)
                     {
                         query.Append(noValue);
@@ -181,7 +200,9 @@ namespace mukavemet
                         else
                             query.Append(')');
                     }
-                    SQLiteCommand command = new SQLiteCommand(query.ToString(), connection);
+                    SQLiteCommand command = new SQLiteCommand(
+                        query.ToString(), connection);
+
                     command.ExecuteNonQuery();
                     connection.Close();
                     btDataBase.PerformClick();
@@ -199,15 +220,16 @@ namespace mukavemet
         private string[] GetNoValues(DataGridViewSelectedCellCollection cells)
         {
             string[] noValues = new string[0];
-            int[] rowIndexes = new int[0];
+            int[] inx = new int[0];
             foreach (DataGridViewCell cell in cells)
             {
-                if (!rowIndexes.Contains(cell.RowIndex))
+                if (!inx.Contains(cell.RowIndex))
                 {
-                    Array.Resize(ref rowIndexes, rowIndexes.Length + 1);
-                    rowIndexes[rowIndexes.Length - 1] = cell.RowIndex;
+                    Array.Resize(ref inx, inx.Length + 1);
+                    inx[inx.Length - 1] = cell.RowIndex;
                     Array.Resize(ref noValues, noValues.Length + 1);
-                    noValues[noValues.Length - 1] = dgwKayit.Rows[rowIndexes[rowIndexes.Length - 1]].Cells[0].Value.ToString();
+                    noValues[noValues.Length - 1] = 
+                        dgwKayit.Rows[inx[inx.Length - 1]].Cells[0].Value.ToString();
                 }
             }
             return noValues;
@@ -215,11 +237,15 @@ namespace mukavemet
 
         private void btPlus_Click(object sender, EventArgs e)
         {
-            dgwKayit.DefaultCellStyle.Font = new Font
-                (dgwKayit.DefaultCellStyle.Font.FontFamily, dgwKayit.DefaultCellStyle.Font.Size * 1.133f, FontStyle.Regular);
-            dgwKayit.ColumnHeadersDefaultCellStyle.Font = new Font
-                (dgwKayit.ColumnHeadersDefaultCellStyle.Font.FontFamily, 
-                dgwKayit.ColumnHeadersDefaultCellStyle.Font.Size * 1.133f, FontStyle.Bold);
+            dgwKayit.DefaultCellStyle.Font = new Font(
+                dgwKayit.DefaultCellStyle.Font.FontFamily,
+                dgwKayit.DefaultCellStyle.Font.Size * 1.133f,
+                FontStyle.Regular);
+
+            dgwKayit.ColumnHeadersDefaultCellStyle.Font = new Font(
+                dgwKayit.ColumnHeadersDefaultCellStyle.Font.FontFamily, 
+                dgwKayit.ColumnHeadersDefaultCellStyle.Font.Size * 1.133f,
+                FontStyle.Bold);
 
             dgwKayit.AutoResizeRows();
         }
@@ -228,11 +254,15 @@ namespace mukavemet
         {
             if (dgwKayit.DefaultCellStyle.Font.Size - 1f > 8f)
             {
-                dgwKayit.DefaultCellStyle.Font = new Font
-                    (dgwKayit.DefaultCellStyle.Font.FontFamily, dgwKayit.DefaultCellStyle.Font.Size / 1.133f, FontStyle.Regular);
-                dgwKayit.ColumnHeadersDefaultCellStyle.Font = new Font
-                    (dgwKayit.ColumnHeadersDefaultCellStyle.Font.FontFamily,
-                    dgwKayit.ColumnHeadersDefaultCellStyle.Font.Size / 1.133f, FontStyle.Bold);
+                dgwKayit.DefaultCellStyle.Font = new Font(
+                    dgwKayit.DefaultCellStyle.Font.FontFamily,
+                    dgwKayit.DefaultCellStyle.Font.Size / 1.133f,
+                    FontStyle.Regular);
+
+                dgwKayit.ColumnHeadersDefaultCellStyle.Font = new Font(
+                    dgwKayit.ColumnHeadersDefaultCellStyle.Font.FontFamily,
+                    dgwKayit.ColumnHeadersDefaultCellStyle.Font.Size / 1.133f,
+                    FontStyle.Bold);
 
                 dgwKayit.AutoResizeRows();
 
