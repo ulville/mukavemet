@@ -286,7 +286,7 @@ namespace mukavemet
             valBuffer[(int)result] = result;
             Array.Resize(ref timeBuffer, timeBuffer.Length + 1);
             timeBuffer[(int)result] = DateTime.Now.Subtract(startTime);
-            if ((int)result % 5 == 0)
+            if ((int)result % 10 == 0)
             {
                 DrawChart(timeBuffer[(int)result], valBuffer[(int)result]);
             }
