@@ -247,6 +247,8 @@ namespace mukavemet
 
         private void tmReadUpdate_Tick(object sender, EventArgs e)
         {
+            plc.Open();
+
             if (plc.IsConnected)
             {
                 try
@@ -254,11 +256,8 @@ namespace mukavemet
                     measuring = (bool)plc.Read(Settings.Default.MeasureAddr);
                     if (measuring)
                     {
-                        uint uintRes = (uint)plc.Read(addressAct);
-                        float result = uintRes.ConvertToFloat();
-                        tbActMeasure.Text = result.ToString();
-                        if (chartWrite % 10 == 0)
-                            DrawChart(DateTime.Now.Subtract(startTime), result);
+                        plc.Close();
+                        backgroundWorker1.RunWorkerAsync(plc);
                     }
                     else
                     {
@@ -309,6 +308,7 @@ namespace mukavemet
         {
             if (measuring)
             {
+                plc.Open();
                 plc.Write(Settings.Default.MeasureAddr.ToUpper(), false);
                 tmReadUpdate.Enabled = false;
                 measuring = false;
@@ -388,6 +388,31 @@ namespace mukavemet
         {
             button1.Text = "Bağlantı Paneli";
 
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            CpuType cpu = (CpuType)Enum.Parse(typeof(CpuType),
+                Settings.Default.CpuType);
+            string ip = Settings.Default.IP;
+            short rack = Convert.ToInt16(Settings.Default.Rack);
+            short slot = Convert.ToInt16(Settings.Default.Slot);
+            Plc plc1 = new Plc(cpu, ip, rack, slot);
+
+            plc1.Open();
+
+            string addressActMes = addressAct;
+            uint uintRes = (uint)plc1.Read(addressActMes);
+            plc1.Close();
+            float result = uintRes.ConvertToFloat();
+            e.Result = result;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            tbActMeasure.Text = e.Result.ToString();
+//            if (chartWrite % 10 == 0)
+                DrawChart(DateTime.Now.Subtract(startTime), (float)e.Result);
         }
     }
 }
