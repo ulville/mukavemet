@@ -15,6 +15,8 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using LiveCharts.Defaults;
 using LiveCharts.Configurations;
+using System.Diagnostics;
+using System.Threading;
 
 namespace mukavemet
 {
@@ -30,7 +32,7 @@ namespace mukavemet
         private bool measuring = false;
         private SQLiteConnection connection;
         string timeOfMeasurement;
-        DateTime startTime;
+//        DateTime startTime;
         int chartWrite;
 
 
@@ -83,7 +85,7 @@ namespace mukavemet
             });
             cartesianChart1.AxisX[0].MaxValue = TimeSpan.FromMilliseconds(100).Ticks;
             cartesianChart1.AxisX[0].MinValue = TimeSpan.FromMilliseconds(0).Ticks;
-            cartesianChart1.AnimationsSpeed = TimeSpan.FromMilliseconds(10);
+            cartesianChart1.AnimationsSpeed = TimeSpan.FromMilliseconds(15);
             ////////////////////////////////////////////////////////////////////
         }
 
@@ -170,11 +172,12 @@ namespace mukavemet
                             addressAct = Settings.Default.BendActAddr.ToUpper();
                             addressMax = Settings.Default.BendMaxAddr.ToUpper();
                             plc.Write(Settings.Default.SelectAddr.ToUpper(), true);
-                            plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
-                            startTime = DateTime.Now;
+//                            plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
+//                            startTime = DateTime.Now;
                             chartWrite = 0;
                             selection = "Eğilme";
-                            tmReadUpdate.Enabled = true;
+                            plc.Close();
+                            backgroundWorker1.RunWorkerAsync();
                         }
                         else if (!chbBend.Checked && chbPressure.Checked)
                         {
@@ -183,11 +186,13 @@ namespace mukavemet
                             addressAct = Settings.Default.PresActAddr.ToUpper();
                             addressMax = Settings.Default.PresMaxAddr.ToUpper();
                             plc.Write(Settings.Default.SelectAddr.ToUpper(), false);
-                            plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
-                            startTime = DateTime.Now;
+//                            plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
+//                            startTime = DateTime.Now;
                             chartWrite = 0;
                             selection = "Basınç";
-                            tmReadUpdate.Enabled = true;
+                            plc.Close();
+                            backgroundWorker1.RunWorkerAsync();
+
                         }
                         else
                         {
@@ -247,54 +252,8 @@ namespace mukavemet
 
         private void tmReadUpdate_Tick(object sender, EventArgs e)
         {
-            plc.Open();
 
-            if (plc.IsConnected)
-            {
-                try
-                {
-                    measuring = (bool)plc.Read(Settings.Default.MeasureAddr);
-                    if (measuring)
-                    {
-                        plc.Close();
-                        backgroundWorker1.RunWorkerAsync(plc);
-                    }
-                    else
-                    {
-                        uint uintRes = (uint)plc.Read(addressMax);
-                        float result = uintRes.ConvertToFloat();
-                        maxMeasure = result.ToString(CultureInfo.InvariantCulture);
-                        tmReadUpdate.Enabled = false;
-                        tbActMeasure.ResetText();
-                        tbActMeasure.Text = result.ToString();
-                        float slope = CalculateLastSlope();
-                        TimeSpan lastTime = new TimeSpan(
-                            Convert.ToInt64((result - crtVls[crtVls.Count - 1].Value)
-                            / slope) + crtVls[crtVls.Count - 1].Time.Ticks
-                            );
-                        DrawChart(lastTime, result);
-                        timeOfMeasurement = DateTime.Now.ToString
-                            ("yyyy-MM-dd HH:mm:ss");
-                        SaveToDatabase();
-                    }
 
-                }
-                catch (Exception ex)
-                {
-                    tmReadUpdate.Enabled = false;
-                    MessageBox.Show(ex.Message);
-                    tbActMeasure.ResetText();
-                    btStopMeasure.PerformClick();
-                }
-            }
-            else
-            {
-                btStopMeasure.PerformClick();
-                connected = false;
-                lbStatus.Text = msgDisconnected;
-                lbStatus.ForeColor = Color.Red;
-            }
-            chartWrite++;
         }
 
         private float CalculateLastSlope()
@@ -392,27 +351,98 @@ namespace mukavemet
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            string addressActMes = addressAct;
+            string addressMaxMes = addressMax;
             CpuType cpu = (CpuType)Enum.Parse(typeof(CpuType),
                 Settings.Default.CpuType);
             string ip = Settings.Default.IP;
             short rack = Convert.ToInt16(Settings.Default.Rack);
             short slot = Convert.ToInt16(Settings.Default.Slot);
             Plc plc1 = new Plc(cpu, ip, rack, slot);
-
             plc1.Open();
+            DateTime startTime = DateTime.Now;
+//            Thread.Sleep(300);
+            while (!plc1.IsConnected)
+            {
+                if (DateTime.Now.Subtract(startTime).TotalMilliseconds >= 1000)
+                {
+                    break;
+                }
+            }
 
-            string addressActMes = addressAct;
-            uint uintRes = (uint)plc1.Read(addressActMes);
-            plc1.Close();
-            float result = uintRes.ConvertToFloat();
-            e.Result = result;
+            if (plc1.IsConnected)
+            {
+                try
+                {
+                    
+                    plc1.Write(Settings.Default.MeasureAddr.ToUpper(), true);
+                    measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
+//                    MessageBox.Show("measuring = " + measuring.ToString());
+                    Stopwatch st = new Stopwatch();
+                    st.Start();
+
+                    while (measuring)
+                    {
+                        uint uintres = (uint)plc1.Read(addressActMes);
+                        TimeSpan time = TimeSpan.FromTicks(st.ElapsedTicks);
+                        int res = uintres.ConvertToInt();
+                        worker.ReportProgress(res, time);
+                        measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
+                    }
+                    
+                    uint uintRes = (uint)plc1.Read(addressMaxMes);
+                    float result = uintRes.ConvertToFloat();
+                    e.Result = result;
+
+
+                    plc1.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    plc1.Close();
+                    MessageBox.Show(ex.Message);
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("plc not connected");
+            }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            tbActMeasure.Text = e.Result.ToString();
-//            if (chartWrite % 10 == 0)
-                DrawChart(DateTime.Now.Subtract(startTime), (float)e.Result);
+            if (!e.Cancelled)
+            {
+                float result = (float)e.Result;
+                maxMeasure = result.ToString(CultureInfo.InvariantCulture);
+                tmReadUpdate.Enabled = false;
+                tbActMeasure.ResetText();
+                tbActMeasure.Text = result.ToString();
+                float slope = CalculateLastSlope();
+                TimeSpan lastTime = new TimeSpan(
+                    Convert.ToInt64((result - crtVls[crtVls.Count - 1].Value)
+                    / slope) + crtVls[crtVls.Count - 1].Time.Ticks
+                    );
+                DrawChart(lastTime, result);
+//                MessageBox.Show(result.ToString());
+                timeOfMeasurement = DateTime.Now.ToString
+                    ("yyyy-MM-dd HH:mm:ss");
+                SaveToDatabase();
+                plc.OpenAsync();
+            }
+
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            float actVal = Convert.ToUInt32(e.ProgressPercentage).ConvertToFloat();
+            tbActMeasure.Text = actVal.ToString();
+            //            if (chartWrite % 10 == 0)
+            DrawChart((TimeSpan)e.UserState, actVal);
         }
     }
 }
