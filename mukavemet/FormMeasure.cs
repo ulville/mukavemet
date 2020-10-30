@@ -18,6 +18,7 @@ using LiveCharts.Configurations;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Media;
+using System.Media;
 
 namespace mukavemet
 {
@@ -112,6 +113,7 @@ namespace mukavemet
         private void FormMeasure_Load(object sender, EventArgs e)
         {
             RefreshConnectionValues();
+
         }
 
         private void RefreshConnectionValues()
@@ -376,7 +378,7 @@ namespace mukavemet
 
                     plc1.Write(Settings.Default.MeasureAddr.ToUpper(), true);
                     measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
-
+                    int count = 0;
                     while (measuring)
                     {
                         if (worker.CancellationPending)
@@ -394,6 +396,8 @@ namespace mukavemet
                         measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
                         if (measuring)
                             worker.ReportProgress(res, time);
+
+                        count++;
                     }
 
                     if (!worker.CancellationPending)
@@ -439,6 +443,7 @@ namespace mukavemet
                     ("yyyy-MM-dd HH:mm:ss");
                 SaveToDatabase();
                 plc.OpenAsync();
+                SystemSounds.Exclamation.Play();
             }
             else
             {
@@ -455,6 +460,7 @@ namespace mukavemet
             tbActMeasure.Text = actVal.ToString();
             //            if (chartWrite % 10 == 0)
             DrawChart((TimeSpan)e.UserState, actVal);
+
         }
     }
 }
