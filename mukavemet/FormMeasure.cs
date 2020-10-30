@@ -17,13 +17,14 @@ using LiveCharts.Defaults;
 using LiveCharts.Configurations;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows.Media;
 
 namespace mukavemet
 {
     public partial class FormMeasure : Form
     {
         private bool connected = false;
-        private Plc plc { get; set; } = null;
+        private Plc plc = null;
         int i = 0;
         private string addressAct;
         private string addressMax;
@@ -32,9 +33,6 @@ namespace mukavemet
         private bool measuring = false;
         private SQLiteConnection connection;
         string timeOfMeasurement;
-//        DateTime startTime;
-        int chartWrite;
-
 
 
 
@@ -58,6 +56,7 @@ namespace mukavemet
             cbUser.DataSource = Settings.Default.UserList;
             FlipButtonIcon(button1);
             /////////////////////////////////////////////////////////////////////////
+
             var mapper = Mappers.Xy<MeasureModel>()
                 .X(model => model.Time.Ticks)
                 .Y(model => model.Value);
@@ -69,9 +68,15 @@ namespace mukavemet
                 new LineSeries
                 {
                     Values = crtVls,
-                    PointGeometrySize = 7,
-                    StrokeThickness = 2
-                }
+                    PointGeometrySize = 6,
+                    StrokeThickness = 2,
+                    Fill = new LinearGradientBrush(System.Windows.Media.Color.FromArgb(0xcc, 0xff, 0xff, 0xff), System.Windows.Media.Color.FromArgb(0x64, 0xff, 0xff, 0xff), 90),
+//                    Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0x64, 237, 28, 36))
+//                    PointForeground = System.Windows.Media.Brushes.White,
+                    Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0xff, 237, 28, 36))
+
+                },
+
             };
             cartesianChart1.AxisX.Add(new Axis
             {
@@ -121,14 +126,14 @@ namespace mukavemet
         {
             if (chbBend.Checked)
             {
-                chbBend.BackColor = Color.White;
-                chbBend.ForeColor = Color.FromArgb(237, 28, 36);
+                chbBend.BackColor = System.Drawing.Color.White;
+                chbBend.ForeColor = System.Drawing.Color.FromArgb(237, 28, 36);
                 chbPressure.CheckState = CheckState.Unchecked;
             }
             else
             {
-                chbBend.BackColor = Color.Transparent;
-                chbBend.ForeColor = Color.White;
+                chbBend.BackColor = System.Drawing.Color.Transparent;
+                chbBend.ForeColor = System.Drawing.Color.White;
             }
         }
 
@@ -136,14 +141,14 @@ namespace mukavemet
         {
             if (chbPressure.Checked)
             {
-                chbPressure.BackColor = Color.White;
-                chbPressure.ForeColor = Color.FromArgb(237, 28, 36);
+                chbPressure.BackColor = System.Drawing.Color.White;
+                chbPressure.ForeColor = System.Drawing.Color.FromArgb(237, 28, 36);
                 chbBend.CheckState = CheckState.Unchecked;
             }
             else
             {
-                chbPressure.BackColor = Color.Transparent;
-                chbPressure.ForeColor = Color.White;
+                chbPressure.BackColor = System.Drawing.Color.Transparent;
+                chbPressure.ForeColor = System.Drawing.Color.White;
             }
         }
 
@@ -172,9 +177,6 @@ namespace mukavemet
                             addressAct = Settings.Default.BendActAddr.ToUpper();
                             addressMax = Settings.Default.BendMaxAddr.ToUpper();
                             plc.Write(Settings.Default.SelectAddr.ToUpper(), true);
-//                            plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
-//                            startTime = DateTime.Now;
-                            chartWrite = 0;
                             selection = "Eğilme";
                             plc.Close();
                             backgroundWorker1.RunWorkerAsync();
@@ -186,9 +188,6 @@ namespace mukavemet
                             addressAct = Settings.Default.PresActAddr.ToUpper();
                             addressMax = Settings.Default.PresMaxAddr.ToUpper();
                             plc.Write(Settings.Default.SelectAddr.ToUpper(), false);
-//                            plc.Write(Settings.Default.MeasureAddr.ToUpper(), true);
-//                            startTime = DateTime.Now;
-                            chartWrite = 0;
                             selection = "Basınç";
                             plc.Close();
                             backgroundWorker1.RunWorkerAsync();
@@ -235,7 +234,7 @@ namespace mukavemet
             {
                 connected = true;
                 lbStatus.Text = msgConnected;
-                lbStatus.ForeColor = Color.Lime;
+                lbStatus.ForeColor = System.Drawing.Color.Lime;
                 plc.ReadTimeout = 0;
                 tmConTimeout.Enabled = false;
             }
@@ -244,7 +243,7 @@ namespace mukavemet
                 i = -1;
                 tmConTimeout.Enabled = false;
                 lbStatus.Text = msgConTimeout;
-                lbStatus.ForeColor = Color.Red;
+                lbStatus.ForeColor = System.Drawing.Color.Red;
             }
 
             i++;
@@ -265,13 +264,9 @@ namespace mukavemet
 
         private void btStopMeasure_Click(object sender, EventArgs e)
         {
-            if (measuring)
+            if (backgroundWorker1.IsBusy)
             {
-                plc.Open();
-                plc.Write(Settings.Default.MeasureAddr.ToUpper(), false);
-                tmReadUpdate.Enabled = false;
-                measuring = false;
-                tbActMeasure.ResetText();
+                backgroundWorker1.CancelAsync();
             }
         }
 
@@ -312,7 +307,7 @@ namespace mukavemet
                 {
                     connected = false;
                     lbStatus.Text = msgDisconnected;
-                    lbStatus.ForeColor = Color.Red;
+                    lbStatus.ForeColor = System.Drawing.Color.Red;
                 }
             }
         }
@@ -376,29 +371,41 @@ namespace mukavemet
             {
                 try
                 {
-                    
-                    plc1.Write(Settings.Default.MeasureAddr.ToUpper(), true);
-                    measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
-//                    MessageBox.Show("measuring = " + measuring.ToString());
                     Stopwatch st = new Stopwatch();
                     st.Start();
 
+                    plc1.Write(Settings.Default.MeasureAddr.ToUpper(), true);
+                    measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
+
                     while (measuring)
                     {
-                        uint uintres = (uint)plc1.Read(addressActMes);
+                        if (worker.CancellationPending)
+                        {
+                            plc1.Write(Settings.Default.MeasureAddr.ToUpper(), false);
+                            st.Reset();
+                            plc1.Close();
+                            e.Cancel = true;
+                            break;
+                        }
+
                         TimeSpan time = TimeSpan.FromTicks(st.ElapsedTicks);
+                        uint uintres = (uint)plc1.Read(addressActMes);
                         int res = uintres.ConvertToInt();
-                        worker.ReportProgress(res, time);
                         measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
+                        if (measuring)
+                            worker.ReportProgress(res, time);
                     }
-                    
-                    uint uintRes = (uint)plc1.Read(addressMaxMes);
-                    float result = uintRes.ConvertToFloat();
-                    e.Result = result;
 
+                    if (!worker.CancellationPending)
+                    {
+                        uint uintRes = (uint)plc1.Read(addressMaxMes);
+                        float result = uintRes.ConvertToFloat();
+                        e.Result = result;
 
-                    plc1.Close();
+                        st.Reset();
 
+                        plc1.Close();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -419,7 +426,6 @@ namespace mukavemet
             {
                 float result = (float)e.Result;
                 maxMeasure = result.ToString(CultureInfo.InvariantCulture);
-                tmReadUpdate.Enabled = false;
                 tbActMeasure.ResetText();
                 tbActMeasure.Text = result.ToString();
                 float slope = CalculateLastSlope();
@@ -428,11 +434,17 @@ namespace mukavemet
                     / slope) + crtVls[crtVls.Count - 1].Time.Ticks
                     );
                 DrawChart(lastTime, result);
-//                MessageBox.Show(result.ToString());
+
                 timeOfMeasurement = DateTime.Now.ToString
                     ("yyyy-MM-dd HH:mm:ss");
                 SaveToDatabase();
                 plc.OpenAsync();
+            }
+            else
+            {
+                tbActMeasure.ResetText();
+                plc.OpenAsync();
+
             }
 
         }

@@ -39,7 +39,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btMeasure = new System.Windows.Forms.Button();
             this.tmConTimeout = new System.Windows.Forms.Timer(this.components);
-            this.tmReadUpdate = new System.Windows.Forms.Timer(this.components);
             this.lbStatus = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pnConnection = new System.Windows.Forms.Panel();
@@ -195,11 +194,6 @@
             // tmConTimeout
             // 
             this.tmConTimeout.Tick += new System.EventHandler(this.tmConTimeout_Tick);
-            // 
-            // tmReadUpdate
-            // 
-            this.tmReadUpdate.Interval = 110;
-            this.tmReadUpdate.Tick += new System.EventHandler(this.tmReadUpdate_Tick);
             // 
             // lbStatus
             // 
@@ -583,7 +577,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btMeasure;
         private System.Windows.Forms.Timer tmConTimeout;
-        private System.Windows.Forms.Timer tmReadUpdate;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pnConnection;
