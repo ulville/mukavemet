@@ -308,6 +308,7 @@ namespace mukavemet
         private void btImportDatabase_Click(object sender, EventArgs e)
         {
             openFileDialog1.FileName = "";
+            
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {

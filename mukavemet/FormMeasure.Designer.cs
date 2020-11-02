@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMeasure));
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -38,38 +37,37 @@
             this.chbBend = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btMeasure = new System.Windows.Forms.Button();
-            this.tmConTimeout = new System.Windows.Forms.Timer(this.components);
             this.lbStatus = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pnConnection = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btDisconnect = new System.Windows.Forms.Button();
             this.btConnect = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbProduct = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnConnection.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -191,44 +189,42 @@
             this.btMeasure.UseVisualStyleBackColor = false;
             this.btMeasure.Click += new System.EventHandler(this.btMeasure_Click);
             // 
-            // tmConTimeout
-            // 
-            this.tmConTimeout.Tick += new System.EventHandler(this.tmConTimeout_Tick);
-            // 
             // lbStatus
             // 
-            this.lbStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lbStatus.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbStatus.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbStatus.Location = new System.Drawing.Point(0, 74);
+            this.lbStatus.Location = new System.Drawing.Point(0, 70);
             this.lbStatus.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(264, 51);
+            this.lbStatus.Size = new System.Drawing.Size(160, 55);
             this.lbStatus.TabIndex = 54;
             this.lbStatus.Text = "***";
             this.lbStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label9
             // 
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label9.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(0, 0);
             this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(264, 74);
+            this.label9.Size = new System.Drawing.Size(160, 70);
             this.label9.TabIndex = 53;
-            this.label9.Text = "Bağlantı Durumu:";
+            this.label9.Text = "Bağlantı Durumu";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnConnection
             // 
             this.pnConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnConnection.Controls.Add(this.panel9);
             this.pnConnection.Controls.Add(this.panel5);
             this.pnConnection.Controls.Add(this.panel4);
             this.pnConnection.Controls.Add(this.panel8);
             this.pnConnection.Controls.Add(this.panel3);
             this.pnConnection.Controls.Add(this.panel2);
+            this.pnConnection.Controls.Add(this.panel6);
             this.pnConnection.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnConnection.Location = new System.Drawing.Point(0, 0);
             this.pnConnection.Margin = new System.Windows.Forms.Padding(4);
@@ -236,140 +232,135 @@
             this.pnConnection.Size = new System.Drawing.Size(1250, 125);
             this.pnConnection.TabIndex = 55;
             // 
-            // panel5
+            // panel9
             // 
-            this.panel5.Controls.Add(this.panel7);
-            this.panel5.Controls.Add(this.panel6);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(780, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(250, 125);
-            this.panel5.TabIndex = 58;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.label8);
-            this.panel7.Controls.Add(this.label4);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 70);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(250, 55);
-            this.panel7.TabIndex = 1;
+            this.panel9.Controls.Add(this.label8);
+            this.panel9.Controls.Add(this.label4);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel9.Location = new System.Drawing.Point(669, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(160, 125);
+            this.panel9.TabIndex = 60;
             // 
             // label8
             // 
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(129, 0);
+            this.label8.Location = new System.Drawing.Point(0, 70);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 55);
-            this.label8.TabIndex = 66;
+            this.label8.Size = new System.Drawing.Size(160, 55);
+            this.label8.TabIndex = 68;
             this.label8.Text = "****";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
             // 
-            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 55);
-            this.label4.TabIndex = 65;
-            this.label4.Text = "Slot:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label4.Size = new System.Drawing.Size(160, 70);
+            this.label4.TabIndex = 67;
+            this.label4.Text = "Slot";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel6
+            // panel5
             // 
-            this.panel6.Controls.Add(this.label7);
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(250, 70);
-            this.panel6.TabIndex = 0;
+            this.panel5.Controls.Add(this.label7);
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel5.Location = new System.Drawing.Point(509, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(160, 125);
+            this.panel5.TabIndex = 58;
             // 
             // label7
             // 
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(129, 0);
+            this.label7.Location = new System.Drawing.Point(0, 70);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(121, 70);
-            this.label7.TabIndex = 63;
+            this.label7.Size = new System.Drawing.Size(160, 55);
+            this.label7.TabIndex = 65;
             this.label7.Text = "****";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
             // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 70);
-            this.label3.TabIndex = 59;
-            this.label3.Text = "Rack:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label3.Size = new System.Drawing.Size(160, 70);
+            this.label3.TabIndex = 64;
+            this.label3.Text = "Rack";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(505, 0);
+            this.panel4.Location = new System.Drawing.Point(349, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(275, 125);
+            this.panel4.Size = new System.Drawing.Size(160, 125);
             this.panel4.TabIndex = 57;
+            // 
+            // label6
+            // 
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(0, 70);
+            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(160, 55);
+            this.label6.TabIndex = 62;
+            this.label6.Text = "888.888.8.888";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
             // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(275, 74);
+            this.label2.Size = new System.Drawing.Size(160, 70);
             this.label2.TabIndex = 63;
-            this.label2.Text = "IP:";
+            this.label2.Text = "IP";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(0, 74);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(275, 51);
-            this.label6.TabIndex = 62;
-            this.label6.Text = "****";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.btDisconnect);
             this.panel8.Controls.Add(this.btConnect);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel8.Location = new System.Drawing.Point(1030, 0);
+            this.panel8.Location = new System.Drawing.Point(1040, 0);
             this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(220, 125);
+            this.panel8.Size = new System.Drawing.Size(210, 125);
             this.panel8.TabIndex = 59;
             // 
             // btDisconnect
             // 
-            this.btDisconnect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btDisconnect.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btDisconnect.BackColor = System.Drawing.Color.White;
             this.btDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDisconnect.ForeColor = System.Drawing.Color.Black;
-            this.btDisconnect.Location = new System.Drawing.Point(24, 62);
+            this.btDisconnect.Location = new System.Drawing.Point(14, 62);
             this.btDisconnect.Margin = new System.Windows.Forms.Padding(2);
             this.btDisconnect.Name = "btDisconnect";
             this.btDisconnect.Size = new System.Drawing.Size(148, 48);
@@ -380,11 +371,11 @@
             // 
             // btConnect
             // 
-            this.btConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btConnect.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btConnect.BackColor = System.Drawing.Color.White;
             this.btConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btConnect.ForeColor = System.Drawing.Color.Black;
-            this.btConnect.Location = new System.Drawing.Point(24, 11);
+            this.btConnect.Location = new System.Drawing.Point(14, 11);
             this.btConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btConnect.Name = "btConnect";
             this.btConnect.Size = new System.Drawing.Size(148, 48);
@@ -395,50 +386,60 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(264, 0);
+            this.panel3.Location = new System.Drawing.Point(189, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(241, 125);
+            this.panel3.Size = new System.Drawing.Size(160, 125);
             this.panel3.TabIndex = 56;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 74);
-            this.label1.TabIndex = 57;
-            this.label1.Text = "CPU Type:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
-            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(0, 74);
+            this.label5.Location = new System.Drawing.Point(0, 70);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(241, 51);
+            this.label5.Size = new System.Drawing.Size(160, 55);
             this.label5.TabIndex = 61;
             this.label5.Text = "****";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 70);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "CPU Type";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.lbStatus);
+            this.panel2.Controls.Add(this.label9);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(29, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(264, 125);
+            this.panel2.Size = new System.Drawing.Size(160, 125);
             this.panel2.TabIndex = 55;
+            // 
+            // panel6
+            // 
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(29, 125);
+            this.panel6.TabIndex = 61;
             // 
             // button1
             // 
@@ -463,6 +464,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.cartesianChart1);
             this.panel1.Controls.Add(this.cbUser);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -481,6 +483,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1250, 531);
             this.panel1.TabIndex = 57;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(47, 318);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(90, 32);
+            this.button2.TabIndex = 57;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cartesianChart1
             // 
@@ -553,9 +565,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMeasure_FormClosing);
             this.Load += new System.EventHandler(this.FormMeasure_Load);
             this.pnConnection.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -576,7 +587,6 @@
         private System.Windows.Forms.CheckBox chbBend;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btMeasure;
-        private System.Windows.Forms.Timer tmConTimeout;
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pnConnection;
@@ -589,20 +599,21 @@
         private System.Windows.Forms.Button btConnect;
         private System.Windows.Forms.Button btDisconnect;
         public System.Windows.Forms.Label label6;
-        public System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cbProduct;
         private System.Windows.Forms.PictureBox pictureBox1;
-        public System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbUser;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel panel9;
+        public System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button button2;
     }
 }
