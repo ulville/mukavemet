@@ -74,15 +74,15 @@ namespace mukavemet
                 new LineSeries
                 {
                     Values = crtVls,
-                    PointGeometrySize =4,
+                    PointGeometrySize = 4,
                     StrokeThickness = 2,
+
                     Fill = new LinearGradientBrush(
                         System.Windows.Media.Color.FromArgb(0xcc, 0xff, 0xff, 0xff),
                         System.Windows.Media.Color.FromArgb(0x64, 0xff, 0xff, 0xff),
                         90),
                     Stroke = new SolidColorBrush(
-                        System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff))//(0xff, 237, 28, 36))
-
+                        System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff))
                 },
 
             };
@@ -120,7 +120,6 @@ namespace mukavemet
         private void FormMeasure_Load(object sender, EventArgs e)
         {
             RefreshConnectionValues();
-
         }
 
         private void RefreshConnectionValues()
@@ -427,8 +426,10 @@ namespace mukavemet
                             break;
                         }
 
-                        TimeSpan time = TimeSpan.FromTicks(st.ElapsedTicks);
+                        long time1 = st.ElapsedTicks;
                         uint uintres = (uint)plc1.Read(addressActMes);
+                        long time2 = st.ElapsedTicks;
+                        TimeSpan time = TimeSpan.FromTicks((time1 + time2) / 2);
                         int res = uintres.ConvertToInt();
                         measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
                         if (measuring)
