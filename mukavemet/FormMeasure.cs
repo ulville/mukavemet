@@ -19,21 +19,20 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows.Media;
 using System.Media;
+using System.Net.NetworkInformation;
 
 namespace mukavemet
 {
     public partial class FormMeasure : Form
     {
-        private bool connected = false;
         private Plc plc = null;
-        int i = 0;
         private string addressAct;
         private string addressMax;
         private string selection;
         private string maxMeasure;
         private bool measuring = false;
         private SQLiteConnection connection;
-        string timeOfMeasurement;
+        private string timeOfMeasurement;
 
 
 
@@ -75,10 +74,14 @@ namespace mukavemet
                 new LineSeries
                 {
                     Values = crtVls,
-                    PointGeometrySize =0,
+                    PointGeometrySize =4,
                     StrokeThickness = 2,
-                    Fill = new LinearGradientBrush(System.Windows.Media.Color.FromArgb(0xcc, 0xff, 0xff, 0xff), System.Windows.Media.Color.FromArgb(0x64, 0xff, 0xff, 0xff), 90),
-                    Stroke = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff))//(0xff, 237, 28, 36))
+                    Fill = new LinearGradientBrush(
+                        System.Windows.Media.Color.FromArgb(0xcc, 0xff, 0xff, 0xff),
+                        System.Windows.Media.Color.FromArgb(0x64, 0xff, 0xff, 0xff),
+                        90),
+                    Stroke = new SolidColorBrush(
+                        System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff))//(0xff, 237, 28, 36))
 
                 },
 
@@ -168,7 +171,7 @@ namespace mukavemet
             {
                 if (plc.IsConnected)
                 {
-                    if (plc.IsAvailable)
+                    if (PlcPinging(Settings.Default.IP))
                     {
                         if (Settings.Default.BendActAddr.Length != 0
                             && Settings.Default.BendMaxAddr.Length != 0
@@ -178,17 +181,29 @@ namespace mukavemet
                             && Settings.Default.MeasureAddr.Length != 0)
                         {
                             tbActMeasure.ResetText();
+
+                            if (lbStatus.Text == msgDisconnected ||
+                                lbStatus.Text == msgConTimeout)
+                            {
+                                lbStatus.Text = msgConnected;
+                                lbStatus.ForeColor = System.Drawing.Color.Lime;
+                            }
+
                             if (chbBend.Checked && !chbPressure.Checked)
                             {
                                 crtVls.Clear();
                                 cartesianChart1.Refresh();
+
                                 addressAct = Settings.Default.BendActAddr.ToUpper();
                                 addressMax = Settings.Default.BendMaxAddr.ToUpper();
+
                                 try
                                 {
-                                    plc.Open();
-                                    plc.Write(Settings.Default.SelectAddr.ToUpper(), true);
+                                    plc.Write(Settings.Default.SelectAddr.ToUpper(),
+                                        true);
+
                                     selection = "Eğilme";
+
                                     plc.Close();
                                     backgroundWorker1.RunWorkerAsync();
                                 }
@@ -202,13 +217,17 @@ namespace mukavemet
                             {
                                 crtVls.Clear();
                                 cartesianChart1.Refresh();
+
                                 addressAct = Settings.Default.PresActAddr.ToUpper();
                                 addressMax = Settings.Default.PresMaxAddr.ToUpper();
+
                                 try
                                 {
-                                    plc.Open();
-                                    plc.Write(Settings.Default.SelectAddr.ToUpper(), false);
+                                    plc.Write(Settings.Default.SelectAddr.ToUpper(),
+                                        false);
+
                                     selection = "Basınç";
+
                                     plc.Close();
                                     backgroundWorker1.RunWorkerAsync();
                                 }
@@ -221,7 +240,6 @@ namespace mukavemet
                             {
                                 MessageBox.Show(msgNotSelected);
                             }
-
                         }
                         else
                         {
@@ -245,35 +263,53 @@ namespace mukavemet
 
         private void ConnectToPlc()
         {
-
-
-            try
+            if (PlcPinging(Settings.Default.IP))
             {
-                plc.Open();
-                if (plc.IsConnected)
+                try
                 {
-                    connected = true;
-                    lbStatus.Text = msgConnected;
-                    lbStatus.ForeColor = System.Drawing.Color.Lime;
-                    plc.ReadTimeout = 0;
-                    plc.WriteTimeout = 0;
+                    plc.Open();
+                    if (plc.IsConnected)
+                    {
+                        lbStatus.Text = msgConnected;
+                        lbStatus.ForeColor = System.Drawing.Color.Lime;
+                        plc.ReadTimeout = 0;
+                        plc.WriteTimeout = 0;
+                    }
+                    else
+                    {
+                        lbStatus.ForeColor = System.Drawing.Color.Red;
+                        lbStatus.Text = msgConTimeout;
+                        MessageBox.Show(msgNotConnected);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
                     lbStatus.ForeColor = System.Drawing.Color.Red;
                     lbStatus.Text = msgConTimeout;
-                    connected = false;
-                    MessageBox.Show(msgNotConnected);
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex)
+            else
             {
                 lbStatus.ForeColor = System.Drawing.Color.Red;
                 lbStatus.Text = msgConTimeout;
-                connected = false;
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(msgNotConnected);
             }
+        }
 
+        private void DisconnectFromPlc()
+        {
+            if (plc != null && plc.IsConnected)
+            {
+                btStopMeasure.PerformClick();
+                plc.Close();
+
+                if (!plc.IsConnected)
+                {
+                    lbStatus.Text = msgDisconnected;
+                    lbStatus.ForeColor = System.Drawing.Color.Red;
+                }
+            }
         }
 
 
@@ -320,18 +356,7 @@ namespace mukavemet
 
         private void btDisconnect_Click(object sender, EventArgs e)
         {
-            if (plc != null && plc.IsConnected)
-            {
-                btStopMeasure.PerformClick();
-                plc.Close();
-
-                if (!(plc.IsConnected))
-                {
-                    connected = false;
-                    lbStatus.Text = msgDisconnected;
-                    lbStatus.ForeColor = System.Drawing.Color.Red;
-                }
-            }
+            DisconnectFromPlc();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -352,7 +377,7 @@ namespace mukavemet
 
         private void FormMeasure_FormClosing(object sender, FormClosingEventArgs e)
         {
-            btDisconnect.PerformClick();
+            DisconnectFromPlc();
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)
@@ -381,15 +406,7 @@ namespace mukavemet
             {
                 ReadTimeout = 0
             };
-            plc1.Close();
-            try
-            {
-                plc1.Open();
-            }
-            catch (Exception)
-            {
-
-            }
+            plc1.Open();
 
             if (plc1.IsConnected)
             {
@@ -399,7 +416,6 @@ namespace mukavemet
                     st.Start();
                     plc1.Write(Settings.Default.MeasureAddr.ToUpper(), true);
                     measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
-                    int count = 0;
                     while (measuring)
                     {
                         if (worker.CancellationPending)
@@ -417,8 +433,6 @@ namespace mukavemet
                         measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
                         if (measuring)
                             worker.ReportProgress(res, time);
-
-                        count++;
                     }
 
                     if (!worker.CancellationPending)
@@ -441,7 +455,9 @@ namespace mukavemet
             }
             else
             {
-                MessageBox.Show("plc not connected");
+                plc1.Close();
+                MessageBox.Show(msgNotConnected);
+                e.Cancel = true;
             }
         }
 
@@ -484,9 +500,32 @@ namespace mukavemet
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private bool PlcPinging(string ipAdr)
         {
-            button2.Text = plc.IsAvailable.ToString();
+            try
+            {
+                Ping myPing = new Ping();
+                PingReply reply = myPing.Send(ipAdr, 200);
+                if (reply != null)
+                {
+                    if (reply.Status == IPStatus.Success)
+                        return true;
+
+                    else
+                        return false;
+                }
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void FormMeasure_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DisconnectFromPlc();
         }
     }
 }

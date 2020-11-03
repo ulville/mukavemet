@@ -27,7 +27,6 @@ namespace mukavemet
         public FormData()
         {
             InitializeComponent();
-            connection = new SQLiteConnection(@"data source=./mukavemet.db");
             typeof(DataGridView).InvokeMember("DoubleBuffered", 
                 BindingFlags.NonPublic | BindingFlags.Instance | 
                 BindingFlags.SetProperty, null, dgwKayit,
@@ -49,6 +48,8 @@ namespace mukavemet
 
         private void btDataBase_Click(object sender, EventArgs e)
         {
+            connection = new SQLiteConnection(@"data source=./mukavemet.db");
+
             try
             {
                 string query;
@@ -78,6 +79,8 @@ namespace mukavemet
                 dgwKayit.Visible = true;
                 dgwKayit.DataSource = dt;
                 connection.Close();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
                 dgwKayit.ColumnHeadersDefaultCellStyle.Font = new Font(
                     dgwKayit.ColumnHeadersDefaultCellStyle.Font.FontFamily,
                     12f,
@@ -91,12 +94,13 @@ namespace mukavemet
                 dgwKayit.BackgroundColor = Color.White;
                 dgwKayit.FirstDisplayedScrollingRowIndex = dgwKayit.RowCount - 1;
 
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 connection.Close();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
         }
 
@@ -205,6 +209,8 @@ namespace mukavemet
 
                     command.ExecuteNonQuery();
                     connection.Close();
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
                     btDataBase.PerformClick();
 
                 }
@@ -212,6 +218,8 @@ namespace mukavemet
                 {
                     MessageBox.Show(ex.Message);
                     connection.Close();
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
                 }
             }
             
@@ -319,11 +327,22 @@ namespace mukavemet
                     MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     string infile = openFileDialog1.FileName;
-                    if (File.Exists(@"./mukavemet.db"))
-                    {
+                    //try
+                    //{
+                        if (File.Exists(@"./mukavemet.db"))
+                        {
+                        connection.Close();
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
                         File.Delete(@"./mukavemet.db");
-                    }
-                    ZipFile.ExtractToDirectory(infile, ".");
+                        }
+                        ZipFile.ExtractToDirectory(infile, ".");
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    MessageBox.Show(ex.Message);
+                    //}
+                    openFileDialog1.Dispose();
 
                 }
             }

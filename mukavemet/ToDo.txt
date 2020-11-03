@@ -1,3 +1,13 @@
-﻿DataGridView Column Widths +++++
-Import Export Settings +++++++++
-Draw Graph
+﻿DataGridView Column Widths ++++++++
+
+Import Export Settings ++++++++++++
+
+Draw Graph ++++++++++++++++++++++++
+
+Use Ping instead of IsAvailable +++
+
+Importing database backup +++++++++
+while db is in use gives error
+
+Save Graphs to Database 
+

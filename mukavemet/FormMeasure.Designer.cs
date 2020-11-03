@@ -59,7 +59,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -464,7 +463,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.cartesianChart1);
             this.panel1.Controls.Add(this.cbUser);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -483,16 +481,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1250, 531);
             this.panel1.TabIndex = 57;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(47, 318);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 32);
-            this.button2.TabIndex = 57;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // cartesianChart1
             // 
@@ -563,6 +551,7 @@
             this.Name = "FormMeasure";
             this.Text = "FormMeasure";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMeasure_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMeasure_FormClosed);
             this.Load += new System.EventHandler(this.FormMeasure_Load);
             this.pnConnection.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -614,6 +603,5 @@
         public System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button button2;
     }
 }
