@@ -132,7 +132,7 @@ namespace mukavemet
             Excel.Range range;
             range = xlWorkSheet.UsedRange;
             range.Columns.AutoFit();
-            string time = DateTime.Now.ToString().Replace('.', '_').Replace(':', '-');
+            string time = DateTime.Now.ToString("yy-MM-dd HH-mm-ss");
             string directory = Environment.GetEnvironmentVariable("USERPROFILE") + 
                 @"\Documents\MukavemetRaporları";
 
