@@ -327,8 +327,8 @@ namespace mukavemet
                     MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     string infile = openFileDialog1.FileName;
-                    //try
-                    //{
+                    try
+                    {
                         if (File.Exists(@"./mukavemet.db"))
                         {
                         connection.Close();
@@ -337,11 +337,11 @@ namespace mukavemet
                         File.Delete(@"./mukavemet.db");
                         }
                         ZipFile.ExtractToDirectory(infile, ".");
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    MessageBox.Show(ex.Message);
-                    //}
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     openFileDialog1.Dispose();
 
                 }
