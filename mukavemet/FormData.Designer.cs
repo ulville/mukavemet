@@ -33,19 +33,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.dgwKayit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btProductFilter = new System.Windows.Forms.Button();
+            this.clbxProductFilter = new System.Windows.Forms.CheckedListBox();
+            this.chbProductFilter = new System.Windows.Forms.CheckBox();
+            this.btHamburgerMenu = new System.Windows.Forms.Button();
             this.chbPickDate = new System.Windows.Forms.CheckBox();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.btExportToExcel = new System.Windows.Forms.Button();
             this.btDataBase = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btImportDatabase = new System.Windows.Forms.Button();
+            this.btBackupDatabase = new System.Windows.Forms.Button();
             this.btMinus = new System.Windows.Forms.Button();
             this.btPlus = new System.Windows.Forms.Button();
             this.btHide = new System.Windows.Forms.Button();
             this.btRemoveSelected = new System.Windows.Forms.Button();
-            this.btHamburgerMenu = new System.Windows.Forms.Button();
-            this.btImportDatabase = new System.Windows.Forms.Button();
-            this.btBackupDatabase = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgwKayit)).BeginInit();
             this.panel1.SuspendLayout();
@@ -78,12 +81,12 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgwKayit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgwKayit.Location = new System.Drawing.Point(49, 41);
-            this.dgwKayit.Margin = new System.Windows.Forms.Padding(38, 38, 38, 20);
+            this.dgwKayit.Location = new System.Drawing.Point(39, 33);
+            this.dgwKayit.Margin = new System.Windows.Forms.Padding(30, 30, 30, 16);
             this.dgwKayit.Name = "dgwKayit";
             this.dgwKayit.RowHeadersWidth = 51;
             this.dgwKayit.RowTemplate.Height = 24;
-            this.dgwKayit.Size = new System.Drawing.Size(1152, 419);
+            this.dgwKayit.Size = new System.Drawing.Size(922, 335);
             this.dgwKayit.TabIndex = 28;
             this.dgwKayit.Visible = false;
             this.dgwKayit.Click += new System.EventHandler(this.dgwKayit_Click);
@@ -91,6 +94,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.btProductFilter);
+            this.panel1.Controls.Add(this.clbxProductFilter);
+            this.panel1.Controls.Add(this.chbProductFilter);
             this.panel1.Controls.Add(this.btHamburgerMenu);
             this.panel1.Controls.Add(this.chbPickDate);
             this.panel1.Controls.Add(this.dtpFrom);
@@ -99,21 +105,87 @@
             this.panel1.Controls.Add(this.btDataBase);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1250, 125);
+            this.panel1.Size = new System.Drawing.Size(1000, 100);
             this.panel1.TabIndex = 29;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            // 
+            // btProductFilter
+            // 
+            this.btProductFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btProductFilter.BackColor = System.Drawing.Color.White;
+            this.btProductFilter.Enabled = false;
+            this.btProductFilter.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btProductFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btProductFilter.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btProductFilter.ForeColor = System.Drawing.Color.Black;
+            this.btProductFilter.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btProductFilter.Location = new System.Drawing.Point(425, 10);
+            this.btProductFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.btProductFilter.Name = "btProductFilter";
+            this.btProductFilter.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
+            this.btProductFilter.Size = new System.Drawing.Size(22, 22);
+            this.btProductFilter.TabIndex = 49;
+            this.btProductFilter.Text = "✔";
+            this.btProductFilter.UseVisualStyleBackColor = false;
+            this.btProductFilter.Visible = false;
+            this.btProductFilter.Click += new System.EventHandler(this.btProductFilter_Click);
+            // 
+            // clbxProductFilter
+            // 
+            this.clbxProductFilter.BackColor = System.Drawing.Color.White;
+            this.clbxProductFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.clbxProductFilter.Enabled = false;
+            this.clbxProductFilter.ForeColor = System.Drawing.Color.Black;
+            this.clbxProductFilter.FormattingEnabled = true;
+            this.clbxProductFilter.Location = new System.Drawing.Point(278, 10);
+            this.clbxProductFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.clbxProductFilter.Name = "clbxProductFilter";
+            this.clbxProductFilter.Size = new System.Drawing.Size(141, 21);
+            this.clbxProductFilter.TabIndex = 48;
+            this.clbxProductFilter.Visible = false;
+            // 
+            // chbProductFilter
+            // 
+            this.chbProductFilter.AutoSize = true;
+            this.chbProductFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chbProductFilter.ForeColor = System.Drawing.Color.Black;
+            this.chbProductFilter.Location = new System.Drawing.Point(278, 10);
+            this.chbProductFilter.Margin = new System.Windows.Forms.Padding(4);
+            this.chbProductFilter.Name = "chbProductFilter";
+            this.chbProductFilter.Padding = new System.Windows.Forms.Padding(2, 2, 1, 1);
+            this.chbProductFilter.Size = new System.Drawing.Size(141, 24);
+            this.chbProductFilter.TabIndex = 47;
+            this.chbProductFilter.Text = "Ürüne Göre Filtrele";
+            this.chbProductFilter.UseVisualStyleBackColor = true;
+            this.chbProductFilter.CheckedChanged += new System.EventHandler(this.chbProductFilter_CheckedChanged);
+            // 
+            // btHamburgerMenu
+            // 
+            this.btHamburgerMenu.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btHamburgerMenu.FlatAppearance.BorderSize = 0;
+            this.btHamburgerMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btHamburgerMenu.ForeColor = System.Drawing.Color.Black;
+            this.btHamburgerMenu.Image = ((System.Drawing.Image)(resources.GetObject("btHamburgerMenu.Image")));
+            this.btHamburgerMenu.Location = new System.Drawing.Point(23, 33);
+            this.btHamburgerMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btHamburgerMenu.Name = "btHamburgerMenu";
+            this.btHamburgerMenu.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
+            this.btHamburgerMenu.Size = new System.Drawing.Size(34, 34);
+            this.btHamburgerMenu.TabIndex = 46;
+            this.btHamburgerMenu.UseVisualStyleBackColor = false;
+            this.btHamburgerMenu.Click += new System.EventHandler(this.btHamburgerMenu_Click);
+            this.btHamburgerMenu.Leave += new System.EventHandler(this.btHamburgerMenu_Leave);
             // 
             // chbPickDate
             // 
             this.chbPickDate.AutoSize = true;
             this.chbPickDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chbPickDate.ForeColor = System.Drawing.Color.Black;
-            this.chbPickDate.Location = new System.Drawing.Point(190, 14);
-            this.chbPickDate.Margin = new System.Windows.Forms.Padding(5);
+            this.chbPickDate.Location = new System.Drawing.Point(152, 11);
+            this.chbPickDate.Margin = new System.Windows.Forms.Padding(4);
             this.chbPickDate.Name = "chbPickDate";
-            this.chbPickDate.Size = new System.Drawing.Size(148, 24);
+            this.chbPickDate.Size = new System.Drawing.Size(122, 21);
             this.chbPickDate.TabIndex = 45;
             this.chbPickDate.Text = "Tarih Aralığı Seç";
             this.chbPickDate.UseVisualStyleBackColor = true;
@@ -127,10 +199,10 @@
             this.dtpFrom.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.dtpFrom.CalendarTrailingForeColor = System.Drawing.Color.Gray;
             this.dtpFrom.Enabled = false;
-            this.dtpFrom.Location = new System.Drawing.Point(188, 55);
-            this.dtpFrom.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpFrom.Location = new System.Drawing.Point(150, 44);
+            this.dtpFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(362, 28);
+            this.dtpFrom.Size = new System.Drawing.Size(290, 24);
             this.dtpFrom.TabIndex = 43;
             // 
             // dtpTo
@@ -141,10 +213,10 @@
             this.dtpTo.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.dtpTo.CalendarTrailingForeColor = System.Drawing.Color.Gray;
             this.dtpTo.Enabled = false;
-            this.dtpTo.Location = new System.Drawing.Point(584, 55);
-            this.dtpTo.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpTo.Location = new System.Drawing.Point(467, 44);
+            this.dtpTo.Margin = new System.Windows.Forms.Padding(4);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(362, 28);
+            this.dtpTo.Size = new System.Drawing.Size(290, 24);
             this.dtpTo.TabIndex = 44;
             // 
             // btExportToExcel
@@ -153,10 +225,10 @@
             this.btExportToExcel.BackColor = System.Drawing.Color.White;
             this.btExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btExportToExcel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btExportToExcel.Location = new System.Drawing.Point(1054, 11);
+            this.btExportToExcel.Location = new System.Drawing.Point(843, 9);
             this.btExportToExcel.Margin = new System.Windows.Forms.Padding(2);
             this.btExportToExcel.Name = "btExportToExcel";
-            this.btExportToExcel.Size = new System.Drawing.Size(148, 48);
+            this.btExportToExcel.Size = new System.Drawing.Size(118, 38);
             this.btExportToExcel.TabIndex = 42;
             this.btExportToExcel.Text = "Rapor Oluştur";
             this.btExportToExcel.UseVisualStyleBackColor = false;
@@ -168,10 +240,10 @@
             this.btDataBase.BackColor = System.Drawing.Color.White;
             this.btDataBase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDataBase.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btDataBase.Location = new System.Drawing.Point(1054, 62);
+            this.btDataBase.Location = new System.Drawing.Point(843, 50);
             this.btDataBase.Margin = new System.Windows.Forms.Padding(2);
             this.btDataBase.Name = "btDataBase";
-            this.btDataBase.Size = new System.Drawing.Size(148, 48);
+            this.btDataBase.Size = new System.Drawing.Size(118, 38);
             this.btDataBase.TabIndex = 41;
             this.btDataBase.Text = "Kayıtları Göster";
             this.btDataBase.UseVisualStyleBackColor = false;
@@ -187,88 +259,11 @@
             this.panel2.Controls.Add(this.btRemoveSelected);
             this.panel2.Controls.Add(this.dgwKayit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 125);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1250, 566);
+            this.panel2.Size = new System.Drawing.Size(1000, 453);
             this.panel2.TabIndex = 30;
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
-            // 
-            // btMinus
-            // 
-            this.btMinus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btMinus.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btMinus.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMinus.ForeColor = System.Drawing.Color.White;
-            this.btMinus.Location = new System.Drawing.Point(1135, 7);
-            this.btMinus.Name = "btMinus";
-            this.btMinus.Size = new System.Drawing.Size(30, 30);
-            this.btMinus.TabIndex = 45;
-            this.btMinus.Text = "-";
-            this.btMinus.UseVisualStyleBackColor = false;
-            this.btMinus.Click += new System.EventHandler(this.btMinus_Click);
-            // 
-            // btPlus
-            // 
-            this.btPlus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btPlus.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btPlus.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btPlus.ForeColor = System.Drawing.Color.White;
-            this.btPlus.Location = new System.Drawing.Point(1171, 7);
-            this.btPlus.Name = "btPlus";
-            this.btPlus.Size = new System.Drawing.Size(30, 30);
-            this.btPlus.TabIndex = 44;
-            this.btPlus.Text = "+";
-            this.btPlus.UseVisualStyleBackColor = false;
-            this.btPlus.Click += new System.EventHandler(this.btPlus_Click);
-            // 
-            // btHide
-            // 
-            this.btHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btHide.BackColor = System.Drawing.Color.White;
-            this.btHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btHide.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btHide.Location = new System.Drawing.Point(875, 482);
-            this.btHide.Margin = new System.Windows.Forms.Padding(2);
-            this.btHide.Name = "btHide";
-            this.btHide.Size = new System.Drawing.Size(148, 55);
-            this.btHide.TabIndex = 43;
-            this.btHide.Text = "Gizle";
-            this.btHide.UseVisualStyleBackColor = false;
-            this.btHide.Click += new System.EventHandler(this.btHide_Click);
-            // 
-            // btRemoveSelected
-            // 
-            this.btRemoveSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btRemoveSelected.BackColor = System.Drawing.Color.White;
-            this.btRemoveSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btRemoveSelected.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btRemoveSelected.Location = new System.Drawing.Point(1054, 482);
-            this.btRemoveSelected.Margin = new System.Windows.Forms.Padding(2);
-            this.btRemoveSelected.Name = "btRemoveSelected";
-            this.btRemoveSelected.Size = new System.Drawing.Size(148, 55);
-            this.btRemoveSelected.TabIndex = 42;
-            this.btRemoveSelected.Text = "Seçili Kaydı Sil";
-            this.btRemoveSelected.UseVisualStyleBackColor = false;
-            this.btRemoveSelected.Click += new System.EventHandler(this.btRemoveSelected_Click);
-            // 
-            // btHamburgerMenu
-            // 
-            this.btHamburgerMenu.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btHamburgerMenu.FlatAppearance.BorderSize = 0;
-            this.btHamburgerMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btHamburgerMenu.ForeColor = System.Drawing.Color.Black;
-            this.btHamburgerMenu.Image = ((System.Drawing.Image)(resources.GetObject("btHamburgerMenu.Image")));
-            this.btHamburgerMenu.Location = new System.Drawing.Point(29, 41);
-            this.btHamburgerMenu.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.btHamburgerMenu.Name = "btHamburgerMenu";
-            this.btHamburgerMenu.Size = new System.Drawing.Size(42, 42);
-            this.btHamburgerMenu.TabIndex = 46;
-            this.btHamburgerMenu.UseVisualStyleBackColor = false;
-            this.btHamburgerMenu.Click += new System.EventHandler(this.btHamburgerMenu_Click);
-            this.btHamburgerMenu.Leave += new System.EventHandler(this.btHamburgerMenu_Leave);
             // 
             // btImportDatabase
             // 
@@ -280,10 +275,10 @@
             this.btImportDatabase.ForeColor = System.Drawing.Color.Black;
             this.btImportDatabase.Image = ((System.Drawing.Image)(resources.GetObject("btImportDatabase.Image")));
             this.btImportDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btImportDatabase.Location = new System.Drawing.Point(4, 524);
-            this.btImportDatabase.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btImportDatabase.Location = new System.Drawing.Point(3, 419);
+            this.btImportDatabase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btImportDatabase.Name = "btImportDatabase";
-            this.btImportDatabase.Size = new System.Drawing.Size(28, 40);
+            this.btImportDatabase.Size = new System.Drawing.Size(22, 32);
             this.btImportDatabase.TabIndex = 48;
             this.btImportDatabase.Text = "Yedekten Veri Yükle";
             this.btImportDatabase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -301,10 +296,10 @@
             this.btBackupDatabase.ForeColor = System.Drawing.Color.Black;
             this.btBackupDatabase.Image = ((System.Drawing.Image)(resources.GetObject("btBackupDatabase.Image")));
             this.btBackupDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btBackupDatabase.Location = new System.Drawing.Point(4, 469);
-            this.btBackupDatabase.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btBackupDatabase.Location = new System.Drawing.Point(3, 375);
+            this.btBackupDatabase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btBackupDatabase.Name = "btBackupDatabase";
-            this.btBackupDatabase.Size = new System.Drawing.Size(28, 40);
+            this.btBackupDatabase.Size = new System.Drawing.Size(22, 32);
             this.btBackupDatabase.TabIndex = 47;
             this.btBackupDatabase.Text = "Verileri Yedekle";
             this.btBackupDatabase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -312,18 +307,80 @@
             this.btBackupDatabase.UseVisualStyleBackColor = false;
             this.btBackupDatabase.Click += new System.EventHandler(this.btBackupDatabase_Click);
             // 
+            // btMinus
+            // 
+            this.btMinus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btMinus.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btMinus.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btMinus.ForeColor = System.Drawing.Color.White;
+            this.btMinus.Location = new System.Drawing.Point(908, 6);
+            this.btMinus.Margin = new System.Windows.Forms.Padding(2);
+            this.btMinus.Name = "btMinus";
+            this.btMinus.Size = new System.Drawing.Size(24, 24);
+            this.btMinus.TabIndex = 45;
+            this.btMinus.Text = "-";
+            this.btMinus.UseVisualStyleBackColor = false;
+            this.btMinus.Click += new System.EventHandler(this.btMinus_Click);
+            // 
+            // btPlus
+            // 
+            this.btPlus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btPlus.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btPlus.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btPlus.ForeColor = System.Drawing.Color.White;
+            this.btPlus.Location = new System.Drawing.Point(937, 6);
+            this.btPlus.Margin = new System.Windows.Forms.Padding(2);
+            this.btPlus.Name = "btPlus";
+            this.btPlus.Size = new System.Drawing.Size(24, 24);
+            this.btPlus.TabIndex = 44;
+            this.btPlus.Text = "+";
+            this.btPlus.UseVisualStyleBackColor = false;
+            this.btPlus.Click += new System.EventHandler(this.btPlus_Click);
+            // 
+            // btHide
+            // 
+            this.btHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btHide.BackColor = System.Drawing.Color.White;
+            this.btHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btHide.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btHide.Location = new System.Drawing.Point(700, 386);
+            this.btHide.Margin = new System.Windows.Forms.Padding(2);
+            this.btHide.Name = "btHide";
+            this.btHide.Size = new System.Drawing.Size(118, 44);
+            this.btHide.TabIndex = 43;
+            this.btHide.Text = "Gizle";
+            this.btHide.UseVisualStyleBackColor = false;
+            this.btHide.Click += new System.EventHandler(this.btHide_Click);
+            // 
+            // btRemoveSelected
+            // 
+            this.btRemoveSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btRemoveSelected.BackColor = System.Drawing.Color.White;
+            this.btRemoveSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRemoveSelected.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btRemoveSelected.Location = new System.Drawing.Point(843, 386);
+            this.btRemoveSelected.Margin = new System.Windows.Forms.Padding(2);
+            this.btRemoveSelected.Name = "btRemoveSelected";
+            this.btRemoveSelected.Size = new System.Drawing.Size(118, 44);
+            this.btRemoveSelected.TabIndex = 42;
+            this.btRemoveSelected.Text = "Seçili Kaydı Sil";
+            this.btRemoveSelected.UseVisualStyleBackColor = false;
+            this.btRemoveSelected.Click += new System.EventHandler(this.btRemoveSelected_Click);
+            // 
             // FormData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(168)))));
-            this.ClientSize = new System.Drawing.Size(1250, 691);
+            this.ClientSize = new System.Drawing.Size(1000, 553);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormData";
             this.Text = "FormData";
             ((System.ComponentModel.ISupportInitialize)(this.dgwKayit)).EndInit();
@@ -351,5 +408,8 @@
         private System.Windows.Forms.Button btImportDatabase;
         private System.Windows.Forms.Button btBackupDatabase;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.CheckedListBox clbxProductFilter;
+        private System.Windows.Forms.CheckBox chbProductFilter;
+        private System.Windows.Forms.Button btProductFilter;
     }
 }
