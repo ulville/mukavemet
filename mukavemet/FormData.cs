@@ -24,7 +24,8 @@ namespace mukavemet
         private Panel pnHamburger = new Panel();
         private Timer tmrDelayHiding = new Timer { Interval = 10 };
         private string[] selectedProducts;
-
+        private string[] selectedUsers;
+        private string mesType;
 
         public FormData()
         {
@@ -58,54 +59,39 @@ namespace mukavemet
             {
                 string query;
                 connection.Open();
-                if (!chbPickDate.Checked)
+
+                query = "SELECT * FROM mukayit";
+
+                if (chbPickDate.Checked)
                 {
-                    if (!chbProductFilter.Checked)
-                    {
-                        query = "SELECT * FROM mukayit";
-                    }
-                    else if (selectedProducts.Length != 0)
-                    {
-                        StringBuilder sbProducts = new StringBuilder();
+                    DateTime dtFromDate = dtpFrom.Value.Date;
+                    DateTime dtToDate = dtpTo.Value.Date.AddDays(1) -
+                        TimeSpan.FromSeconds(1);
+                    string fromDate = dtFromDate.ToString("yyyy-MM-dd HH:mm:ss");
+                    string toDate = dtToDate.ToString("yyyy-MM-dd HH:mm:ss");
 
-                        for (int i = 0; i < selectedProducts.Length; i++)
-                        {
-                            sbProducts.Append('\"');
-                            sbProducts.Append(selectedProducts[i]);
-                            sbProducts.Append('\"');
-                            if (i != selectedProducts.Length - 1)
-                                sbProducts.Append(',');
-                        }
-
-                        query = "SELECT * FROM mukayit WHERE \"Ürün Cinsi\" IN (" + sbProducts.ToString() + ")";
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ürün filtreleme açık fakat hiç ürün seçilmedi.\nTüm ürünler gösterilecek.");
-                        query = "SELECT * FROM mukayit";
-                    }
-
+                        query = query + "WHERE Tarih BETWEEN \'" +
+                            fromDate + "\' AND \'" + toDate + "\'";
                 }
-                else
-                {
-                    if (!chbProductFilter.Checked)
-                    {
-                        DateTime dtFromDate = dtpFrom.Value.Date;
-                        DateTime dtToDate = dtpTo.Value.Date.AddDays(1) -
-                            TimeSpan.FromSeconds(1);
-                        string fromDate = dtFromDate.ToString("yyyy-MM-dd HH:mm:ss");
-                        string toDate = dtToDate.ToString("yyyy-MM-dd HH:mm:ss");
 
-                        query = "SELECT * FROM mukayit WHERE Tarih BETWEEN \'" +
-                            fromDate + "\' AND \'" + toDate + "\'";
-                    }
-                    else if (selectedProducts.Length != 0)
+                if (!rbBoth.Checked)
+                {
+
+                    if (rbBendOnly.Checked)
+                        mesType = "Eğilme";
+                    else
+                        mesType = "Basınç";
+
+                    if (chbPickDate.Checked)
+                        query = query + " AND \"Ölçüm Türü\" IS \"" + mesType + "\"";
+                    else
+                        query = query + " WHERE \"Ölçüm Türü\" IS \"" + mesType + "\"";
+                }
+
+                if (chbProductFilter.Checked)
+                {
+                    if (selectedProducts.Length != 0)
                     {
-                        DateTime dtFromDate = dtpFrom.Value.Date;
-                        DateTime dtToDate = dtpTo.Value.Date.AddDays(1) -
-                            TimeSpan.FromSeconds(1);
-                        string fromDate = dtFromDate.ToString("yyyy-MM-dd HH:mm:ss");
-                        string toDate = dtToDate.ToString("yyyy-MM-dd HH:mm:ss");
                         StringBuilder sbProducts = new StringBuilder();
 
                         for (int i = 0; i < selectedProducts.Length; i++)
@@ -117,23 +103,37 @@ namespace mukavemet
                                 sbProducts.Append(',');
                         }
 
-                        query = "SELECT * FROM mukayit WHERE \"Ürün Cinsi\" IN (" + sbProducts.ToString() + ") AND Tarih BETWEEN \'" +
-                            fromDate + "\' AND \'" + toDate + "\'";
+                        if (chbPickDate.Checked || !rbBoth.Checked)
+                            query = query + " AND \"Ürün Cinsi\" IN (" + sbProducts.ToString() + ")";
+                        else
+                            query = query + " WHERE \"Ürün Cinsi\" IN (" + sbProducts.ToString() + ")";
                     }
                     else
+                        MessageBox.Show("Kullanıcı filtreleme açık fakat hiç kullanıcı seçilmedi.\nTüm kullanıcılar gösterilecek.");
+                }
+
+                if (chbUserFilter.Checked)
+                {
+                    if (selectedUsers.Length != 0)
                     {
-                        MessageBox.Show("Ürün filtreleme açık fakat hiç ürün seçilmedi.\nTüm ürünler gösterilecek.");
+                        StringBuilder sbUsers = new StringBuilder();
 
-                        DateTime dtFromDate = dtpFrom.Value.Date;
-                        DateTime dtToDate = dtpTo.Value.Date.AddDays(1) -
-                            TimeSpan.FromSeconds(1);
-                        string fromDate = dtFromDate.ToString("yyyy-MM-dd HH:mm:ss");
-                        string toDate = dtToDate.ToString("yyyy-MM-dd HH:mm:ss");
+                        for (int i = 0; i < selectedUsers.Length; i++)
+                        {
+                            sbUsers.Append('\"');
+                            sbUsers.Append(selectedUsers[i]);
+                            sbUsers.Append('\"');
+                            if (i != selectedUsers.Length - 1)
+                                sbUsers.Append(',');
+                        }
 
-                        query = "SELECT * FROM mukayit WHERE Tarih BETWEEN \'" +
-                            fromDate + "\' AND \'" + toDate + "\'";
+                        if (chbProductFilter.Checked || chbPickDate.Checked || !rbBoth.Checked)
+                            query = query + " AND \"Ölçümü Yapan\" IN (" + sbUsers.ToString() + ")";
+                        else
+                            query = query + " WHERE \"Ölçümü Yapan\" IN (" + sbUsers.ToString() + ")";
                     }
-
+                    else
+                        MessageBox.Show("Ürün filtreleme açık fakat hiç ürün seçilmedi.\nTüm ürünler gösterilecek.");
                 }
 
                 SQLiteCommand command = new SQLiteCommand(query, connection);
@@ -483,7 +483,7 @@ namespace mukavemet
                 clbxProductFilter.Visible = true;
                 clbxProductFilter.Height = panel1.Bottom - clbxProductFilter.Top;
                 btProductFilter.Top = chbProductFilter.Top;
-                btProductFilter.Height = chbProductFilter.Height;
+                //btProductFilter.Height = chbProductFilter.Height;
                 btProductFilter.Enabled = true;
                 btProductFilter.Visible = true;
                 btProductFilter.Text = "✔";
@@ -519,6 +519,63 @@ namespace mukavemet
                 clbxProductFilter.Enabled = true;
                 clbxProductFilter.Visible = true;
                 btProductFilter.Text = "✔";
+            }
+        }
+
+        private void chbUserFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbUserFilter.Checked)
+            {
+                string[] listBoxItemArray = new string[clbxUserFilter.Items.Count];
+                for (int i = 0; i < clbxUserFilter.Items.Count; i++)
+                {
+                    listBoxItemArray[i] = (string)clbxUserFilter.Items[i];
+                }
+                if (listBoxItemArray != Settings.Default.UserList)
+                {
+                    clbxUserFilter.Items.Clear();
+                    clbxUserFilter.Items.AddRange(Settings.Default.UserList);
+                }
+                clbxUserFilter.Enabled = true;
+                clbxUserFilter.Visible = true;
+                clbxUserFilter.Height = panel1.Bottom - clbxUserFilter.Top;
+                btUserFilter.Top = chbUserFilter.Top;
+                //btUserFilter.Height = chbUserFilter.Height;
+                btUserFilter.Enabled = true;
+                btUserFilter.Visible = true;
+                btUserFilter.Text = "✔";
+
+            }
+            else
+            {
+                clbxUserFilter.Enabled = false;
+                clbxUserFilter.Visible = false;
+                btUserFilter.Enabled = false;
+                btUserFilter.Visible = false;
+
+            }
+        }
+
+        private void btUserFilter_Click(object sender, EventArgs e)
+        {
+            if (clbxUserFilter.Enabled)
+            {
+                clbxUserFilter.Enabled = false;
+                clbxUserFilter.Visible = false;
+                btUserFilter.Text = "🞃";
+
+                selectedUsers = new string[clbxUserFilter.CheckedItems.Count];
+                for (int i = 0; i < clbxUserFilter.CheckedItems.Count; i++)
+                {
+                    selectedUsers[i] = (string)clbxUserFilter.CheckedItems[i];
+                }
+
+            }
+            else
+            {
+                clbxUserFilter.Enabled = true;
+                clbxUserFilter.Visible = true;
+                btUserFilter.Text = "✔";
             }
         }
     }
