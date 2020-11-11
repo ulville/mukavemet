@@ -33,9 +33,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.dgwKayit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.clbxUserFilter = new System.Windows.Forms.CheckedListBox();
             this.clbxProductFilter = new System.Windows.Forms.CheckedListBox();
             this.btUserFilter = new System.Windows.Forms.Button();
-            this.clbxUserFilter = new System.Windows.Forms.CheckedListBox();
             this.chbUserFilter = new System.Windows.Forms.CheckBox();
             this.rbBoth = new System.Windows.Forms.RadioButton();
             this.rbPressureOnly = new System.Windows.Forms.RadioButton();
@@ -96,6 +96,7 @@
             this.dgwKayit.Size = new System.Drawing.Size(1152, 419);
             this.dgwKayit.TabIndex = 28;
             this.dgwKayit.Visible = false;
+            this.dgwKayit.Sorted += new System.EventHandler(this.dgwKayit_Sorted);
             this.dgwKayit.Click += new System.EventHandler(this.dgwKayit_Click);
             // 
             // panel1
@@ -124,6 +125,20 @@
             this.panel1.Size = new System.Drawing.Size(1250, 125);
             this.panel1.TabIndex = 29;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            // 
+            // clbxUserFilter
+            // 
+            this.clbxUserFilter.BackColor = System.Drawing.Color.White;
+            this.clbxUserFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.clbxUserFilter.Enabled = false;
+            this.clbxUserFilter.ForeColor = System.Drawing.Color.Black;
+            this.clbxUserFilter.FormattingEnabled = true;
+            this.clbxUserFilter.Location = new System.Drawing.Point(706, 14);
+            this.clbxUserFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.clbxUserFilter.Name = "clbxUserFilter";
+            this.clbxUserFilter.Size = new System.Drawing.Size(204, 25);
+            this.clbxUserFilter.TabIndex = 53;
+            this.clbxUserFilter.Visible = false;
             // 
             // clbxProductFilter
             // 
@@ -159,20 +174,6 @@
             this.btUserFilter.UseVisualStyleBackColor = false;
             this.btUserFilter.Visible = false;
             this.btUserFilter.Click += new System.EventHandler(this.btUserFilter_Click);
-            // 
-            // clbxUserFilter
-            // 
-            this.clbxUserFilter.BackColor = System.Drawing.Color.White;
-            this.clbxUserFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.clbxUserFilter.Enabled = false;
-            this.clbxUserFilter.ForeColor = System.Drawing.Color.Black;
-            this.clbxUserFilter.FormattingEnabled = true;
-            this.clbxUserFilter.Location = new System.Drawing.Point(706, 14);
-            this.clbxUserFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.clbxUserFilter.Name = "clbxUserFilter";
-            this.clbxUserFilter.Size = new System.Drawing.Size(204, 25);
-            this.clbxUserFilter.TabIndex = 53;
-            this.clbxUserFilter.Visible = false;
             // 
             // chbUserFilter
             // 

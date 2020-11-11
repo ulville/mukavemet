@@ -233,62 +233,65 @@ namespace mukavemet
 
         private void btRemoveSelected_Click(object sender, EventArgs e)
         {
-
             string[] noValues = GetNoValues(dgwKayit.SelectedCells);
-            StringBuilder message = new StringBuilder(
-                "Şu numaralı kayıtlar silinecek: ");
 
-            foreach (string noValue in noValues)
+            if (noValues.Length != 0)
             {
-                message.Append(noValue);
-                if (noValue != noValues[noValues.Length - 1])
-                    message.Append(", ");
-                else
-                    message.Append(". Devam etmek istediğinizden emin misiniz?\n" +
-                        "(Bu işlem geri alınamaz!)");
-            }
+                StringBuilder message = new StringBuilder(
+                    "Şu numaralı kayıtlar silinecek: ");
 
-            var result = MessageBox.Show(
-                message.ToString(),
-                "Dikkat",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
-            {
-                try
+                foreach (string noValue in noValues)
                 {
-                    connection.Open();
-                    StringBuilder query = new StringBuilder(
-                        "DELETE FROM mukayit WHERE No in (");
+                    message.Append(noValue);
+                    if (noValue != noValues[noValues.Length - 1])
+                        message.Append(", ");
+                    else
+                        message.Append(". Devam etmek istediğinizden emin misiniz?\n" +
+                            "(Bu işlem geri alınamaz!)");
+                }
 
-                    foreach (string noValue in noValues)
+                var result = MessageBox.Show(
+                    message.ToString(),
+                    "Dikkat",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
                     {
-                        query.Append(noValue);
-                        if (noValue != noValues[noValues.Length - 1])
-                            query.Append(',');
-                        else
-                            query.Append(')');
+                        connection.Open();
+                        StringBuilder query = new StringBuilder(
+                            "DELETE FROM mukayit WHERE No in (");
+
+                        foreach (string noValue in noValues)
+                        {
+                            query.Append(noValue);
+                            if (noValue != noValues[noValues.Length - 1])
+                                query.Append(',');
+                            else
+                                query.Append(')');
+                        }
+                        SQLiteCommand command = new SQLiteCommand(
+                            query.ToString(), connection);
+
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                        btDataBase.PerformClick();
+
                     }
-                    SQLiteCommand command = new SQLiteCommand(
-                        query.ToString(), connection);
-
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    btDataBase.PerformClick();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    connection.Close();
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        connection.Close();
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                    }
                 }
             }
-            
+            dgwKayit.AutoResizeColumns();
         }
 
         private string[] GetNoValues(DataGridViewSelectedCellCollection cells)
@@ -297,7 +300,7 @@ namespace mukavemet
             int[] inx = new int[0];
             foreach (DataGridViewCell cell in cells)
             {
-                if (!inx.Contains(cell.RowIndex))
+                if (!inx.Contains(cell.RowIndex) && cell.RowIndex < dgwKayit.Rows.Count - 1)
                 {
                     Array.Resize(ref inx, inx.Length + 1);
                     inx[inx.Length - 1] = cell.RowIndex;
@@ -577,6 +580,12 @@ namespace mukavemet
                 clbxUserFilter.Visible = true;
                 btUserFilter.Text = "✔";
             }
+        }
+
+        private void dgwKayit_Sorted(object sender, EventArgs e)
+        {
+            dgwKayit.AutoResizeRows();
+            dgwKayit.AutoResizeColumns();
         }
     }
 }

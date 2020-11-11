@@ -9,7 +9,9 @@ Use Ping instead of IsAvailable +++
 Importing database backup +++++++++
 while db is in use gives error
 
-Filtreleme seçenekleri ekle
+Filtreleme seçenekleri ekle +++++++
 
 Save Graphs to Database 
 
+GetNoValues Method throws an error
+if Empty cells are selected +++++++
