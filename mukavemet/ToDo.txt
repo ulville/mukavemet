@@ -11,7 +11,9 @@ while db is in use gives error
 
 Filtreleme seçenekleri ekle +++++++
 
-Save Graphs to Database 
-
 GetNoValues Method throws an error
 if Empty cells are selected +++++++
+
+Save Graphs to Database +++++++++++
+
+Load and Show Saved Graphs

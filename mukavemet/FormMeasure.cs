@@ -339,6 +339,23 @@ namespace mukavemet
                     cbProduct.SelectedItem.ToString() + "\')";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.ExecuteNonQuery();
+
+                query = "INSERT INTO graf (\"No\",\"Değer\",\"Süre\") VALUES";
+                string selectNo = "(SELECT \"No\" FROM mukayit ORDER BY \"No\"" +
+                    " DESC LIMIT 1)";
+                
+                foreach (MeasureModel sample in crtVls)
+                {
+                    query += '(' + selectNo + ',' +
+                        sample.Value.ToString(CultureInfo.InvariantCulture) +
+                        ',' + sample.Time.Ticks.ToString() + ')';
+                    if (!sample.Equals(crtVls[crtVls.Count - 1]))
+                    {
+                        query += ',';
+                    }
+                }
+                command = new SQLiteCommand(query, connection);
+                command.ExecuteNonQuery();
                 connection.Close();
             }
             catch (Exception ex)
