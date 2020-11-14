@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.dgwKayit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -50,6 +50,8 @@
             this.btExportToExcel = new System.Windows.Forms.Button();
             this.btDataBase = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pnChart = new System.Windows.Forms.Panel();
+            this.btCloseChart = new System.Windows.Forms.Button();
             this.btImportDatabase = new System.Windows.Forms.Button();
             this.btBackupDatabase = new System.Windows.Forms.Button();
             this.btMinus = new System.Windows.Forms.Button();
@@ -60,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwKayit)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnChart.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgwKayit
@@ -70,23 +73,23 @@
             this.dgwKayit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgwKayit.BackgroundColor = System.Drawing.Color.White;
             this.dgwKayit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgwKayit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgwKayit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgwKayit.Location = new System.Drawing.Point(49, 41);
             this.dgwKayit.Margin = new System.Windows.Forms.Padding(38, 38, 38, 20);
@@ -96,6 +99,7 @@
             this.dgwKayit.Size = new System.Drawing.Size(1152, 419);
             this.dgwKayit.TabIndex = 28;
             this.dgwKayit.Visible = false;
+            this.dgwKayit.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwKayit_CellDoubleClick);
             this.dgwKayit.Sorted += new System.EventHandler(this.dgwKayit_Sorted);
             this.dgwKayit.Click += new System.EventHandler(this.dgwKayit_Click);
             // 
@@ -360,6 +364,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pnChart);
             this.panel2.Controls.Add(this.btImportDatabase);
             this.panel2.Controls.Add(this.btBackupDatabase);
             this.panel2.Controls.Add(this.btMinus);
@@ -374,6 +379,32 @@
             this.panel2.Size = new System.Drawing.Size(1250, 566);
             this.panel2.TabIndex = 30;
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
+            // 
+            // pnChart
+            // 
+            this.pnChart.Controls.Add(this.btCloseChart);
+            this.pnChart.Enabled = false;
+            this.pnChart.Location = new System.Drawing.Point(133, 24);
+            this.pnChart.Name = "pnChart";
+            this.pnChart.Size = new System.Drawing.Size(907, 425);
+            this.pnChart.TabIndex = 58;
+            this.pnChart.Visible = false;
+            // 
+            // btCloseChart
+            // 
+            this.btCloseChart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCloseChart.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btCloseChart.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btCloseChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCloseChart.ForeColor = System.Drawing.Color.White;
+            this.btCloseChart.Location = new System.Drawing.Point(847, 17);
+            this.btCloseChart.Margin = new System.Windows.Forms.Padding(2);
+            this.btCloseChart.Name = "btCloseChart";
+            this.btCloseChart.Size = new System.Drawing.Size(30, 30);
+            this.btCloseChart.TabIndex = 58;
+            this.btCloseChart.Text = "x";
+            this.btCloseChart.UseVisualStyleBackColor = false;
+            this.btCloseChart.Click += new System.EventHandler(this.btCloseChart_Click);
             // 
             // btImportDatabase
             // 
@@ -497,6 +528,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.pnChart.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -528,5 +560,7 @@
         private System.Windows.Forms.CheckedListBox clbxUserFilter;
         private System.Windows.Forms.CheckBox chbUserFilter;
         private System.Windows.Forms.Button btUserFilter;
+        private System.Windows.Forms.Panel pnChart;
+        private System.Windows.Forms.Button btCloseChart;
     }
 }

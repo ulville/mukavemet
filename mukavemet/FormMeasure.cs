@@ -44,7 +44,7 @@ namespace mukavemet
         private string msgNotSelected = "Ölçüm Türü Seçili Değil!";
         private string msgAddressLineEmpty = "Adresler Tanımlı Değil!";
 
-        public ChartValues<MeasureModel> crtVls { get; set; }
+        private ChartValues<MeasureModel> crtVls { get; set; }
 
 
         public FormMeasure()

@@ -13,7 +13,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Configurations;
+using System.Windows.Media;
 
 namespace mukavemet
 {
@@ -26,6 +29,10 @@ namespace mukavemet
         private string[] selectedProducts;
         private string[] selectedUsers;
         private string mesType;
+        private LiveCharts.WinForms.CartesianChart cartesianChart1;
+
+        private ChartValues<MeasureModel> crtVls { get; set; }
+
 
         public FormData()
         {
@@ -37,7 +44,7 @@ namespace mukavemet
 
             pnHamburger.Top = btHamburgerMenu.Bottom + 10;
             pnHamburger.Left = btHamburgerMenu.Left;
-            pnHamburger.BackColor = Color.Black;
+            pnHamburger.BackColor = System.Drawing.Color.Black;
             pnHamburger.Size = new Size(240, 104);
             pnHamburger.BorderStyle = BorderStyle.FixedSingle;
             pnHamburger.Controls.Add(btImportDatabase);
@@ -47,6 +54,10 @@ namespace mukavemet
             btBackupDatabase.Height = pnHamburger.Height / 2 - 1;
             btImportDatabase.Height = pnHamburger.Height / 2 - 1;
             tmrDelayHiding.Tick += TmrDelayHiding_Tick;
+
+            pnChart.Dock = DockStyle.Fill;
+
+            
         }
 
         private void btDataBase_Click(object sender, EventArgs e)
@@ -127,13 +138,17 @@ namespace mukavemet
                                 sbUsers.Append(',');
                         }
 
-                        if (chbProductFilter.Checked || chbPickDate.Checked || !rbBoth.Checked)
-                            query = query + " AND \"Ölçümü Yapan\" IN (" + sbUsers.ToString() + ")";
+                        if (chbProductFilter.Checked ||
+                            chbPickDate.Checked || !rbBoth.Checked)
+                            query = query + " AND \"Ölçümü Yapan\" IN (" +
+                                sbUsers.ToString() + ")";
                         else
-                            query = query + " WHERE \"Ölçümü Yapan\" IN (" + sbUsers.ToString() + ")";
+                            query = query + " WHERE \"Ölçümü Yapan\" IN (" +
+                                sbUsers.ToString() + ")";
                     }
                     else
-                        MessageBox.Show("Ürün filtreleme açık fakat hiç ürün seçilmedi.\nTüm ürünler gösterilecek.");
+                        MessageBox.Show("Ürün filtreleme açık fakat hiç ürün " +
+                            "seçilmedi.\nTüm ürünler gösterilecek.");
                 }
 
                 SQLiteCommand command = new SQLiteCommand(query, connection);
@@ -157,7 +172,7 @@ namespace mukavemet
                     FontStyle.Regular);
                 dgwKayit.AutoResizeRows();
                 dgwKayit.AutoResizeColumns();
-                dgwKayit.BackgroundColor = Color.White;
+                dgwKayit.BackgroundColor = System.Drawing.Color.White;
                 dgwKayit.FirstDisplayedScrollingRowIndex = dgwKayit.RowCount - 1;
 
             }
@@ -300,7 +315,8 @@ namespace mukavemet
             int[] inx = new int[0];
             foreach (DataGridViewCell cell in cells)
             {
-                if (!inx.Contains(cell.RowIndex) && cell.RowIndex < dgwKayit.Rows.Count - 1)
+                if (!inx.Contains(cell.RowIndex) &&
+                    cell.RowIndex < dgwKayit.Rows.Count - 1)
                 {
                     Array.Resize(ref inx, inx.Length + 1);
                     inx[inx.Length - 1] = cell.RowIndex;
@@ -310,6 +326,100 @@ namespace mukavemet
                 }
             }
             return noValues;
+        }
+
+        private void ShowGraph(string noOfClicked)
+        {
+
+            cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            cartesianChart1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                | AnchorStyles.Left
+                | AnchorStyles.Right;
+            cartesianChart1.Location = new Point(pnChart.Width / 50, pnChart.Height / 8);
+            cartesianChart1.Margin = new Padding(30);
+            cartesianChart1.Name = "cartesianChart1";
+            cartesianChart1.Size = new Size(pnChart.Width - (cartesianChart1.Location.X * 2), pnChart.Height - cartesianChart1.Location.Y);
+            cartesianChart1.TabIndex = 57;
+            cartesianChart1.Text = "cartesianChart1";
+            cartesianChart1.BackColor = System.Drawing.Color.FromArgb(0, 86, 168);
+            pnChart.Controls.Add(cartesianChart1);
+            cartesianChart1.BringToFront();
+            pnChart.Enabled = true;
+            pnChart.Visible = true;
+
+            try
+            {
+                var models = new MeasureModel[0];
+
+                connection.Open();
+                string query = "SELECT * FROM graf WHERE \"No\" IS " + noOfClicked;
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Array.Resize(ref models, models.Length + 1);
+                    models[models.Length - 1] = new MeasureModel
+                    {
+                        Time = TimeSpan.FromTicks(reader.GetInt64(2)),
+                        Value = reader.GetFloat(1)
+                    };
+                }
+                reader.Close();
+                connection.Close();
+                #region InitChart
+                var mapper = Mappers.Xy<MeasureModel>()
+                .X(model => model.Time.Ticks)
+                .Y(model => model.Value);
+
+                Charting.For<MeasureModel>(mapper);
+                crtVls = new ChartValues<MeasureModel>();
+                cartesianChart1.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = crtVls,
+                    PointGeometrySize = 4,
+                    StrokeThickness = 2,
+
+                    Fill = new LinearGradientBrush(
+                        System.Windows.Media.Color.FromArgb(0xcc, 0xff, 0xff, 0xff),
+                        System.Windows.Media.Color.FromArgb(0x64, 0xff, 0xff, 0xff),
+                        90),
+                    Stroke = new SolidColorBrush(
+                        System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff))
+                },
+
+            };
+                cartesianChart1.AxisX.Add(new Axis
+                {
+                    //DisableAnimations = true,
+                    LabelFormatter = value => new TimeSpan((long)value)
+                    .TotalMilliseconds.ToString() + "ms",
+                    Separator = new Separator
+                    {
+                        Step = TimeSpan.FromMilliseconds(500).Ticks
+                    },
+                    MinValue = 0
+                });
+                cartesianChart1.AxisY.Add(new Axis
+                {
+                    MinValue = 0
+
+                });
+                cartesianChart1.AnimationsSpeed = TimeSpan.FromMilliseconds(250);
+                #endregion
+                crtVls.AddRange(models);
+                cartesianChart1.AxisX[0].MaxValue = models.Last().Time.Ticks
+                    + TimeSpan.FromMilliseconds(100).Ticks;
+                models = null;
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btPlus_Click(object sender, EventArgs e)
@@ -587,5 +697,24 @@ namespace mukavemet
             dgwKayit.AutoResizeRows();
             dgwKayit.AutoResizeColumns();
         }
+
+        private void dgwKayit_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ShowGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+
+        private void btCloseChart_Click(object sender, EventArgs e)
+        {
+
+            crtVls.Clear();
+            crtVls = null;
+            cartesianChart1.Series.Clear();
+            pnChart.Controls.Remove(cartesianChart1);
+            cartesianChart1.Dispose();
+            pnChart.Enabled = false;
+            pnChart.Visible = false;
+            GC.Collect();
+        }
+
     }
 }
