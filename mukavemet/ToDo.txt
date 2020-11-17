@@ -1,26 +1,21 @@
-﻿DataGridView Column Widths ++++++++
+﻿DataGridView Column Widths *****************************************
 
-Import Export Settings ++++++++++++
+Import Export Settings *********************************************
 
-Draw Graph ++++++++++++++++++++++++
+Draw Graph *********************************************************
 
-Use Ping instead of IsAvailable +++
+Use Ping instead of IsAvailable ************************************
 
-Importing database backup +++++++++
-while db is in use gives error
+Importing database backup while db is in use gives error ***********
 
-Filtreleme seçenekleri ekle +++++++
+Filtreleme seçenekleri ekle ****************************************
 
-GetNoValues Method throws an error
-if Empty cells are selected +++++++
+GetNoValues Method throws an error if Empty cells are selected *****
 
-Save Graphs to Database +++++++++++
+Save Graphs to Database ********************************************
 
-Load and Show Saved Graphs ++++++++
+Load and Show Saved Graphs *****************************************
 
-Prevent trying to show graph for
-last empty row
+Prevent trying to show graph for last empty row ********************
 
-Deleting a Saved Measurement Should
-Also Delete The Graph Data
-
+Deleting a Saved Measurement Should Also Delete The Graph Data

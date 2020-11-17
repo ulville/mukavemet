@@ -708,7 +708,8 @@ namespace mukavemet
 
         private void dgwKayit_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ShowGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString());
+            if (e.RowIndex != dgwKayit.Rows.GetLastRow(DataGridViewElementStates.Visible))
+                ShowGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
 
         private void btCloseChart_Click(object sender, EventArgs e)
