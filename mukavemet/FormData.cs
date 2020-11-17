@@ -330,18 +330,23 @@ namespace mukavemet
 
         private void ShowGraph(string noOfClicked)
         {
-
-            cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
-            cartesianChart1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+            GC.Collect();
+            int LocX = pnChart.Width / 50;
+            int LocY = pnChart.Height / 8;
+            cartesianChart1 = new LiveCharts.WinForms.CartesianChart
+            {
+                Anchor = AnchorStyles.Top | AnchorStyles.Bottom
                 | AnchorStyles.Left
-                | AnchorStyles.Right;
-            cartesianChart1.Location = new Point(pnChart.Width / 50, pnChart.Height / 8);
-            cartesianChart1.Margin = new Padding(30);
-            cartesianChart1.Name = "cartesianChart1";
-            cartesianChart1.Size = new Size(pnChart.Width - (cartesianChart1.Location.X * 2), pnChart.Height - cartesianChart1.Location.Y);
-            cartesianChart1.TabIndex = 57;
-            cartesianChart1.Text = "cartesianChart1";
-            cartesianChart1.BackColor = System.Drawing.Color.FromArgb(0, 86, 168);
+                | AnchorStyles.Right,
+                Location = new Point(LocX, LocY),
+                Margin = new Padding(30),
+                Name = "cartesianChart1",
+                Size = new Size(pnChart.Width - (LocX * 2), pnChart.Height - LocY * 2),
+                TabIndex = 57,
+                Text = "cartesianChart1",
+                BackColor = System.Drawing.Color.FromArgb(0, 86, 168)
+            };
+
             pnChart.Controls.Add(cartesianChart1);
             cartesianChart1.BringToFront();
             pnChart.Enabled = true;
@@ -353,19 +358,22 @@ namespace mukavemet
 
                 connection.Open();
                 string query = "SELECT * FROM graf WHERE \"No\" IS " + noOfClicked;
-                SQLiteCommand command = new SQLiteCommand(query, connection);
-                SQLiteDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    Array.Resize(ref models, models.Length + 1);
-                    models[models.Length - 1] = new MeasureModel
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        Time = TimeSpan.FromTicks(reader.GetInt64(2)),
-                        Value = reader.GetFloat(1)
-                    };
+                        while (reader.Read())
+                        {
+                            Array.Resize(ref models, models.Length + 1);
+                            models[models.Length - 1] = new MeasureModel
+                            {
+                                Time = TimeSpan.FromTicks(reader.GetInt64(2)),
+                                Value = reader.GetFloat(1)
+                            };
+                        }
+                        reader.Close();
+                    }
                 }
-                reader.Close();
                 connection.Close();
                 #region InitChart
                 var mapper = Mappers.Xy<MeasureModel>()
@@ -375,9 +383,9 @@ namespace mukavemet
                 Charting.For<MeasureModel>(mapper);
                 crtVls = new ChartValues<MeasureModel>();
                 cartesianChart1.Series = new SeriesCollection
-            {
-                new LineSeries
                 {
+                    new LineSeries
+                    {
                     Values = crtVls,
                     PointGeometrySize = 4,
                     StrokeThickness = 2,
@@ -388,7 +396,7 @@ namespace mukavemet
                         90),
                     Stroke = new SolidColorBrush(
                         System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff))
-                },
+                    },
 
             };
                 cartesianChart1.AxisX.Add(new Axis
@@ -705,7 +713,6 @@ namespace mukavemet
 
         private void btCloseChart_Click(object sender, EventArgs e)
         {
-
             crtVls.Clear();
             crtVls = null;
             cartesianChart1.Series.Clear();
