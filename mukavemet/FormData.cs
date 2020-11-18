@@ -29,7 +29,6 @@ namespace mukavemet
         private string[] selectedProducts;
         private string[] selectedUsers;
         private string mesType;
-        //private Form formGraph;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
 
         private ChartValues<MeasureModel> crtVls { get; set; }
@@ -70,6 +69,9 @@ namespace mukavemet
             connection = new SQLiteConnection(@"data source=./mukavemet.db");
             if (clbxProductFilter.Enabled)
                 btProductFilter.PerformClick();
+
+            if (clbxUserFilter.Enabled)
+                btUserFilter.PerformClick();
 
             try
             {
@@ -347,6 +349,7 @@ namespace mukavemet
                 Text = "cartesianChart1",
                 BackColor = System.Drawing.Color.FromArgb(0, 86, 168),
                 AnimationsSpeed = TimeSpan.FromMilliseconds(250),
+                Hoverable = false,
                 Series = new SeriesCollection
                 {
                     new LineSeries
@@ -705,17 +708,13 @@ namespace mukavemet
 
         private void dgwKayit_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //timer1.Enabled = true;
-
-            if (e.RowIndex != dgwKayit.Rows.GetLastRow(DataGridViewElementStates.Visible))
+            if (e.RowIndex != dgwKayit.Rows.GetLastRow(DataGridViewElementStates.Visible) 
+                && e.RowIndex != -1)
                 ShowGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString());
-            //formGraph = new FormGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
 
         private void btCloseChart_Click(object sender, EventArgs e)
         {
-
-            //crtVls = null;
             cartesianChart1.Dispose();
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -729,27 +728,5 @@ namespace mukavemet
 
         }
 
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //if (formGraph == null)
-            //    formGraph = new FormGraph(dgwKayit.Rows[row].Cells[0].Value.ToString());
-            //else if(formGraph.IsDisposed)
-            //    formGraph = new FormGraph(dgwKayit.Rows[row].Cells[0].Value.ToString());
-            //else
-            //    formGraph.Close();
-
-            Random rand = new Random();
-
-            if (!pnChart.Visible)
-            {
-                ShowGraph(dgwKayit.Rows[rand.Next(0, dgwKayit.Rows.Count - 2)].Cells[0].Value.ToString());
-            }
-            else
-                btCloseChart.PerformClick();
-
-
-
-        }
     }
 }
