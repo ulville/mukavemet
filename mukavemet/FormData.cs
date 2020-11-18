@@ -29,6 +29,7 @@ namespace mukavemet
         private string[] selectedProducts;
         private string[] selectedUsers;
         private string mesType;
+        //private Form formGraph;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
 
         private ChartValues<MeasureModel> crtVls { get; set; }
@@ -57,7 +58,11 @@ namespace mukavemet
 
             pnChart.Dock = DockStyle.Fill;
 
-            
+            var mapper = Mappers.Xy<MeasureModel>()
+                .X(model => model.Time.Ticks)
+                .Y(model => model.Value);
+
+            Charting.For<MeasureModel>(mapper);
         }
 
         private void btDataBase_Click(object sender, EventArgs e)
@@ -160,8 +165,6 @@ namespace mukavemet
                 dgwKayit.Visible = true;
                 dgwKayit.DataSource = dt;
                 connection.Close();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
                 dgwKayit.ColumnHeadersDefaultCellStyle.Font = new Font(
                     dgwKayit.ColumnHeadersDefaultCellStyle.Font.FontFamily,
                     12f,
@@ -180,8 +183,6 @@ namespace mukavemet
             {
                 MessageBox.Show(ex.Message);
                 connection.Close();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
             }
         }
 
@@ -292,8 +293,6 @@ namespace mukavemet
 
                         command.ExecuteNonQuery();
                         connection.Close();
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
                         btDataBase.PerformClick();
 
                     }
@@ -301,8 +300,6 @@ namespace mukavemet
                     {
                         MessageBox.Show(ex.Message);
                         connection.Close();
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
                     }
                 }
             }
@@ -330,9 +327,13 @@ namespace mukavemet
 
         private void ShowGraph(string noOfClicked)
         {
-            GC.Collect();
+            lbTitle.Text = "Ölçüm No: " + noOfClicked;
             int LocX = pnChart.Width / 50;
             int LocY = pnChart.Height / 8;
+
+            crtVls = new ChartValues<MeasureModel>();
+
+            #region InitChart
             cartesianChart1 = new LiveCharts.WinForms.CartesianChart
             {
                 Anchor = AnchorStyles.Top | AnchorStyles.Bottom
@@ -344,8 +345,42 @@ namespace mukavemet
                 Size = new Size(pnChart.Width - (LocX * 2), pnChart.Height - LocY * 2),
                 TabIndex = 57,
                 Text = "cartesianChart1",
-                BackColor = System.Drawing.Color.FromArgb(0, 86, 168)
+                BackColor = System.Drawing.Color.FromArgb(0, 86, 168),
+                AnimationsSpeed = TimeSpan.FromMilliseconds(250),
+                Series = new SeriesCollection
+                {
+                    new LineSeries
+                    {
+                    Values = crtVls,
+                    PointGeometrySize = 4,
+                    StrokeThickness = 2,
+
+                    Fill = new LinearGradientBrush(
+                        System.Windows.Media.Color.FromArgb(0xcc, 0xff, 0xff, 0xff),
+                        System.Windows.Media.Color.FromArgb(0x64, 0xff, 0xff, 0xff),
+                        90),
+                    Stroke = new SolidColorBrush(
+                        System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff))
+                    }
+                }
             };
+
+            cartesianChart1.AxisX.Add(new Axis
+            {
+                LabelFormatter = value => new TimeSpan((long)value)
+                .TotalMilliseconds.ToString() + "ms",
+                Separator = new Separator
+                {
+                    Step = TimeSpan.FromMilliseconds(500).Ticks
+                },
+                MinValue = 0
+            });
+            cartesianChart1.AxisY.Add(new Axis
+            {
+                MinValue = 0
+
+            });
+            #endregion
 
             pnChart.Controls.Add(cartesianChart1);
             cartesianChart1.BringToFront();
@@ -356,6 +391,7 @@ namespace mukavemet
             {
                 var models = new MeasureModel[0];
 
+                #region SQLite Reading
                 connection.Open();
                 string query = "SELECT * FROM graf WHERE \"No\" IS " + noOfClicked;
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
@@ -374,49 +410,10 @@ namespace mukavemet
                         reader.Close();
                     }
                 }
-                connection.Close();
-                #region InitChart
-                var mapper = Mappers.Xy<MeasureModel>()
-                .X(model => model.Time.Ticks)
-                .Y(model => model.Value);
-
-                Charting.For<MeasureModel>(mapper);
-                crtVls = new ChartValues<MeasureModel>();
-                cartesianChart1.Series = new SeriesCollection
-                {
-                    new LineSeries
-                    {
-                    Values = crtVls,
-                    PointGeometrySize = 4,
-                    StrokeThickness = 2,
-
-                    Fill = new LinearGradientBrush(
-                        System.Windows.Media.Color.FromArgb(0xcc, 0xff, 0xff, 0xff),
-                        System.Windows.Media.Color.FromArgb(0x64, 0xff, 0xff, 0xff),
-                        90),
-                    Stroke = new SolidColorBrush(
-                        System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff))
-                    },
-
-            };
-                cartesianChart1.AxisX.Add(new Axis
-                {
-                    //DisableAnimations = true,
-                    LabelFormatter = value => new TimeSpan((long)value)
-                    .TotalMilliseconds.ToString() + "ms",
-                    Separator = new Separator
-                    {
-                        Step = TimeSpan.FromMilliseconds(500).Ticks
-                    },
-                    MinValue = 0
-                });
-                cartesianChart1.AxisY.Add(new Axis
-                {
-                    MinValue = 0
-
-                });
-                cartesianChart1.AnimationsSpeed = TimeSpan.FromMilliseconds(250);
+                connection.Close(); 
                 #endregion
+
+                
                 crtVls.AddRange(models);
                 cartesianChart1.AxisX[0].MaxValue = models.Last().Time.Ticks
                     + TimeSpan.FromMilliseconds(100).Ticks;
@@ -708,21 +705,51 @@ namespace mukavemet
 
         private void dgwKayit_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //timer1.Enabled = true;
+
             if (e.RowIndex != dgwKayit.Rows.GetLastRow(DataGridViewElementStates.Visible))
                 ShowGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString());
+            //formGraph = new FormGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
 
         private void btCloseChart_Click(object sender, EventArgs e)
         {
+
+            //crtVls = null;
+            cartesianChart1.Dispose();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             crtVls.Clear();
             crtVls = null;
             cartesianChart1.Series.Clear();
+            cartesianChart1.Series = null;
             pnChart.Controls.Remove(cartesianChart1);
-            cartesianChart1.Dispose();
             pnChart.Enabled = false;
             pnChart.Visible = false;
-            GC.Collect();
+
         }
 
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //if (formGraph == null)
+            //    formGraph = new FormGraph(dgwKayit.Rows[row].Cells[0].Value.ToString());
+            //else if(formGraph.IsDisposed)
+            //    formGraph = new FormGraph(dgwKayit.Rows[row].Cells[0].Value.ToString());
+            //else
+            //    formGraph.Close();
+
+            Random rand = new Random();
+
+            if (!pnChart.Visible)
+            {
+                ShowGraph(dgwKayit.Rows[rand.Next(0, dgwKayit.Rows.Count - 2)].Cells[0].Value.ToString());
+            }
+            else
+                btCloseChart.PerformClick();
+
+
+
+        }
     }
 }
