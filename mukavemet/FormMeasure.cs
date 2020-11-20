@@ -504,7 +504,6 @@ namespace mukavemet
             {
                 tbActMeasure.ResetText();
                 plc.Open();
-
             }
 
         }
@@ -514,7 +513,8 @@ namespace mukavemet
             float actVal = Convert.ToUInt32(e.ProgressPercentage).ConvertToFloat();
             tbActMeasure.Text = actVal.ToString();
             //            if (chartWrite % 10 == 0)
-            DrawChart((TimeSpan)e.UserState, actVal);
+            //DrawChart((TimeSpan)e.UserState, actVal);
+            chart1.Series.First().Points.AddXY(((TimeSpan)e.UserState).TotalMilliseconds, actVal);
 
         }
 

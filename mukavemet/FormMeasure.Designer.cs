@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMeasure));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.btStopMeasure = new System.Windows.Forms.Button();
@@ -64,6 +66,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbProduct = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnConnection.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -73,6 +76,7 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // label14
@@ -463,6 +467,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chart1);
             this.panel1.Controls.Add(this.cartesianChart1);
             this.panel1.Controls.Add(this.cbUser);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -487,7 +492,7 @@
             this.cartesianChart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cartesianChart1.Location = new System.Drawing.Point(344, 44);
+            this.cartesianChart1.Location = new System.Drawing.Point(344, 7);
             this.cartesianChart1.Name = "cartesianChart1";
             this.cartesianChart1.Size = new System.Drawing.Size(858, 326);
             this.cartesianChart1.TabIndex = 56;
@@ -535,6 +540,48 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // chart1
+            // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(168)))));
+            chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisX.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea1.AxisY.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.White;
+            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.White;
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(168)))));
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Location = new System.Drawing.Point(344, 44);
+            this.chart1.MinimumSize = new System.Drawing.Size(858, 326);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series1.BorderColor = System.Drawing.Color.White;
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            series1.MarkerBorderWidth = 0;
+            series1.MarkerColor = System.Drawing.Color.AliceBlue;
+            series1.MarkerSize = 4;
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 4;
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(858, 334);
+            this.chart1.TabIndex = 62;
+            this.chart1.Text = "chart1";
+            // 
             // FormMeasure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -563,6 +610,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -603,5 +651,6 @@
         public System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

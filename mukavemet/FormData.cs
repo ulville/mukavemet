@@ -13,10 +13,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-using LiveCharts;
-using LiveCharts.Wpf;
-using LiveCharts.Configurations;
 using System.Windows.Media;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace mukavemet
 {
@@ -29,10 +27,7 @@ namespace mukavemet
         private string[] selectedProducts;
         private string[] selectedUsers;
         private string mesType;
-        private LiveCharts.WinForms.CartesianChart cartesianChart1;
-
-        private ChartValues<MeasureModel> crtVls { get; set; }
-
+        //private Chart chart;
 
         public FormData()
         {
@@ -57,11 +52,9 @@ namespace mukavemet
 
             pnChart.Dock = DockStyle.Fill;
 
-            var mapper = Mappers.Xy<MeasureModel>()
-                .X(model => model.Time.Ticks)
-                .Y(model => model.Value);
+            //chart1.ChartAreas.First().AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Milliseconds;
+            chart1.ChartAreas.First().AxisX.LabelStyle.Format = "{0:0} ms";
 
-            Charting.For<MeasureModel>(mapper);
         }
 
         private void btDataBase_Click(object sender, EventArgs e)
@@ -333,66 +326,14 @@ namespace mukavemet
             int LocX = pnChart.Width / 50;
             int LocY = pnChart.Height / 8;
 
-            crtVls = new ChartValues<MeasureModel>();
+            chart1.Series.First().Points.Clear();
 
-            #region InitChart
-            cartesianChart1 = new LiveCharts.WinForms.CartesianChart
-            {
-                Anchor = AnchorStyles.Top | AnchorStyles.Bottom
-                | AnchorStyles.Left
-                | AnchorStyles.Right,
-                Location = new Point(LocX, LocY),
-                Margin = new Padding(30),
-                Name = "cartesianChart1",
-                Size = new Size(pnChart.Width - (LocX * 2), pnChart.Height - LocY * 2),
-                TabIndex = 57,
-                Text = "cartesianChart1",
-                BackColor = System.Drawing.Color.FromArgb(0, 86, 168),
-                AnimationsSpeed = TimeSpan.FromMilliseconds(250),
-                Hoverable = false,
-                Series = new SeriesCollection
-                {
-                    new LineSeries
-                    {
-                    Values = crtVls,
-                    PointGeometrySize = 4,
-                    StrokeThickness = 2,
-
-                    Fill = new LinearGradientBrush(
-                        System.Windows.Media.Color.FromArgb(0xcc, 0xff, 0xff, 0xff),
-                        System.Windows.Media.Color.FromArgb(0x64, 0xff, 0xff, 0xff),
-                        90),
-                    Stroke = new SolidColorBrush(
-                        System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff))
-                    }
-                }
-            };
-
-            cartesianChart1.AxisX.Add(new Axis
-            {
-                LabelFormatter = value => new TimeSpan((long)value)
-                .TotalMilliseconds.ToString() + "ms",
-                Separator = new Separator
-                {
-                    Step = TimeSpan.FromMilliseconds(500).Ticks
-                },
-                MinValue = 0
-            });
-            cartesianChart1.AxisY.Add(new Axis
-            {
-                MinValue = 0
-
-            });
-            #endregion
-
-            pnChart.Controls.Add(cartesianChart1);
-            cartesianChart1.BringToFront();
             pnChart.Enabled = true;
             pnChart.Visible = true;
 
             try
             {
-                var models = new MeasureModel[0];
+                //var models = new MeasureModel[0];
 
                 #region SQLite Reading
                 connection.Open();
@@ -403,24 +344,28 @@ namespace mukavemet
                     {
                         while (reader.Read())
                         {
-                            Array.Resize(ref models, models.Length + 1);
-                            models[models.Length - 1] = new MeasureModel
-                            {
-                                Time = TimeSpan.FromTicks(reader.GetInt64(2)),
-                                Value = reader.GetFloat(1)
-                            };
+                            //Array.Resize(ref models, models.Length + 1);
+                            //models[models.Length - 1] = new MeasureModel
+                            //{
+                            //    Time = TimeSpan.FromTicks(reader.GetInt64(2)),
+                            //    Value = reader.GetFloat(1)
+                            //};
+
+                            chart1.Series.First().Points.AddXY(TimeSpan.FromTicks(reader.GetInt64(2)).TotalMilliseconds, reader.GetFloat(1));
+                            chart1.ChartAreas.First().AxisX.Minimum = 0;
+                            chart1.ChartAreas.First().AxisX.Maximum = chart1.Series.First().Points.Last().XValue + 100;
+                            //chart1.ChartAreas.First().AxisX.Interval = 250;
+
+
                         }
                         reader.Close();
                     }
                 }
-                connection.Close(); 
+                connection.Close();
                 #endregion
 
-                
-                crtVls.AddRange(models);
-                cartesianChart1.AxisX[0].MaxValue = models.Last().Time.Ticks
-                    + TimeSpan.FromMilliseconds(100).Ticks;
-                models = null;
+                chart1.Update();
+
             }
             catch (Exception ex)
             {
@@ -715,14 +660,12 @@ namespace mukavemet
 
         private void btCloseChart_Click(object sender, EventArgs e)
         {
-            cartesianChart1.Dispose();
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            crtVls.Clear();
-            crtVls = null;
-            cartesianChart1.Series.Clear();
-            cartesianChart1.Series = null;
-            pnChart.Controls.Remove(cartesianChart1);
+            //cartesianChart1.Dispose();
+            //GC.Collect();
+            //GC.WaitForPendingFinalizers();
+            //cartesianChart1.Series.Clear();
+            //cartesianChart1.Series = null;
+            //pnChart.Controls.Remove(cartesianChart1);
             pnChart.Enabled = false;
             pnChart.Visible = false;
 
