@@ -1,25 +1,19 @@
-﻿using System;
-using System.Globalization;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using LiveCharts;
+using LiveCharts.Configurations;
+using LiveCharts.Wpf;
 using mukavemet.Properties;
 using S7.Net;
+using System;
+using System.ComponentModel;
 using System.Data.SQLite;
-using LiveCharts;
-using LiveCharts.Wpf;
-using LiveCharts.Defaults;
-using LiveCharts.Configurations;
 using System.Diagnostics;
-using System.Threading;
-using System.Windows.Media;
+using System.Drawing;
+using System.Globalization;
+using System.Linq;
 using System.Media;
 using System.Net.NetworkInformation;
+using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace mukavemet
 {
@@ -447,17 +441,29 @@ namespace mukavemet
                         uint uintres = (uint)plc1.Read(addressActMes);
                         long time2 = st.ElapsedTicks;
                         TimeSpan time = TimeSpan.FromTicks((time1 + time2) / 2);
-                        int res = uintres.ConvertToInt();
+                        //int res = uintres.ConvertToInt();
+                        float res = uintres.ConvertToFloat();
+                        MeasureModel resAndTime = new MeasureModel()
+                        {
+                            Value = res,
+                            Time = time
+                        };
+
                         measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
                         if (measuring)
-                            worker.ReportProgress(res, time);
+                            worker.ReportProgress(0, resAndTime);
                     }
 
                     if (!worker.CancellationPending)
                     {
+                        TimeSpan time3 = TimeSpan.FromTicks(st.ElapsedTicks);
                         uint uintRes = (uint)plc1.Read(addressMaxMes);
                         float result = uintRes.ConvertToFloat();
-                        e.Result = result;
+                        e.Result = new MeasureModel()
+                        {
+                            Value = result,
+                            Time = time3
+                        };
 
                         st.Reset();
 
@@ -483,15 +489,18 @@ namespace mukavemet
         {
             if (!e.Cancelled)
             {
-                float result = (float)e.Result;
+                float result = ((MeasureModel)e.Result).Value;
                 maxMeasure = result.ToString(CultureInfo.InvariantCulture);
                 tbActMeasure.ResetText();
                 tbActMeasure.Text = result.ToString();
-                float slope = CalculateLastSlope();
-                TimeSpan lastTime = new TimeSpan(
-                    Convert.ToInt64((result - crtVls[crtVls.Count - 1].Value)
-                    / slope) + crtVls[crtVls.Count - 1].Time.Ticks
-                    );
+                //float slope = CalculateLastSlope();
+                //TimeSpan lastTime = new TimeSpan(
+                //    Convert.ToInt64((result - crtVls[crtVls.Count - 1].Value)
+                //    / slope) + crtVls[crtVls.Count - 1].Time.Ticks
+                //    );
+                //TimeSpan lastTime = new TimeSpan();
+                //lastTime = crtVls.Last().Time + TimeSpan.FromMilliseconds(22);
+                TimeSpan lastTime = ((MeasureModel)e.Result).Time;
                 DrawChart(lastTime, result);
 
                 timeOfMeasurement = DateTime.Now.ToString
@@ -511,10 +520,12 @@ namespace mukavemet
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            float actVal = Convert.ToUInt32(e.ProgressPercentage).ConvertToFloat();
+            //float actVal = Convert.ToUInt32(e.ProgressPercentage);
+            float actVal = ((MeasureModel)e.UserState).Value;
+            TimeSpan time = ((MeasureModel)e.UserState).Time;
             tbActMeasure.Text = actVal.ToString();
             //            if (chartWrite % 10 == 0)
-            DrawChart((TimeSpan)e.UserState, actVal);
+            DrawChart(time, actVal);
 
         }
 
