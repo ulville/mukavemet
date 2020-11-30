@@ -19,3 +19,5 @@ Load and Show Saved Graphs *****************************************
 Prevent trying to show graph for last empty row ********************
 
 Deleting a Saved Measurement Should Also Delete The Graph Data
+
+Database file should be in a user folder

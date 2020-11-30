@@ -49,6 +49,7 @@ namespace mukavemet
             btImportSettings.Height = pnHamburger.Height / 2 -1;
             tmrDelayHiding.Tick += TmrDelayHiding_Tick;
             confPath = conffile + @"\..";
+            //MessageBox.Show(conffile);
 
 
         }

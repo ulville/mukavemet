@@ -30,7 +30,7 @@ namespace mukavemet
         private string[] selectedUsers;
         private string mesType;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
-
+        private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
         private ChartValues<MeasureModel> crtVls { get; set; }
 
 
@@ -42,6 +42,7 @@ namespace mukavemet
                 BindingFlags.SetProperty, null, dgwKayit,
                 new object[] { true });
 
+            //MessageBox.Show(Path.GetFullPath(dbfile + "\\.."));
             pnHamburger.Top = btHamburgerMenu.Bottom + 10;
             pnHamburger.Left = btHamburgerMenu.Left;
             pnHamburger.BackColor = System.Drawing.Color.Black;
@@ -66,7 +67,8 @@ namespace mukavemet
 
         private void btDataBase_Click(object sender, EventArgs e)
         {
-            connection = new SQLiteConnection(@"data source=./mukavemet.db");
+            //connection = new SQLiteConnection(@"data source=./mukavemet.db");
+            connection = new SQLiteConnection("data source=" + dbfile);
             if (clbxProductFilter.Enabled)
                 btProductFilter.PerformClick();
 
@@ -492,7 +494,7 @@ namespace mukavemet
                 string temppath = outpath + @"\tempDir";
                 if (!Directory.Exists(temppath))
                     Directory.CreateDirectory(temppath);
-                File.Copy(@".\mukavemet.db", temppath + @"\mukavemet.db");
+                File.Copy(dbfile, temppath + @"\mukavemet.db");
                 string outfile = outpath + @"\Mukavemet Veritabanı " + 
                     DateTime.Now.ToString("yy-MM-dd HH-mm-ss") + ".zip";
                 ZipFile.CreateFromDirectory(temppath, outfile);
@@ -516,14 +518,14 @@ namespace mukavemet
                     string infile = openFileDialog1.FileName;
                     try
                     {
-                        if (File.Exists(@"./mukavemet.db"))
+                        if (File.Exists(dbfile))
                         {
                         connection.Close();
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
-                        File.Delete(@"./mukavemet.db");
+                        File.Delete(dbfile);
                         }
-                        ZipFile.ExtractToDirectory(infile, ".");
+                        ZipFile.ExtractToDirectory(infile, dbfile + @"\..");
                     }
                     catch (Exception ex)
                     {

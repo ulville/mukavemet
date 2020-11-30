@@ -27,8 +27,7 @@ namespace mukavemet
         private bool measuring = false;
         private SQLiteConnection connection;
         private string timeOfMeasurement;
-
-
+        private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
 
         //Hata Mesajları ve Bildirimler:
         private string msgConnected = "Bağlandı";
@@ -51,7 +50,8 @@ namespace mukavemet
             short slot = Convert.ToInt16(Settings.Default.Slot);
             plc = new Plc(cpu, ip, rack, slot);
             ConnectToPlc();
-            connection = new SQLiteConnection(@"data source=./mukavemet.db");
+            connection = new SQLiteConnection("data source=" + dbfile);
+            //connection = new SQLiteConnection(@"data source=./mukavemet.db");
             cbProduct.DataSource = Settings.Default.ProductList;
             cbUser.DataSource = Settings.Default.UserList;
             FlipButtonIcon(button1);
