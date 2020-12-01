@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.dgwKayit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.clbxUserFilter = new System.Windows.Forms.CheckedListBox();
             this.clbxProductFilter = new System.Windows.Forms.CheckedListBox();
-            this.btUserFilter = new System.Windows.Forms.Button();
-            this.chbUserFilter = new System.Windows.Forms.CheckBox();
+            this.clbxUserFilter = new System.Windows.Forms.CheckedListBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rbBoth = new System.Windows.Forms.RadioButton();
-            this.rbPressureOnly = new System.Windows.Forms.RadioButton();
             this.rbBendOnly = new System.Windows.Forms.RadioButton();
+            this.rbPressureOnly = new System.Windows.Forms.RadioButton();
+            this.btUserFilter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btProductFilter = new System.Windows.Forms.Button();
-            this.chbProductFilter = new System.Windows.Forms.CheckBox();
             this.btHamburgerMenu = new System.Windows.Forms.Button();
             this.chbPickDate = new System.Windows.Forms.CheckBox();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.btExportToExcel = new System.Windows.Forms.Button();
             this.btDataBase = new System.Windows.Forms.Button();
+            this.chbUserFilter = new System.Windows.Forms.CheckBox();
+            this.chbProductFilter = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnChart = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -63,6 +64,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgwKayit)).BeginInit();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnChart.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -76,23 +78,23 @@
             this.dgwKayit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgwKayit.BackgroundColor = System.Drawing.Color.White;
             this.dgwKayit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgwKayit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgwKayit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgwKayit.Location = new System.Drawing.Point(49, 41);
             this.dgwKayit.Margin = new System.Windows.Forms.Padding(38, 38, 38, 20);
@@ -109,22 +111,20 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.clbxUserFilter);
             this.panel1.Controls.Add(this.clbxProductFilter);
+            this.panel1.Controls.Add(this.clbxUserFilter);
+            this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.btUserFilter);
-            this.panel1.Controls.Add(this.chbUserFilter);
-            this.panel1.Controls.Add(this.rbBoth);
-            this.panel1.Controls.Add(this.rbPressureOnly);
-            this.panel1.Controls.Add(this.rbBendOnly);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btProductFilter);
-            this.panel1.Controls.Add(this.chbProductFilter);
             this.panel1.Controls.Add(this.btHamburgerMenu);
             this.panel1.Controls.Add(this.chbPickDate);
             this.panel1.Controls.Add(this.dtpFrom);
             this.panel1.Controls.Add(this.dtpTo);
             this.panel1.Controls.Add(this.btExportToExcel);
             this.panel1.Controls.Add(this.btDataBase);
+            this.panel1.Controls.Add(this.chbUserFilter);
+            this.panel1.Controls.Add(this.chbProductFilter);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -132,20 +132,6 @@
             this.panel1.Size = new System.Drawing.Size(1250, 125);
             this.panel1.TabIndex = 29;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
-            // 
-            // clbxUserFilter
-            // 
-            this.clbxUserFilter.BackColor = System.Drawing.Color.White;
-            this.clbxUserFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.clbxUserFilter.Enabled = false;
-            this.clbxUserFilter.ForeColor = System.Drawing.Color.Black;
-            this.clbxUserFilter.FormattingEnabled = true;
-            this.clbxUserFilter.Location = new System.Drawing.Point(781, 14);
-            this.clbxUserFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.clbxUserFilter.Name = "clbxUserFilter";
-            this.clbxUserFilter.Size = new System.Drawing.Size(204, 25);
-            this.clbxUserFilter.TabIndex = 53;
-            this.clbxUserFilter.Visible = false;
             // 
             // clbxProductFilter
             // 
@@ -157,20 +143,92 @@
             this.clbxProductFilter.Location = new System.Drawing.Point(504, 14);
             this.clbxProductFilter.Margin = new System.Windows.Forms.Padding(2);
             this.clbxProductFilter.Name = "clbxProductFilter";
-            this.clbxProductFilter.Size = new System.Drawing.Size(176, 25);
+            this.clbxProductFilter.Size = new System.Drawing.Size(204, 25);
             this.clbxProductFilter.TabIndex = 48;
             this.clbxProductFilter.Visible = false;
             // 
+            // clbxUserFilter
+            // 
+            this.clbxUserFilter.BackColor = System.Drawing.Color.White;
+            this.clbxUserFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.clbxUserFilter.Enabled = false;
+            this.clbxUserFilter.ForeColor = System.Drawing.Color.Black;
+            this.clbxUserFilter.FormattingEnabled = true;
+            this.clbxUserFilter.Location = new System.Drawing.Point(753, 14);
+            this.clbxUserFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.clbxUserFilter.Name = "clbxUserFilter";
+            this.clbxUserFilter.Size = new System.Drawing.Size(204, 25);
+            this.clbxUserFilter.TabIndex = 53;
+            this.clbxUserFilter.Visible = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.4F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.3F));
+            this.tableLayoutPanel1.Controls.Add(this.rbBoth, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rbBendOnly, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rbPressureOnly, 2, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(504, 77);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(485, 33);
+            this.tableLayoutPanel1.TabIndex = 55;
+            // 
+            // rbBoth
+            // 
+            this.rbBoth.Checked = true;
+            this.rbBoth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbBoth.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbBoth.Location = new System.Drawing.Point(4, 4);
+            this.rbBoth.Name = "rbBoth";
+            this.rbBoth.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.rbBoth.Size = new System.Drawing.Size(154, 25);
+            this.rbBoth.TabIndex = 0;
+            this.rbBoth.TabStop = true;
+            this.rbBoth.Text = "Tümü";
+            this.rbBoth.UseVisualStyleBackColor = true;
+            // 
+            // rbBendOnly
+            // 
+            this.rbBendOnly.AutoSize = true;
+            this.rbBendOnly.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbBendOnly.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbBendOnly.Location = new System.Drawing.Point(165, 4);
+            this.rbBendOnly.Name = "rbBendOnly";
+            this.rbBendOnly.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.rbBendOnly.Size = new System.Drawing.Size(154, 25);
+            this.rbBendOnly.TabIndex = 1;
+            this.rbBendOnly.Text = "Yalnız Eğilme";
+            this.rbBendOnly.UseVisualStyleBackColor = true;
+            // 
+            // rbPressureOnly
+            // 
+            this.rbPressureOnly.AutoSize = true;
+            this.rbPressureOnly.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbPressureOnly.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.rbPressureOnly.Location = new System.Drawing.Point(326, 4);
+            this.rbPressureOnly.Name = "rbPressureOnly";
+            this.rbPressureOnly.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.rbPressureOnly.Size = new System.Drawing.Size(155, 25);
+            this.rbPressureOnly.TabIndex = 2;
+            this.rbPressureOnly.Text = "Yalnız Basınç";
+            this.rbPressureOnly.UseVisualStyleBackColor = true;
+            // 
             // btUserFilter
             // 
-            this.btUserFilter.BackColor = System.Drawing.Color.White;
+            this.btUserFilter.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btUserFilter.Enabled = false;
-            this.btUserFilter.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btUserFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btUserFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btUserFilter.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btUserFilter.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btUserFilter.ForeColor = System.Drawing.Color.Black;
             this.btUserFilter.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btUserFilter.Location = new System.Drawing.Point(989, 14);
+            this.btUserFilter.Location = new System.Drawing.Point(961, 14);
             this.btUserFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btUserFilter.Name = "btUserFilter";
             this.btUserFilter.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
@@ -181,73 +239,26 @@
             this.btUserFilter.Visible = false;
             this.btUserFilter.Click += new System.EventHandler(this.btUserFilter_Click);
             // 
-            // chbUserFilter
-            // 
-            this.chbUserFilter.ForeColor = System.Drawing.Color.Black;
-            this.chbUserFilter.Location = new System.Drawing.Point(781, 14);
-            this.chbUserFilter.Margin = new System.Windows.Forms.Padding(5);
-            this.chbUserFilter.Name = "chbUserFilter";
-            this.chbUserFilter.Size = new System.Drawing.Size(168, 25);
-            this.chbUserFilter.TabIndex = 52;
-            this.chbUserFilter.Text = "Kullanıcı Filtrele";
-            this.chbUserFilter.UseVisualStyleBackColor = true;
-            this.chbUserFilter.CheckedChanged += new System.EventHandler(this.chbUserFilter_CheckedChanged);
-            // 
-            // rbBoth
-            // 
-            this.rbBoth.AutoSize = true;
-            this.rbBoth.Checked = true;
-            this.rbBoth.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbBoth.Location = new System.Drawing.Point(504, 86);
-            this.rbBoth.Name = "rbBoth";
-            this.rbBoth.Size = new System.Drawing.Size(72, 24);
-            this.rbBoth.TabIndex = 0;
-            this.rbBoth.TabStop = true;
-            this.rbBoth.Text = "Tümü";
-            this.rbBoth.UseVisualStyleBackColor = true;
-            // 
-            // rbPressureOnly
-            // 
-            this.rbPressureOnly.AutoSize = true;
-            this.rbPressureOnly.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbPressureOnly.Location = new System.Drawing.Point(717, 86);
-            this.rbPressureOnly.Name = "rbPressureOnly";
-            this.rbPressureOnly.Size = new System.Drawing.Size(127, 24);
-            this.rbPressureOnly.TabIndex = 2;
-            this.rbPressureOnly.Text = "Yalnız Basınç";
-            this.rbPressureOnly.UseVisualStyleBackColor = true;
-            // 
-            // rbBendOnly
-            // 
-            this.rbBendOnly.AutoSize = true;
-            this.rbBendOnly.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbBendOnly.Location = new System.Drawing.Point(582, 86);
-            this.rbBendOnly.Name = "rbBendOnly";
-            this.rbBendOnly.Size = new System.Drawing.Size(128, 24);
-            this.rbBendOnly.TabIndex = 1;
-            this.rbBendOnly.Text = "Yalnız Eğilme";
-            this.rbBendOnly.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(500, 63);
+            this.label1.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(501, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 20);
+            this.label1.Size = new System.Drawing.Size(186, 18);
             this.label1.TabIndex = 51;
             this.label1.Text = "Ölçüm Türüne Göre Filtrele";
             // 
             // btProductFilter
             // 
-            this.btProductFilter.BackColor = System.Drawing.Color.White;
+            this.btProductFilter.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btProductFilter.Enabled = false;
-            this.btProductFilter.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btProductFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btProductFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btProductFilter.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btProductFilter.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btProductFilter.ForeColor = System.Drawing.Color.Black;
             this.btProductFilter.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btProductFilter.Location = new System.Drawing.Point(687, 14);
+            this.btProductFilter.Location = new System.Drawing.Point(712, 14);
             this.btProductFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btProductFilter.Name = "btProductFilter";
             this.btProductFilter.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
@@ -257,20 +268,6 @@
             this.btProductFilter.UseVisualStyleBackColor = false;
             this.btProductFilter.Visible = false;
             this.btProductFilter.Click += new System.EventHandler(this.btProductFilter_Click);
-            // 
-            // chbProductFilter
-            // 
-            this.chbProductFilter.AutoSize = true;
-            this.chbProductFilter.ForeColor = System.Drawing.Color.Black;
-            this.chbProductFilter.Location = new System.Drawing.Point(504, 13);
-            this.chbProductFilter.Margin = new System.Windows.Forms.Padding(5);
-            this.chbProductFilter.Name = "chbProductFilter";
-            this.chbProductFilter.Padding = new System.Windows.Forms.Padding(2, 2, 1, 1);
-            this.chbProductFilter.Size = new System.Drawing.Size(174, 27);
-            this.chbProductFilter.TabIndex = 47;
-            this.chbProductFilter.Text = "Ürüne Göre Filtrele";
-            this.chbProductFilter.UseVisualStyleBackColor = true;
-            this.chbProductFilter.CheckedChanged += new System.EventHandler(this.chbProductFilter_CheckedChanged);
             // 
             // btHamburgerMenu
             // 
@@ -359,6 +356,37 @@
             this.btDataBase.Text = "Kayıtları Göster";
             this.btDataBase.UseVisualStyleBackColor = false;
             this.btDataBase.Click += new System.EventHandler(this.btDataBase_Click);
+            // 
+            // chbUserFilter
+            // 
+            this.chbUserFilter.BackColor = System.Drawing.Color.White;
+            this.chbUserFilter.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.chbUserFilter.ForeColor = System.Drawing.Color.Black;
+            this.chbUserFilter.Location = new System.Drawing.Point(753, 14);
+            this.chbUserFilter.Margin = new System.Windows.Forms.Padding(5);
+            this.chbUserFilter.Name = "chbUserFilter";
+            this.chbUserFilter.Padding = new System.Windows.Forms.Padding(5, 2, 1, 1);
+            this.chbUserFilter.Size = new System.Drawing.Size(236, 28);
+            this.chbUserFilter.TabIndex = 52;
+            this.chbUserFilter.Text = "Kullanıcı Filtrele";
+            this.chbUserFilter.UseVisualStyleBackColor = false;
+            this.chbUserFilter.CheckedChanged += new System.EventHandler(this.chbUserFilter_CheckedChanged);
+            // 
+            // chbProductFilter
+            // 
+            this.chbProductFilter.BackColor = System.Drawing.Color.White;
+            this.chbProductFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.chbProductFilter.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.chbProductFilter.ForeColor = System.Drawing.Color.Black;
+            this.chbProductFilter.Location = new System.Drawing.Point(504, 14);
+            this.chbProductFilter.Margin = new System.Windows.Forms.Padding(5);
+            this.chbProductFilter.Name = "chbProductFilter";
+            this.chbProductFilter.Padding = new System.Windows.Forms.Padding(5, 2, 1, 1);
+            this.chbProductFilter.Size = new System.Drawing.Size(236, 28);
+            this.chbProductFilter.TabIndex = 47;
+            this.chbProductFilter.Text = "Ürüne Göre Filtrele";
+            this.chbProductFilter.UseVisualStyleBackColor = false;
+            this.chbProductFilter.CheckedChanged += new System.EventHandler(this.chbProductFilter_CheckedChanged);
             // 
             // panel2
             // 
@@ -547,6 +575,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwKayit)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.pnChart.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -585,5 +615,6 @@
         private System.Windows.Forms.Button btCloseChart;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
