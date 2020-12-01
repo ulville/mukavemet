@@ -163,7 +163,6 @@
             // 
             // btUserFilter
             // 
-            this.btUserFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btUserFilter.BackColor = System.Drawing.Color.White;
             this.btUserFilter.Enabled = false;
             this.btUserFilter.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -242,7 +241,6 @@
             // 
             // btProductFilter
             // 
-            this.btProductFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btProductFilter.BackColor = System.Drawing.Color.White;
             this.btProductFilter.Enabled = false;
             this.btProductFilter.FlatAppearance.BorderColor = System.Drawing.Color.Black;
