@@ -56,6 +56,16 @@ namespace mukavemet
             btImportDatabase.Height = pnHamburger.Height / 2 - 1;
             tmrDelayHiding.Tick += TmrDelayHiding_Tick;
 
+            pnProduct.Controls.Remove(clbxProductFilter);
+            panel1.Controls.Add(clbxProductFilter);
+            clbxProductFilter.Location = tableLayoutPanel2.Location;
+            clbxProductFilter.BringToFront();
+
+            pnUser.Controls.Remove(clbxUserFilter);
+            panel1.Controls.Add(clbxUserFilter);
+            clbxUserFilter.Location = tableLayoutPanel3.Location;
+            clbxUserFilter.BringToFront();
+
             pnChart.Dock = DockStyle.Fill;
 
             var mapper = Mappers.Xy<MeasureModel>()
@@ -280,25 +290,10 @@ namespace mukavemet
                 {
                     try
                     {
-                        connection.Open();
-                        StringBuilder query = new StringBuilder(
-                            "DELETE FROM mukayit WHERE No in (");
-
-                        foreach (string noValue in noValues)
-                        {
-                            query.Append(noValue);
-                            if (noValue != noValues[noValues.Length - 1])
-                                query.Append(',');
-                            else
-                                query.Append(')');
-                        }
-                        SQLiteCommand command = new SQLiteCommand(
-                            query.ToString(), connection);
-
-                        command.ExecuteNonQuery();
-                        connection.Close();
+                        DeleteFromDB(noValues, "mukayit");
+                        DeleteFromDB(noValues, "graf");
+                        
                         btDataBase.PerformClick();
-
                     }
                     catch (Exception ex)
                     {
@@ -308,6 +303,27 @@ namespace mukavemet
                 }
             }
             dgwKayit.AutoResizeColumns();
+        }
+
+        private void DeleteFromDB(string[] noValues, string table)
+        {
+            connection.Open();
+            StringBuilder query = new StringBuilder(
+                "DELETE FROM " + table + " WHERE No in (");
+
+            foreach (string noValue in noValues)
+            {
+                query.Append(noValue);
+                if (noValue != noValues[noValues.Length - 1])
+                    query.Append(',');
+                else
+                    query.Append(')');
+            }
+            SQLiteCommand command = new SQLiteCommand(
+                query.ToString(), connection);
+
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         private string[] GetNoValues(DataGridViewSelectedCellCollection cells)
@@ -604,6 +620,7 @@ namespace mukavemet
                         clbxProductFilter.Items.Clear();
                         clbxProductFilter.Items.AddRange(Settings.Default.ProductList);
                     }
+
                     clbxProductFilter.Enabled = true;
                     clbxProductFilter.Visible = true;
                     clbxProductFilter.Height = panel1.Bottom - clbxProductFilter.Top;

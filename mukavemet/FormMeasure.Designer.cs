@@ -496,7 +496,7 @@
             this.cbUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(49, 448);
+            this.cbUser.Location = new System.Drawing.Point(49, 434);
             this.cbUser.Margin = new System.Windows.Forms.Padding(4);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(254, 28);

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.dgwKayit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -62,12 +62,20 @@
             this.btHide = new System.Windows.Forms.Button();
             this.btRemoveSelected = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.pnUser = new System.Windows.Forms.Panel();
+            this.pnProduct = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgwKayit)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnChart.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.pnUser.SuspendLayout();
+            this.pnProduct.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgwKayit
@@ -78,23 +86,23 @@
             this.dgwKayit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgwKayit.BackgroundColor = System.Drawing.Color.White;
             this.dgwKayit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgwKayit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgwKayit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgwKayit.Location = new System.Drawing.Point(49, 41);
             this.dgwKayit.Margin = new System.Windows.Forms.Padding(38, 38, 38, 20);
@@ -111,20 +119,16 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.clbxProductFilter);
-            this.panel1.Controls.Add(this.clbxUserFilter);
+            this.panel1.Controls.Add(this.tableLayoutPanel3);
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Controls.Add(this.btUserFilter);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btProductFilter);
             this.panel1.Controls.Add(this.btHamburgerMenu);
             this.panel1.Controls.Add(this.chbPickDate);
             this.panel1.Controls.Add(this.dtpFrom);
             this.panel1.Controls.Add(this.dtpTo);
             this.panel1.Controls.Add(this.btExportToExcel);
             this.panel1.Controls.Add(this.btDataBase);
-            this.panel1.Controls.Add(this.chbUserFilter);
-            this.panel1.Controls.Add(this.chbProductFilter);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -137,13 +141,14 @@
             // 
             this.clbxProductFilter.BackColor = System.Drawing.Color.White;
             this.clbxProductFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.clbxProductFilter.CheckOnClick = true;
             this.clbxProductFilter.Enabled = false;
             this.clbxProductFilter.ForeColor = System.Drawing.Color.Black;
             this.clbxProductFilter.FormattingEnabled = true;
-            this.clbxProductFilter.Location = new System.Drawing.Point(504, 14);
+            this.clbxProductFilter.Location = new System.Drawing.Point(0, 0);
             this.clbxProductFilter.Margin = new System.Windows.Forms.Padding(2);
             this.clbxProductFilter.Name = "clbxProductFilter";
-            this.clbxProductFilter.Size = new System.Drawing.Size(204, 25);
+            this.clbxProductFilter.Size = new System.Drawing.Size(207, 25);
             this.clbxProductFilter.TabIndex = 48;
             this.clbxProductFilter.Visible = false;
             // 
@@ -151,13 +156,14 @@
             // 
             this.clbxUserFilter.BackColor = System.Drawing.Color.White;
             this.clbxUserFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.clbxUserFilter.CheckOnClick = true;
             this.clbxUserFilter.Enabled = false;
             this.clbxUserFilter.ForeColor = System.Drawing.Color.Black;
             this.clbxUserFilter.FormattingEnabled = true;
-            this.clbxUserFilter.Location = new System.Drawing.Point(753, 14);
+            this.clbxUserFilter.Location = new System.Drawing.Point(0, 0);
             this.clbxUserFilter.Margin = new System.Windows.Forms.Padding(2);
             this.clbxUserFilter.Name = "clbxUserFilter";
-            this.clbxUserFilter.Size = new System.Drawing.Size(204, 25);
+            this.clbxUserFilter.Size = new System.Drawing.Size(207, 25);
             this.clbxUserFilter.TabIndex = 53;
             this.clbxUserFilter.Visible = false;
             // 
@@ -221,14 +227,16 @@
             // 
             // btUserFilter
             // 
+            this.btUserFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btUserFilter.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btUserFilter.Enabled = false;
             this.btUserFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btUserFilter.FlatAppearance.BorderSize = 0;
             this.btUserFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btUserFilter.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btUserFilter.ForeColor = System.Drawing.Color.Black;
             this.btUserFilter.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btUserFilter.Location = new System.Drawing.Point(961, 14);
+            this.btUserFilter.Location = new System.Drawing.Point(211, -1);
             this.btUserFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btUserFilter.Name = "btUserFilter";
             this.btUserFilter.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
@@ -251,14 +259,16 @@
             // 
             // btProductFilter
             // 
+            this.btProductFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btProductFilter.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btProductFilter.Enabled = false;
             this.btProductFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btProductFilter.FlatAppearance.BorderSize = 0;
             this.btProductFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btProductFilter.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btProductFilter.ForeColor = System.Drawing.Color.Black;
             this.btProductFilter.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btProductFilter.Location = new System.Drawing.Point(712, 14);
+            this.btProductFilter.Location = new System.Drawing.Point(211, 0);
             this.btProductFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btProductFilter.Name = "btProductFilter";
             this.btProductFilter.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
@@ -360,13 +370,14 @@
             // chbUserFilter
             // 
             this.chbUserFilter.BackColor = System.Drawing.Color.White;
+            this.chbUserFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chbUserFilter.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chbUserFilter.ForeColor = System.Drawing.Color.Black;
-            this.chbUserFilter.Location = new System.Drawing.Point(753, 14);
+            this.chbUserFilter.Location = new System.Drawing.Point(0, 0);
             this.chbUserFilter.Margin = new System.Windows.Forms.Padding(5);
             this.chbUserFilter.Name = "chbUserFilter";
             this.chbUserFilter.Padding = new System.Windows.Forms.Padding(5, 2, 1, 1);
-            this.chbUserFilter.Size = new System.Drawing.Size(236, 28);
+            this.chbUserFilter.Size = new System.Drawing.Size(238, 26);
             this.chbUserFilter.TabIndex = 52;
             this.chbUserFilter.Text = "Kullanıcı Filtrele";
             this.chbUserFilter.UseVisualStyleBackColor = false;
@@ -375,14 +386,15 @@
             // chbProductFilter
             // 
             this.chbProductFilter.BackColor = System.Drawing.Color.White;
+            this.chbProductFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chbProductFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.chbProductFilter.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chbProductFilter.ForeColor = System.Drawing.Color.Black;
-            this.chbProductFilter.Location = new System.Drawing.Point(504, 14);
+            this.chbProductFilter.Location = new System.Drawing.Point(0, 0);
             this.chbProductFilter.Margin = new System.Windows.Forms.Padding(5);
             this.chbProductFilter.Name = "chbProductFilter";
             this.chbProductFilter.Padding = new System.Windows.Forms.Padding(5, 2, 1, 1);
-            this.chbProductFilter.Size = new System.Drawing.Size(236, 28);
+            this.chbProductFilter.Size = new System.Drawing.Size(238, 26);
             this.chbProductFilter.TabIndex = 47;
             this.chbProductFilter.Text = "Ürüne Göre Filtrele";
             this.chbProductFilter.UseVisualStyleBackColor = false;
@@ -558,6 +570,61 @@
             this.btRemoveSelected.UseVisualStyleBackColor = false;
             this.btRemoveSelected.Click += new System.EventHandler(this.btRemoveSelected_Click);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.pnProduct, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(504, 11);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(240, 28);
+            this.tableLayoutPanel2.TabIndex = 56;
+            // 
+            // pnUser
+            // 
+            this.pnUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pnUser.Controls.Add(this.clbxUserFilter);
+            this.pnUser.Controls.Add(this.btUserFilter);
+            this.pnUser.Controls.Add(this.chbUserFilter);
+            this.pnUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnUser.Location = new System.Drawing.Point(1, 1);
+            this.pnUser.Margin = new System.Windows.Forms.Padding(0);
+            this.pnUser.Name = "pnUser";
+            this.pnUser.Size = new System.Drawing.Size(238, 26);
+            this.pnUser.TabIndex = 0;
+            // 
+            // pnProduct
+            // 
+            this.pnProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pnProduct.Controls.Add(this.btProductFilter);
+            this.pnProduct.Controls.Add(this.clbxProductFilter);
+            this.pnProduct.Controls.Add(this.chbProductFilter);
+            this.pnProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnProduct.Location = new System.Drawing.Point(1, 1);
+            this.pnProduct.Margin = new System.Windows.Forms.Padding(0);
+            this.pnProduct.Name = "pnProduct";
+            this.pnProduct.Size = new System.Drawing.Size(238, 26);
+            this.pnProduct.TabIndex = 1;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.pnUser, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(749, 11);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(240, 28);
+            this.tableLayoutPanel3.TabIndex = 57;
+            // 
             // FormData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -580,6 +647,10 @@
             this.panel2.ResumeLayout(false);
             this.pnChart.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.pnUser.ResumeLayout(false);
+            this.pnProduct.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -616,5 +687,9 @@
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel pnProduct;
+        private System.Windows.Forms.Panel pnUser;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }

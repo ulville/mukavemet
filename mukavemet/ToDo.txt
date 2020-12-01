@@ -20,6 +20,6 @@ Prevent trying to show graph for last empty row ********************
 
 Database file should be in a user folder ***************************
 
-Deleting a Saved Measurement Should Also Delete The Graph Data
+Deleting a Saved Measurement Should Also Delete The Graph Data *****
 
 Add font files to setup project
