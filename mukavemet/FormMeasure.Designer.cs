@@ -133,13 +133,12 @@
             // 
             this.chbPressure.AutoSize = true;
             this.chbPressure.BackColor = System.Drawing.Color.Transparent;
-            this.chbPressure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chbPressure.ForeColor = System.Drawing.Color.White;
             this.chbPressure.Location = new System.Drawing.Point(49, 114);
             this.chbPressure.Margin = new System.Windows.Forms.Padding(2);
             this.chbPressure.Name = "chbPressure";
             this.chbPressure.Padding = new System.Windows.Forms.Padding(8);
-            this.chbPressure.Size = new System.Drawing.Size(249, 40);
+            this.chbPressure.Size = new System.Drawing.Size(253, 40);
             this.chbPressure.TabIndex = 42;
             this.chbPressure.Text = "Basınç Mukavemet Ölçümü";
             this.chbPressure.UseVisualStyleBackColor = false;
@@ -149,13 +148,12 @@
             // 
             this.chbBend.AutoSize = true;
             this.chbBend.BackColor = System.Drawing.Color.Transparent;
-            this.chbBend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chbBend.ForeColor = System.Drawing.Color.White;
             this.chbBend.Location = new System.Drawing.Point(49, 64);
             this.chbBend.Margin = new System.Windows.Forms.Padding(2);
             this.chbBend.Name = "chbBend";
             this.chbBend.Padding = new System.Windows.Forms.Padding(8);
-            this.chbBend.Size = new System.Drawing.Size(250, 40);
+            this.chbBend.Size = new System.Drawing.Size(254, 40);
             this.chbBend.TabIndex = 41;
             this.chbBend.Text = "Eğilme Mukavemet Ölçümü";
             this.chbBend.UseVisualStyleBackColor = false;

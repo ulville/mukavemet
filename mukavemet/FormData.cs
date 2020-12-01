@@ -592,25 +592,31 @@ namespace mukavemet
         {
             if (chbProductFilter.Checked)
             {
-                string[] listBoxItemArray = new string[clbxProductFilter.Items.Count];
-                for (int i = 0; i < clbxProductFilter.Items.Count; i++)
+                try
                 {
-                    listBoxItemArray[i] = (string)clbxProductFilter.Items[i];
+                    string[] listBoxItemArray = new string[clbxProductFilter.Items.Count];
+                    for (int i = 0; i < clbxProductFilter.Items.Count; i++)
+                    {
+                        listBoxItemArray[i] = (string)clbxProductFilter.Items[i];
+                    }
+                    if (listBoxItemArray != Settings.Default.ProductList)
+                    {
+                        clbxProductFilter.Items.Clear();
+                        clbxProductFilter.Items.AddRange(Settings.Default.ProductList);
+                    }
+                    clbxProductFilter.Enabled = true;
+                    clbxProductFilter.Visible = true;
+                    clbxProductFilter.Height = panel1.Bottom - clbxProductFilter.Top;
+                    btProductFilter.Top = chbProductFilter.Top;
+                    //btProductFilter.Height = chbProductFilter.Height;
+                    btProductFilter.Enabled = true;
+                    btProductFilter.Visible = true;
+                    btProductFilter.Text = "✔";
                 }
-                if (listBoxItemArray != Settings.Default.ProductList)
+                catch (Exception ex)
                 {
-                    clbxProductFilter.Items.Clear();
-                    clbxProductFilter.Items.AddRange(Settings.Default.ProductList);
+                    MessageBox.Show(ex.Message);
                 }
-                clbxProductFilter.Enabled = true;
-                clbxProductFilter.Visible = true;
-                clbxProductFilter.Height = panel1.Bottom - clbxProductFilter.Top;
-                btProductFilter.Top = chbProductFilter.Top;
-                //btProductFilter.Height = chbProductFilter.Height;
-                btProductFilter.Enabled = true;
-                btProductFilter.Visible = true;
-                btProductFilter.Text = "✔";
-
             }
             else
             {
@@ -626,16 +632,22 @@ namespace mukavemet
         {
             if (clbxProductFilter.Enabled)
             {
-                clbxProductFilter.Enabled = false;
-                clbxProductFilter.Visible = false;
-                btProductFilter.Text = "🞃";
-
-                selectedProducts = new string[clbxProductFilter.CheckedItems.Count];
-                for (int i = 0; i < clbxProductFilter.CheckedItems.Count; i++)
+                try
                 {
-                    selectedProducts[i] = (string)clbxProductFilter.CheckedItems[i];
-                }
+                    clbxProductFilter.Enabled = false;
+                    clbxProductFilter.Visible = false;
+                    btProductFilter.Text = "🞃";
 
+                    selectedProducts = new string[clbxProductFilter.CheckedItems.Count];
+                    for (int i = 0; i < clbxProductFilter.CheckedItems.Count; i++)
+                    {
+                        selectedProducts[i] = (string)clbxProductFilter.CheckedItems[i];
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
@@ -649,25 +661,31 @@ namespace mukavemet
         {
             if (chbUserFilter.Checked)
             {
-                string[] listBoxItemArray = new string[clbxUserFilter.Items.Count];
-                for (int i = 0; i < clbxUserFilter.Items.Count; i++)
+                try
                 {
-                    listBoxItemArray[i] = (string)clbxUserFilter.Items[i];
+                    string[] listBoxItemArray = new string[clbxUserFilter.Items.Count];
+                    for (int i = 0; i < clbxUserFilter.Items.Count; i++)
+                    {
+                        listBoxItemArray[i] = (string)clbxUserFilter.Items[i];
+                    }
+                    if (listBoxItemArray != Settings.Default.UserList)
+                    {
+                        clbxUserFilter.Items.Clear();
+                        clbxUserFilter.Items.AddRange(Settings.Default.UserList);
+                    }
+                    clbxUserFilter.Enabled = true;
+                    clbxUserFilter.Visible = true;
+                    clbxUserFilter.Height = panel1.Bottom - clbxUserFilter.Top;
+                    btUserFilter.Top = chbUserFilter.Top;
+                    //btUserFilter.Height = chbUserFilter.Height;
+                    btUserFilter.Enabled = true;
+                    btUserFilter.Visible = true;
+                    btUserFilter.Text = "✔";
                 }
-                if (listBoxItemArray != Settings.Default.UserList)
+                catch (Exception ex)
                 {
-                    clbxUserFilter.Items.Clear();
-                    clbxUserFilter.Items.AddRange(Settings.Default.UserList);
+                    MessageBox.Show(ex.Message);
                 }
-                clbxUserFilter.Enabled = true;
-                clbxUserFilter.Visible = true;
-                clbxUserFilter.Height = panel1.Bottom - clbxUserFilter.Top;
-                btUserFilter.Top = chbUserFilter.Top;
-                //btUserFilter.Height = chbUserFilter.Height;
-                btUserFilter.Enabled = true;
-                btUserFilter.Visible = true;
-                btUserFilter.Text = "✔";
-
             }
             else
             {
@@ -683,16 +701,22 @@ namespace mukavemet
         {
             if (clbxUserFilter.Enabled)
             {
-                clbxUserFilter.Enabled = false;
-                clbxUserFilter.Visible = false;
-                btUserFilter.Text = "🞃";
-
-                selectedUsers = new string[clbxUserFilter.CheckedItems.Count];
-                for (int i = 0; i < clbxUserFilter.CheckedItems.Count; i++)
+                try
                 {
-                    selectedUsers[i] = (string)clbxUserFilter.CheckedItems[i];
-                }
+                    clbxUserFilter.Enabled = false;
+                    clbxUserFilter.Visible = false;
+                    btUserFilter.Text = "🞃";
 
+                    selectedUsers = new string[clbxUserFilter.CheckedItems.Count];
+                    for (int i = 0; i < clbxUserFilter.CheckedItems.Count; i++)
+                    {
+                        selectedUsers[i] = (string)clbxUserFilter.CheckedItems[i];
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {

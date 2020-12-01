@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.dgwKayit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -76,23 +76,23 @@
             this.dgwKayit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgwKayit.BackgroundColor = System.Drawing.Color.White;
             this.dgwKayit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgwKayit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgwKayit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgwKayit.Location = new System.Drawing.Point(49, 41);
             this.dgwKayit.Margin = new System.Windows.Forms.Padding(38, 38, 38, 20);
@@ -183,7 +183,6 @@
             // 
             // chbUserFilter
             // 
-            this.chbUserFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chbUserFilter.ForeColor = System.Drawing.Color.Black;
             this.chbUserFilter.Location = new System.Drawing.Point(781, 14);
             this.chbUserFilter.Margin = new System.Windows.Forms.Padding(5);
@@ -233,7 +232,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(504, 63);
+            this.label1.Location = new System.Drawing.Point(500, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(209, 20);
             this.label1.TabIndex = 51;
@@ -262,13 +261,12 @@
             // chbProductFilter
             // 
             this.chbProductFilter.AutoSize = true;
-            this.chbProductFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chbProductFilter.ForeColor = System.Drawing.Color.Black;
             this.chbProductFilter.Location = new System.Drawing.Point(504, 13);
             this.chbProductFilter.Margin = new System.Windows.Forms.Padding(5);
             this.chbProductFilter.Name = "chbProductFilter";
             this.chbProductFilter.Padding = new System.Windows.Forms.Padding(2, 2, 1, 1);
-            this.chbProductFilter.Size = new System.Drawing.Size(170, 27);
+            this.chbProductFilter.Size = new System.Drawing.Size(174, 27);
             this.chbProductFilter.TabIndex = 47;
             this.chbProductFilter.Text = "Ürüne Göre Filtrele";
             this.chbProductFilter.UseVisualStyleBackColor = true;
@@ -294,12 +292,11 @@
             // chbPickDate
             // 
             this.chbPickDate.AutoSize = true;
-            this.chbPickDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chbPickDate.ForeColor = System.Drawing.Color.Black;
             this.chbPickDate.Location = new System.Drawing.Point(100, 14);
             this.chbPickDate.Margin = new System.Windows.Forms.Padding(5);
             this.chbPickDate.Name = "chbPickDate";
-            this.chbPickDate.Size = new System.Drawing.Size(148, 24);
+            this.chbPickDate.Size = new System.Drawing.Size(152, 24);
             this.chbPickDate.TabIndex = 45;
             this.chbPickDate.Text = "Tarih Aralığı Seç";
             this.chbPickDate.UseVisualStyleBackColor = true;
