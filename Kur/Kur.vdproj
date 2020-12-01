@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0E731983E8194F3790B66DD531D4F923"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_359263AADBD8A234260EA0AB45D0565D"
         "OwnerKey" = "8:_C2A4C91058704C7585D0C701B8CD1AC1"
         "MsmSig" = "8:_UNDEFINED"
@@ -252,6 +258,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E731983E8194F3790B66DD531D4F923"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\Pictures\\abs-alci-banner.bmp"
+            "TargetName" = "8:abs-alci-banner.bmp"
+            "Tag" = "8:"
+            "Folder" = "8:_2962364659E742418E8BF31030D3C7B5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_359263AADBD8A234260EA0AB45D0565D"
             {
             "AssemblyRegister" = "3:1"
@@ -676,7 +702,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Mukavemet"
         "ProductCode" = "8:{A07E577E-0B81-41AB-A760-232D2157E156}"
-        "PackageCode" = "8:{D18804C8-3AA8-46A9-8458-5DCCCFDBF85F}"
+        "PackageCode" = "8:{46A52CEE-0829-470C-9443-1559B9535B51}"
         "UpgradeCode" = "8:{09615572-DA3B-4044-9521-CAF25F93630A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -686,8 +712,8 @@
         "ProductVersion" = "8:1.0.0"
         "Manufacturer" = "8:ABS Alçı ve Blok Sanayi"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
-        "Title" = "8:Kur"
+        "ARPHELPLINK" = "8:https://github.com/ulichx/mukavemet"
+        "Title" = "8:Mukavemet Kurulum"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Ulvican Kahya"
         "Keywords" = "8:mukavemet ölçüm lab alçı plaka kayıt"
@@ -843,7 +869,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_197256293DA64E6EB69B87A41EB7C65D"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:İlerleme Durumu"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -857,7 +883,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -887,7 +914,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_A32203391BAE40D3AB05A0072C0DF9E7"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Bitti"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -901,7 +928,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "UpdateText"
@@ -931,7 +959,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_A540067D4B544018A1EA3B228B8D43F2"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Yükleme Klasörü"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -945,7 +973,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -953,7 +982,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_E9D8A13AFFE74F679645930B29E42BDE"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Yüklemeyi Onayla"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -967,7 +996,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -975,7 +1005,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_EA8E5FB196074BB1B36C0DA4075A11BA"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Hoş Geldiniz"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -989,7 +1019,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "CopyrightWarning"
@@ -1032,7 +1063,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_11E639F8FB4348F1851218D25A135DCC"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:İlerleme Durumu"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -1046,7 +1077,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "ShowProgress"
@@ -1076,7 +1108,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_0F7C2B97438C4409AD2EBC8E18991D13"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Hoş Geldiniz"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -1090,7 +1122,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "CopyrightWarning"
@@ -1124,7 +1157,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_9452935584D0427F84FF97A68FF7DBF0"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Yükleme Klasörü"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -1138,7 +1171,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "InstallAllUsersVisible"
@@ -1159,7 +1193,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_AB744BCDCA3E4F21AF4F7B6AB30903EC"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Yüklemeyi Onayla"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -1173,7 +1207,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -1190,7 +1225,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_448F88A797224852A08BCFF8DC3AC8B3"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Bitti"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -1204,7 +1239,8 @@
                             "Type" = "3:8"
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
-                            "Setting" = "3:1"
+                            "Setting" = "3:2"
+                            "Value" = "8:_0E731983E8194F3790B66DD531D4F923"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
