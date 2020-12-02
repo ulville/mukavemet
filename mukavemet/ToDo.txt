@@ -22,4 +22,4 @@ Database file should be in a user folder ***************************
 
 Deleting a Saved Measurement Should Also Delete The Graph Data *****
 
-Add font files to setup project
+Add font files to setup project ************************************
