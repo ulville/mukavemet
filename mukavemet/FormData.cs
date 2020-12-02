@@ -615,7 +615,11 @@ namespace mukavemet
                     {
                         listBoxItemArray[i] = (string)clbxProductFilter.Items[i];
                     }
-                    if (listBoxItemArray != Settings.Default.ProductList)
+                    if (Settings.Default.ProductList.Length == 0)
+                    {
+                        MessageBox.Show("Hiçbir ürün tanımlanmadı. Ürün tanımlamak veya ayarları yedekten içeri aktarmak için Ayarlar sekmesine gidin.");
+                    }
+                    else if (listBoxItemArray != Settings.Default.ProductList)
                     {
                         clbxProductFilter.Items.Clear();
                         clbxProductFilter.Items.AddRange(Settings.Default.ProductList);
@@ -689,6 +693,10 @@ namespace mukavemet
                     for (int i = 0; i < clbxUserFilter.Items.Count; i++)
                     {
                         listBoxItemArray[i] = (string)clbxUserFilter.Items[i];
+                    }
+                    if (Settings.Default.UserList.Length == 0)
+                    {
+                        MessageBox.Show("Hiçbir kullanıcı tanımlanmadı. Kullanıcı tanımlamak veya ayarları yedekten içeri aktarmak için Ayarlar sekmesine gidin.");
                     }
                     if (listBoxItemArray != Settings.Default.UserList)
                     {
