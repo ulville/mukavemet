@@ -48,6 +48,11 @@ namespace mukavemet
             btExportSettings.Height = pnHamburger.Height / 2 - 1;
             btImportSettings.Height = pnHamburger.Height / 2 -1;
             tmrDelayHiding.Tick += TmrDelayHiding_Tick;
+            if (!File.Exists(conffile))
+            {
+                Settings.Default.IP = Settings.Default.IP;
+                Settings.Default.Save();
+            }
             confPath = conffile + @"\..";
             //MessageBox.Show(conffile);
 

@@ -1024,8 +1024,8 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Mukavemet"
-        "ProductCode" = "8:{A07E577E-0B81-41AB-A760-232D2157E156}"
-        "PackageCode" = "8:{46A52CEE-0829-470C-9443-1559B9535B51}"
+        "ProductCode" = "8:{EEC6F8CD-1814-440C-926B-23B1E9E3D4DF}"
+        "PackageCode" = "8:{689B2B81-54C7-4CA6-BEBA-F06591710478}"
         "UpgradeCode" = "8:{09615572-DA3B-4044-9521-CAF25F93630A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
