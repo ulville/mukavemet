@@ -40,8 +40,8 @@
             this.chbUserFilter = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnProduct = new System.Windows.Forms.Panel();
-            this.btProductFilter = new System.Windows.Forms.Button();
             this.clbxProductFilter = new System.Windows.Forms.CheckedListBox();
+            this.btProductFilter = new System.Windows.Forms.Button();
             this.chbProductFilter = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rbBoth = new System.Windows.Forms.RadioButton();
@@ -131,7 +131,7 @@
             this.panel1.Controls.Add(this.btDataBase);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1250, 125);
             this.panel1.TabIndex = 29;
@@ -209,7 +209,7 @@
             this.chbUserFilter.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chbUserFilter.ForeColor = System.Drawing.Color.Black;
             this.chbUserFilter.Location = new System.Drawing.Point(0, 0);
-            this.chbUserFilter.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chbUserFilter.Margin = new System.Windows.Forms.Padding(5);
             this.chbUserFilter.Name = "chbUserFilter";
             this.chbUserFilter.Padding = new System.Windows.Forms.Padding(5, 2, 1, 1);
             this.chbUserFilter.Size = new System.Drawing.Size(248, 26);
@@ -230,7 +230,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(250, 28);
             this.tableLayoutPanel2.TabIndex = 56;
             // 
@@ -246,6 +246,21 @@
             this.pnProduct.Name = "pnProduct";
             this.pnProduct.Size = new System.Drawing.Size(248, 26);
             this.pnProduct.TabIndex = 1;
+            // 
+            // clbxProductFilter
+            // 
+            this.clbxProductFilter.BackColor = System.Drawing.Color.White;
+            this.clbxProductFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.clbxProductFilter.CheckOnClick = true;
+            this.clbxProductFilter.Enabled = false;
+            this.clbxProductFilter.ForeColor = System.Drawing.Color.Black;
+            this.clbxProductFilter.FormattingEnabled = true;
+            this.clbxProductFilter.Location = new System.Drawing.Point(0, 0);
+            this.clbxProductFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.clbxProductFilter.Name = "clbxProductFilter";
+            this.clbxProductFilter.Size = new System.Drawing.Size(221, 2);
+            this.clbxProductFilter.TabIndex = 48;
+            this.clbxProductFilter.Visible = false;
             // 
             // btProductFilter
             // 
@@ -269,21 +284,6 @@
             this.btProductFilter.Visible = false;
             this.btProductFilter.Click += new System.EventHandler(this.btProductFilter_Click);
             // 
-            // clbxProductFilter
-            // 
-            this.clbxProductFilter.BackColor = System.Drawing.Color.White;
-            this.clbxProductFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.clbxProductFilter.CheckOnClick = true;
-            this.clbxProductFilter.Enabled = false;
-            this.clbxProductFilter.ForeColor = System.Drawing.Color.Black;
-            this.clbxProductFilter.FormattingEnabled = true;
-            this.clbxProductFilter.Location = new System.Drawing.Point(0, 0);
-            this.clbxProductFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.clbxProductFilter.Name = "clbxProductFilter";
-            this.clbxProductFilter.Size = new System.Drawing.Size(221, 2);
-            this.clbxProductFilter.TabIndex = 48;
-            this.clbxProductFilter.Visible = false;
-            // 
             // chbProductFilter
             // 
             this.chbProductFilter.BackColor = System.Drawing.Color.White;
@@ -292,7 +292,7 @@
             this.chbProductFilter.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chbProductFilter.ForeColor = System.Drawing.Color.Black;
             this.chbProductFilter.Location = new System.Drawing.Point(0, 0);
-            this.chbProductFilter.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chbProductFilter.Margin = new System.Windows.Forms.Padding(5);
             this.chbProductFilter.Name = "chbProductFilter";
             this.chbProductFilter.Padding = new System.Windows.Forms.Padding(5, 2, 1, 1);
             this.chbProductFilter.Size = new System.Drawing.Size(248, 26);
@@ -396,7 +396,7 @@
             this.chbPickDate.AutoSize = true;
             this.chbPickDate.ForeColor = System.Drawing.Color.Black;
             this.chbPickDate.Location = new System.Drawing.Point(100, 14);
-            this.chbPickDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chbPickDate.Margin = new System.Windows.Forms.Padding(5);
             this.chbPickDate.Name = "chbPickDate";
             this.chbPickDate.Size = new System.Drawing.Size(152, 24);
             this.chbPickDate.TabIndex = 45;
@@ -413,7 +413,7 @@
             this.dtpFrom.CalendarTrailingForeColor = System.Drawing.Color.Gray;
             this.dtpFrom.Enabled = false;
             this.dtpFrom.Location = new System.Drawing.Point(100, 48);
-            this.dtpFrom.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dtpFrom.Margin = new System.Windows.Forms.Padding(5);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(362, 28);
             this.dtpFrom.TabIndex = 43;
@@ -427,7 +427,7 @@
             this.dtpTo.CalendarTrailingForeColor = System.Drawing.Color.Gray;
             this.dtpTo.Enabled = false;
             this.dtpTo.Location = new System.Drawing.Point(100, 82);
-            this.dtpTo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dtpTo.Margin = new System.Windows.Forms.Padding(5);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(362, 28);
             this.dtpTo.TabIndex = 44;
@@ -474,7 +474,7 @@
             this.panel2.Controls.Add(this.dgwKayit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 125);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1250, 566);
             this.panel2.TabIndex = 30;
@@ -611,10 +611,10 @@
             this.btHide.BackColor = System.Drawing.Color.White;
             this.btHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btHide.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btHide.Location = new System.Drawing.Point(875, 482);
+            this.btHide.Location = new System.Drawing.Point(892, 482);
             this.btHide.Margin = new System.Windows.Forms.Padding(2);
             this.btHide.Name = "btHide";
-            this.btHide.Size = new System.Drawing.Size(148, 55);
+            this.btHide.Size = new System.Drawing.Size(148, 52);
             this.btHide.TabIndex = 43;
             this.btHide.Text = "Gizle";
             this.btHide.UseVisualStyleBackColor = false;
@@ -629,7 +629,7 @@
             this.btRemoveSelected.Location = new System.Drawing.Point(1054, 482);
             this.btRemoveSelected.Margin = new System.Windows.Forms.Padding(2);
             this.btRemoveSelected.Name = "btRemoveSelected";
-            this.btRemoveSelected.Size = new System.Drawing.Size(148, 55);
+            this.btRemoveSelected.Size = new System.Drawing.Size(148, 52);
             this.btRemoveSelected.TabIndex = 42;
             this.btRemoveSelected.Text = "Seçili Kaydı Sil";
             this.btRemoveSelected.UseVisualStyleBackColor = false;
@@ -646,7 +646,7 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FormData";
             this.Text = "FormData";
             ((System.ComponentModel.ISupportInitialize)(this.dgwKayit)).EndInit();

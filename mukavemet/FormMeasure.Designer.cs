@@ -93,7 +93,7 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(44, 404);
+            this.label13.Location = new System.Drawing.Point(42, 441);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(153, 20);
@@ -106,7 +106,7 @@
             this.btStopMeasure.BackColor = System.Drawing.Color.White;
             this.btStopMeasure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btStopMeasure.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btStopMeasure.Location = new System.Drawing.Point(1054, 410);
+            this.btStopMeasure.Location = new System.Drawing.Point(1054, 447);
             this.btStopMeasure.Margin = new System.Windows.Forms.Padding(2);
             this.btStopMeasure.Name = "btStopMeasure";
             this.btStopMeasure.Size = new System.Drawing.Size(148, 52);
@@ -122,7 +122,7 @@
             this.tbActMeasure.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbActMeasure.Font = new System.Drawing.Font("Century Gothic", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tbActMeasure.ForeColor = System.Drawing.Color.White;
-            this.tbActMeasure.Location = new System.Drawing.Point(581, 404);
+            this.tbActMeasure.Location = new System.Drawing.Point(524, 427);
             this.tbActMeasure.Margin = new System.Windows.Forms.Padding(2);
             this.tbActMeasure.Name = "tbActMeasure";
             this.tbActMeasure.Size = new System.Drawing.Size(280, 58);
@@ -177,7 +177,7 @@
             this.btMeasure.BackColor = System.Drawing.Color.White;
             this.btMeasure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMeasure.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btMeasure.Location = new System.Drawing.Point(892, 410);
+            this.btMeasure.Location = new System.Drawing.Point(892, 447);
             this.btMeasure.Margin = new System.Windows.Forms.Padding(38);
             this.btMeasure.Name = "btMeasure";
             this.btMeasure.Size = new System.Drawing.Size(148, 52);
@@ -496,7 +496,7 @@
             this.cbUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(49, 434);
+            this.cbUser.Location = new System.Drawing.Point(47, 471);
             this.cbUser.Margin = new System.Windows.Forms.Padding(4);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(254, 28);
@@ -506,7 +506,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(476, 390);
+            this.pictureBox1.Location = new System.Drawing.Point(419, 413);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 86);
