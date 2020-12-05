@@ -64,6 +64,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbProduct = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnConnection.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -73,6 +74,7 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label14
@@ -131,14 +133,14 @@
             // 
             // chbPressure
             // 
-            this.chbPressure.AutoSize = true;
             this.chbPressure.BackColor = System.Drawing.Color.Transparent;
+            this.chbPressure.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chbPressure.ForeColor = System.Drawing.Color.White;
-            this.chbPressure.Location = new System.Drawing.Point(49, 114);
+            this.chbPressure.Location = new System.Drawing.Point(2, 47);
             this.chbPressure.Margin = new System.Windows.Forms.Padding(2);
             this.chbPressure.Name = "chbPressure";
-            this.chbPressure.Padding = new System.Windows.Forms.Padding(8);
-            this.chbPressure.Size = new System.Drawing.Size(253, 40);
+            this.chbPressure.Padding = new System.Windows.Forms.Padding(6);
+            this.chbPressure.Size = new System.Drawing.Size(252, 41);
             this.chbPressure.TabIndex = 42;
             this.chbPressure.Text = "Basınç Mukavemet Ölçümü";
             this.chbPressure.UseVisualStyleBackColor = false;
@@ -146,14 +148,14 @@
             // 
             // chbBend
             // 
-            this.chbBend.AutoSize = true;
             this.chbBend.BackColor = System.Drawing.Color.Transparent;
+            this.chbBend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chbBend.ForeColor = System.Drawing.Color.White;
-            this.chbBend.Location = new System.Drawing.Point(49, 64);
+            this.chbBend.Location = new System.Drawing.Point(2, 2);
             this.chbBend.Margin = new System.Windows.Forms.Padding(2);
             this.chbBend.Name = "chbBend";
-            this.chbBend.Padding = new System.Windows.Forms.Padding(8);
-            this.chbBend.Size = new System.Drawing.Size(254, 40);
+            this.chbBend.Padding = new System.Windows.Forms.Padding(6);
+            this.chbBend.Size = new System.Drawing.Size(252, 41);
             this.chbBend.TabIndex = 41;
             this.chbBend.Text = "Eğilme Mukavemet Ölçümü";
             this.chbBend.UseVisualStyleBackColor = false;
@@ -461,6 +463,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.cartesianChart1);
             this.panel1.Controls.Add(this.cbUser);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -470,9 +473,7 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.chbBend);
             this.panel1.Controls.Add(this.tbActMeasure);
-            this.panel1.Controls.Add(this.chbPressure);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 160);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -499,7 +500,7 @@
             this.cbUser.Location = new System.Drawing.Point(47, 471);
             this.cbUser.Margin = new System.Windows.Forms.Padding(4);
             this.cbUser.Name = "cbUser";
-            this.cbUser.Size = new System.Drawing.Size(254, 28);
+            this.cbUser.Size = new System.Drawing.Size(256, 28);
             this.cbUser.TabIndex = 55;
             // 
             // pictureBox1
@@ -533,6 +534,20 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.chbBend, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chbPressure, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(47, 57);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(256, 90);
+            this.tableLayoutPanel1.TabIndex = 57;
+            // 
             // FormMeasure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -561,6 +576,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -601,5 +617,6 @@
         public System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
