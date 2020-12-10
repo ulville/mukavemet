@@ -26,7 +26,7 @@ Add font files to setup project ************************************
 
 Fix graphical issues on low-res screens ****************************
 
-Show both N and N/mm2 values on Measure and Database screens
+Show both N and N/mm2 values on Measure and Database screens *******
 
 Selecting chbox will send selection valve value to plc
 

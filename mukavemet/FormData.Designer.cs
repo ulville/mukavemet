@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.dgwKayit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,6 +69,7 @@
             this.lbN = new System.Windows.Forms.Label();
             this.lbNmm2 = new System.Windows.Forms.Label();
             this.lbType = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgwKayit)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -79,6 +80,7 @@
             this.panel2.SuspendLayout();
             this.pnChart.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgwKayit
@@ -89,23 +91,23 @@
             this.dgwKayit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgwKayit.BackgroundColor = System.Drawing.Color.White;
             this.dgwKayit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgwKayit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgwKayit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgwKayit.Location = new System.Drawing.Point(39, 33);
             this.dgwKayit.Margin = new System.Windows.Forms.Padding(30, 30, 30, 16);
@@ -483,9 +485,7 @@
             // 
             // pnChart
             // 
-            this.pnChart.Controls.Add(this.lbType);
-            this.pnChart.Controls.Add(this.lbNmm2);
-            this.pnChart.Controls.Add(this.lbN);
+            this.pnChart.Controls.Add(this.tableLayoutPanel4);
             this.pnChart.Controls.Add(this.panel3);
             this.pnChart.Controls.Add(this.btCloseChart);
             this.pnChart.Enabled = false;
@@ -641,39 +641,59 @@
             // 
             // lbN
             // 
-            this.lbN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbN.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbN.ForeColor = System.Drawing.Color.White;
-            this.lbN.Location = new System.Drawing.Point(526, 292);
+            this.lbN.Location = new System.Drawing.Point(3, 28);
             this.lbN.Name = "lbN";
-            this.lbN.Size = new System.Drawing.Size(176, 17);
+            this.lbN.Size = new System.Drawing.Size(720, 28);
             this.lbN.TabIndex = 61;
             this.lbN.Text = "lbN";
-            this.lbN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbNmm2
             // 
-            this.lbNmm2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbNmm2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbNmm2.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbNmm2.ForeColor = System.Drawing.Color.White;
-            this.lbNmm2.Location = new System.Drawing.Point(529, 309);
-            this.lbNmm2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 14);
+            this.lbNmm2.Location = new System.Drawing.Point(0, 56);
+            this.lbNmm2.Margin = new System.Windows.Forms.Padding(0);
             this.lbNmm2.Name = "lbNmm2";
-            this.lbNmm2.Size = new System.Drawing.Size(173, 17);
+            this.lbNmm2.Size = new System.Drawing.Size(726, 29);
             this.lbNmm2.TabIndex = 62;
             this.lbNmm2.Text = "lbNmm2";
-            this.lbNmm2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbNmm2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbType
             // 
-            this.lbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbType.AutoSize = true;
+            this.lbType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbType.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbType.ForeColor = System.Drawing.Color.White;
-            this.lbType.Location = new System.Drawing.Point(24, 309);
-            this.lbType.Margin = new System.Windows.Forms.Padding(3, 0, 3, 14);
+            this.lbType.Location = new System.Drawing.Point(0, 0);
+            this.lbType.Margin = new System.Windows.Forms.Padding(0);
             this.lbType.Name = "lbType";
-            this.lbType.Size = new System.Drawing.Size(45, 17);
+            this.lbType.Size = new System.Drawing.Size(726, 28);
             this.lbType.TabIndex = 63;
             this.lbType.Text = "label2";
-            this.lbType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.lbType, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lbNmm2, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.lbN, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 255);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.36997F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.35998F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.27006F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(726, 85);
+            this.tableLayoutPanel4.TabIndex = 64;
             // 
             // FormData
             // 
@@ -700,8 +720,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.pnChart.ResumeLayout(false);
-            this.pnChart.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -745,5 +765,6 @@
         private System.Windows.Forms.Label lbNmm2;
         private System.Windows.Forms.Label lbN;
         private System.Windows.Forms.Label lbType;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
     }
 }

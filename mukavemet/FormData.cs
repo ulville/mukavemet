@@ -345,12 +345,13 @@ namespace mukavemet
             return noValues;
         }
 
-        private void ShowGraph(string noOfClicked, string mesValue, string type)
+        private void ShowGraph(string noOfClicked, string mesValue, string type, string date, string product, string user)
         {
-            lbTitle.Text = "Ölçüm No: " + noOfClicked;
+            lbTitle.Text = "Ölçüm No: " + noOfClicked + " - " + date;
             lbN.Text = mesValue + " N";
             lbNmm2.Text = (Double.Parse(mesValue) / 1600).ToString() + " N/mm²";
-            lbType.Text = type + " Testi";
+            lbType.Text = product + " " + type + " Testi (" + user + ")";
+
             int LocX = pnChart.Width / 50;
             int LocY = pnChart.Height / 8;
 
@@ -777,7 +778,10 @@ namespace mukavemet
                 && e.RowIndex != -1)
                 ShowGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString(),
                     dgwKayit.Rows[e.RowIndex].Cells[4].Value.ToString(),
-                    dgwKayit.Rows[e.RowIndex].Cells[2].Value.ToString());
+                    dgwKayit.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                    dgwKayit.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                    dgwKayit.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                    dgwKayit.Rows[e.RowIndex].Cells[5].Value.ToString());
         }
 
         private void btCloseChart_Click(object sender, EventArgs e)

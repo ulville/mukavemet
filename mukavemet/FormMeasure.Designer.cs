@@ -551,7 +551,7 @@
             this.lbNewtonUnit.AutoSize = true;
             this.lbNewtonUnit.Font = new System.Drawing.Font("Roboto", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbNewtonUnit.ForeColor = System.Drawing.Color.White;
-            this.lbNewtonUnit.Location = new System.Drawing.Point(638, 348);
+            this.lbNewtonUnit.Location = new System.Drawing.Point(623, 349);
             this.lbNewtonUnit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbNewtonUnit.Name = "lbNewtonUnit";
             this.lbNewtonUnit.Size = new System.Drawing.Size(46, 44);
