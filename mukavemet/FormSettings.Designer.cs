@@ -249,6 +249,7 @@
             // 
             // panel6
             // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel6.Controls.Add(this.tbAddUser);
             this.panel6.Controls.Add(this.btRemoveUser);
             this.panel6.Controls.Add(this.btAddUser);

@@ -64,7 +64,7 @@
             this.pnSideMenu.Location = new System.Drawing.Point(0, 0);
             this.pnSideMenu.Margin = new System.Windows.Forms.Padding(2);
             this.pnSideMenu.Name = "pnSideMenu";
-            this.pnSideMenu.Size = new System.Drawing.Size(250, 691);
+            this.pnSideMenu.Size = new System.Drawing.Size(200, 553);
             this.pnSideMenu.TabIndex = 30;
             // 
             // pnSubMenuHelp
@@ -73,10 +73,10 @@
             this.pnSubMenuHelp.Controls.Add(this.btMenuAbout);
             this.pnSubMenuHelp.Controls.Add(this.btMenuUsage);
             this.pnSubMenuHelp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnSubMenuHelp.Location = new System.Drawing.Point(0, 413);
+            this.pnSubMenuHelp.Location = new System.Drawing.Point(0, 332);
             this.pnSubMenuHelp.Margin = new System.Windows.Forms.Padding(2);
             this.pnSubMenuHelp.Name = "pnSubMenuHelp";
-            this.pnSubMenuHelp.Size = new System.Drawing.Size(250, 125);
+            this.pnSubMenuHelp.Size = new System.Drawing.Size(200, 100);
             this.pnSubMenuHelp.TabIndex = 6;
             // 
             // btMenuAbout
@@ -86,10 +86,10 @@
             this.btMenuAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMenuAbout.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btMenuAbout.ForeColor = System.Drawing.Color.White;
-            this.btMenuAbout.Location = new System.Drawing.Point(0, 62);
+            this.btMenuAbout.Location = new System.Drawing.Point(0, 50);
             this.btMenuAbout.Margin = new System.Windows.Forms.Padding(2);
             this.btMenuAbout.Name = "btMenuAbout";
-            this.btMenuAbout.Size = new System.Drawing.Size(250, 62);
+            this.btMenuAbout.Size = new System.Drawing.Size(200, 50);
             this.btMenuAbout.TabIndex = 7;
             this.btMenuAbout.Text = "Hakkında";
             this.btMenuAbout.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             this.btMenuUsage.Location = new System.Drawing.Point(0, 0);
             this.btMenuUsage.Margin = new System.Windows.Forms.Padding(2);
             this.btMenuUsage.Name = "btMenuUsage";
-            this.btMenuUsage.Size = new System.Drawing.Size(250, 62);
+            this.btMenuUsage.Size = new System.Drawing.Size(200, 50);
             this.btMenuUsage.TabIndex = 6;
             this.btMenuUsage.Text = "Kullanım Yardımı";
             this.btMenuUsage.UseVisualStyleBackColor = true;
@@ -119,10 +119,10 @@
             this.btMenuHelp.ForeColor = System.Drawing.Color.White;
             this.btMenuHelp.Image = ((System.Drawing.Image)(resources.GetObject("btMenuHelp.Image")));
             this.btMenuHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btMenuHelp.Location = new System.Drawing.Point(0, 351);
+            this.btMenuHelp.Location = new System.Drawing.Point(0, 282);
             this.btMenuHelp.Margin = new System.Windows.Forms.Padding(2);
             this.btMenuHelp.Name = "btMenuHelp";
-            this.btMenuHelp.Size = new System.Drawing.Size(250, 62);
+            this.btMenuHelp.Size = new System.Drawing.Size(200, 50);
             this.btMenuHelp.TabIndex = 5;
             this.btMenuHelp.Text = "Yardım";
             this.btMenuHelp.UseVisualStyleBackColor = true;
@@ -137,10 +137,10 @@
             this.btMenuSettings.ForeColor = System.Drawing.Color.White;
             this.btMenuSettings.Image = ((System.Drawing.Image)(resources.GetObject("btMenuSettings.Image")));
             this.btMenuSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btMenuSettings.Location = new System.Drawing.Point(0, 289);
+            this.btMenuSettings.Location = new System.Drawing.Point(0, 232);
             this.btMenuSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btMenuSettings.Name = "btMenuSettings";
-            this.btMenuSettings.Size = new System.Drawing.Size(250, 62);
+            this.btMenuSettings.Size = new System.Drawing.Size(200, 50);
             this.btMenuSettings.TabIndex = 4;
             this.btMenuSettings.Text = "  Ayarlar";
             this.btMenuSettings.UseVisualStyleBackColor = true;
@@ -155,10 +155,10 @@
             this.btMenuData.ForeColor = System.Drawing.Color.White;
             this.btMenuData.Image = ((System.Drawing.Image)(resources.GetObject("btMenuData.Image")));
             this.btMenuData.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btMenuData.Location = new System.Drawing.Point(0, 227);
+            this.btMenuData.Location = new System.Drawing.Point(0, 182);
             this.btMenuData.Margin = new System.Windows.Forms.Padding(2);
             this.btMenuData.Name = "btMenuData";
-            this.btMenuData.Size = new System.Drawing.Size(250, 62);
+            this.btMenuData.Size = new System.Drawing.Size(200, 50);
             this.btMenuData.TabIndex = 2;
             this.btMenuData.Text = "  Kayıt";
             this.btMenuData.UseVisualStyleBackColor = true;
@@ -173,10 +173,10 @@
             this.btMenuMeasure.ForeColor = System.Drawing.Color.White;
             this.btMenuMeasure.Image = ((System.Drawing.Image)(resources.GetObject("btMenuMeasure.Image")));
             this.btMenuMeasure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btMenuMeasure.Location = new System.Drawing.Point(0, 165);
+            this.btMenuMeasure.Location = new System.Drawing.Point(0, 132);
             this.btMenuMeasure.Margin = new System.Windows.Forms.Padding(2);
             this.btMenuMeasure.Name = "btMenuMeasure";
-            this.btMenuMeasure.Size = new System.Drawing.Size(250, 62);
+            this.btMenuMeasure.Size = new System.Drawing.Size(200, 50);
             this.btMenuMeasure.TabIndex = 1;
             this.btMenuMeasure.Text = "  Ölçüm";
             this.btMenuMeasure.UseVisualStyleBackColor = true;
@@ -186,10 +186,10 @@
             // 
             this.panel1.Controls.Add(this.label15);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 125);
+            this.panel1.Location = new System.Drawing.Point(0, 100);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 40);
+            this.panel1.Size = new System.Drawing.Size(200, 32);
             this.panel1.TabIndex = 7;
             // 
             // label15
@@ -198,10 +198,10 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(65, 8);
+            this.label15.Location = new System.Drawing.Point(52, 6);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(117, 24);
+            this.label15.Size = new System.Drawing.Size(95, 19);
             this.label15.TabIndex = 0;
             this.label15.Text = "Mukavemet";
             // 
@@ -213,7 +213,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 125);
+            this.panel2.Size = new System.Drawing.Size(200, 100);
             this.panel2.TabIndex = 0;
             // 
             // pictureBox1
@@ -224,7 +224,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 125);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -233,25 +233,27 @@
             // 
             this.pnChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
             this.pnChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnChildForm.Location = new System.Drawing.Point(250, 0);
+            this.pnChildForm.Location = new System.Drawing.Point(200, 0);
             this.pnChildForm.Margin = new System.Windows.Forms.Padding(2);
+            this.pnChildForm.MinimumSize = new System.Drawing.Size(1000, 553);
             this.pnChildForm.Name = "pnChildForm";
-            this.pnChildForm.Size = new System.Drawing.Size(1250, 691);
+            this.pnChildForm.Size = new System.Drawing.Size(1000, 553);
             this.pnChildForm.TabIndex = 31;
             // 
             // MainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(168)))));
-            this.ClientSize = new System.Drawing.Size(1500, 691);
+            this.ClientSize = new System.Drawing.Size(1200, 553);
             this.Controls.Add(this.pnChildForm);
             this.Controls.Add(this.pnSideMenu);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(1516, 728);
+            this.MinimumSize = new System.Drawing.Size(1216, 592);
             this.Name = "MainScreen";
             this.Text = "Mukavemet Ölçüm ve Kayıt Sistemi";
             this.Load += new System.EventHandler(this.MainScreen_Load);

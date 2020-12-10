@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.dgwKayit = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -86,30 +86,30 @@
             this.dgwKayit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgwKayit.BackgroundColor = System.Drawing.Color.White;
             this.dgwKayit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwKayit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgwKayit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgwKayit.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgwKayit.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgwKayit.Location = new System.Drawing.Point(49, 41);
-            this.dgwKayit.Margin = new System.Windows.Forms.Padding(38, 38, 38, 20);
+            this.dgwKayit.Location = new System.Drawing.Point(39, 33);
+            this.dgwKayit.Margin = new System.Windows.Forms.Padding(30, 30, 30, 16);
             this.dgwKayit.Name = "dgwKayit";
             this.dgwKayit.RowHeadersWidth = 51;
             this.dgwKayit.RowTemplate.Height = 24;
-            this.dgwKayit.Size = new System.Drawing.Size(1152, 419);
+            this.dgwKayit.Size = new System.Drawing.Size(922, 335);
             this.dgwKayit.TabIndex = 28;
             this.dgwKayit.Visible = false;
             this.dgwKayit.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwKayit_CellDoubleClick);
@@ -131,9 +131,8 @@
             this.panel1.Controls.Add(this.btDataBase);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1250, 125);
+            this.panel1.Size = new System.Drawing.Size(1000, 100);
             this.panel1.TabIndex = 29;
             this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
@@ -144,12 +143,12 @@
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.pnUser, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(760, 11);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(608, 9);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(250, 28);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(200, 22);
             this.tableLayoutPanel3.TabIndex = 57;
             // 
             // pnUser
@@ -162,7 +161,7 @@
             this.pnUser.Location = new System.Drawing.Point(1, 1);
             this.pnUser.Margin = new System.Windows.Forms.Padding(0);
             this.pnUser.Name = "pnUser";
-            this.pnUser.Size = new System.Drawing.Size(248, 26);
+            this.pnUser.Size = new System.Drawing.Size(198, 20);
             this.pnUser.TabIndex = 0;
             // 
             // clbxUserFilter
@@ -176,7 +175,7 @@
             this.clbxUserFilter.Location = new System.Drawing.Point(0, 0);
             this.clbxUserFilter.Margin = new System.Windows.Forms.Padding(2);
             this.clbxUserFilter.Name = "clbxUserFilter";
-            this.clbxUserFilter.Size = new System.Drawing.Size(221, 2);
+            this.clbxUserFilter.Size = new System.Drawing.Size(177, 2);
             this.clbxUserFilter.TabIndex = 53;
             this.clbxUserFilter.Visible = false;
             // 
@@ -191,11 +190,11 @@
             this.btUserFilter.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btUserFilter.ForeColor = System.Drawing.Color.Black;
             this.btUserFilter.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btUserFilter.Location = new System.Drawing.Point(221, -1);
+            this.btUserFilter.Location = new System.Drawing.Point(177, -1);
             this.btUserFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btUserFilter.Name = "btUserFilter";
             this.btUserFilter.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btUserFilter.Size = new System.Drawing.Size(28, 28);
+            this.btUserFilter.Size = new System.Drawing.Size(22, 22);
             this.btUserFilter.TabIndex = 54;
             this.btUserFilter.Text = "✔";
             this.btUserFilter.UseVisualStyleBackColor = false;
@@ -209,10 +208,10 @@
             this.chbUserFilter.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chbUserFilter.ForeColor = System.Drawing.Color.Black;
             this.chbUserFilter.Location = new System.Drawing.Point(0, 0);
-            this.chbUserFilter.Margin = new System.Windows.Forms.Padding(5);
+            this.chbUserFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chbUserFilter.Name = "chbUserFilter";
-            this.chbUserFilter.Padding = new System.Windows.Forms.Padding(5, 2, 1, 1);
-            this.chbUserFilter.Size = new System.Drawing.Size(248, 26);
+            this.chbUserFilter.Padding = new System.Windows.Forms.Padding(4, 2, 1, 1);
+            this.chbUserFilter.Size = new System.Drawing.Size(198, 20);
             this.chbUserFilter.TabIndex = 52;
             this.chbUserFilter.Text = "Kullanıcı Filtrele";
             this.chbUserFilter.UseVisualStyleBackColor = false;
@@ -225,13 +224,13 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.pnProduct, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(504, 11);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(403, 9);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(250, 28);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(200, 22);
             this.tableLayoutPanel2.TabIndex = 56;
             // 
             // pnProduct
@@ -244,7 +243,7 @@
             this.pnProduct.Location = new System.Drawing.Point(1, 1);
             this.pnProduct.Margin = new System.Windows.Forms.Padding(0);
             this.pnProduct.Name = "pnProduct";
-            this.pnProduct.Size = new System.Drawing.Size(248, 26);
+            this.pnProduct.Size = new System.Drawing.Size(198, 20);
             this.pnProduct.TabIndex = 1;
             // 
             // clbxProductFilter
@@ -258,7 +257,7 @@
             this.clbxProductFilter.Location = new System.Drawing.Point(0, 0);
             this.clbxProductFilter.Margin = new System.Windows.Forms.Padding(2);
             this.clbxProductFilter.Name = "clbxProductFilter";
-            this.clbxProductFilter.Size = new System.Drawing.Size(221, 2);
+            this.clbxProductFilter.Size = new System.Drawing.Size(177, 2);
             this.clbxProductFilter.TabIndex = 48;
             this.clbxProductFilter.Visible = false;
             // 
@@ -273,11 +272,11 @@
             this.btProductFilter.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btProductFilter.ForeColor = System.Drawing.Color.Black;
             this.btProductFilter.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btProductFilter.Location = new System.Drawing.Point(221, 0);
+            this.btProductFilter.Location = new System.Drawing.Point(177, 0);
             this.btProductFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btProductFilter.Name = "btProductFilter";
             this.btProductFilter.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.btProductFilter.Size = new System.Drawing.Size(28, 28);
+            this.btProductFilter.Size = new System.Drawing.Size(22, 22);
             this.btProductFilter.TabIndex = 49;
             this.btProductFilter.Text = "✔";
             this.btProductFilter.UseVisualStyleBackColor = false;
@@ -292,10 +291,10 @@
             this.chbProductFilter.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.chbProductFilter.ForeColor = System.Drawing.Color.Black;
             this.chbProductFilter.Location = new System.Drawing.Point(0, 0);
-            this.chbProductFilter.Margin = new System.Windows.Forms.Padding(5);
+            this.chbProductFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chbProductFilter.Name = "chbProductFilter";
-            this.chbProductFilter.Padding = new System.Windows.Forms.Padding(5, 2, 1, 1);
-            this.chbProductFilter.Size = new System.Drawing.Size(248, 26);
+            this.chbProductFilter.Padding = new System.Windows.Forms.Padding(4, 2, 1, 1);
+            this.chbProductFilter.Size = new System.Drawing.Size(198, 20);
             this.chbProductFilter.TabIndex = 47;
             this.chbProductFilter.Text = "Ürüne Göre Filtrele";
             this.chbProductFilter.UseVisualStyleBackColor = false;
@@ -312,12 +311,12 @@
             this.tableLayoutPanel1.Controls.Add(this.rbBoth, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.rbBendOnly, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.rbPressureOnly, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(504, 78);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(403, 62);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(505, 32);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(404, 26);
             this.tableLayoutPanel1.TabIndex = 55;
             // 
             // rbBoth
@@ -328,8 +327,8 @@
             this.rbBoth.Location = new System.Drawing.Point(3, 3);
             this.rbBoth.Margin = new System.Windows.Forms.Padding(2);
             this.rbBoth.Name = "rbBoth";
-            this.rbBoth.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.rbBoth.Size = new System.Drawing.Size(163, 26);
+            this.rbBoth.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.rbBoth.Size = new System.Drawing.Size(129, 20);
             this.rbBoth.TabIndex = 0;
             this.rbBoth.TabStop = true;
             this.rbBoth.Text = "Tümü";
@@ -340,11 +339,11 @@
             this.rbBendOnly.AutoSize = true;
             this.rbBendOnly.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbBendOnly.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbBendOnly.Location = new System.Drawing.Point(171, 3);
+            this.rbBendOnly.Location = new System.Drawing.Point(137, 3);
             this.rbBendOnly.Margin = new System.Windows.Forms.Padding(2);
             this.rbBendOnly.Name = "rbBendOnly";
-            this.rbBendOnly.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.rbBendOnly.Size = new System.Drawing.Size(162, 26);
+            this.rbBendOnly.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.rbBendOnly.Size = new System.Drawing.Size(129, 20);
             this.rbBendOnly.TabIndex = 1;
             this.rbBendOnly.Text = "Yalnız Eğilme";
             this.rbBendOnly.UseVisualStyleBackColor = true;
@@ -354,11 +353,11 @@
             this.rbPressureOnly.AutoSize = true;
             this.rbPressureOnly.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rbPressureOnly.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.rbPressureOnly.Location = new System.Drawing.Point(338, 3);
+            this.rbPressureOnly.Location = new System.Drawing.Point(271, 3);
             this.rbPressureOnly.Margin = new System.Windows.Forms.Padding(2);
             this.rbPressureOnly.Name = "rbPressureOnly";
-            this.rbPressureOnly.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.rbPressureOnly.Size = new System.Drawing.Size(164, 26);
+            this.rbPressureOnly.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.rbPressureOnly.Size = new System.Drawing.Size(130, 20);
             this.rbPressureOnly.TabIndex = 2;
             this.rbPressureOnly.Text = "Yalnız Basınç";
             this.rbPressureOnly.UseVisualStyleBackColor = true;
@@ -367,10 +366,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(501, 54);
+            this.label1.Location = new System.Drawing.Point(401, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 18);
+            this.label1.Size = new System.Drawing.Size(149, 14);
             this.label1.TabIndex = 51;
             this.label1.Text = "Ölçüm Türüne Göre Filtrele";
             // 
@@ -381,11 +380,11 @@
             this.btHamburgerMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btHamburgerMenu.ForeColor = System.Drawing.Color.Black;
             this.btHamburgerMenu.Image = ((System.Drawing.Image)(resources.GetObject("btHamburgerMenu.Image")));
-            this.btHamburgerMenu.Location = new System.Drawing.Point(29, 41);
-            this.btHamburgerMenu.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btHamburgerMenu.Location = new System.Drawing.Point(23, 33);
+            this.btHamburgerMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btHamburgerMenu.Name = "btHamburgerMenu";
             this.btHamburgerMenu.Padding = new System.Windows.Forms.Padding(0, 0, 1, 1);
-            this.btHamburgerMenu.Size = new System.Drawing.Size(42, 42);
+            this.btHamburgerMenu.Size = new System.Drawing.Size(34, 34);
             this.btHamburgerMenu.TabIndex = 46;
             this.btHamburgerMenu.UseVisualStyleBackColor = false;
             this.btHamburgerMenu.Click += new System.EventHandler(this.btHamburgerMenu_Click);
@@ -395,10 +394,10 @@
             // 
             this.chbPickDate.AutoSize = true;
             this.chbPickDate.ForeColor = System.Drawing.Color.Black;
-            this.chbPickDate.Location = new System.Drawing.Point(100, 14);
-            this.chbPickDate.Margin = new System.Windows.Forms.Padding(5);
+            this.chbPickDate.Location = new System.Drawing.Point(80, 11);
+            this.chbPickDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chbPickDate.Name = "chbPickDate";
-            this.chbPickDate.Size = new System.Drawing.Size(152, 24);
+            this.chbPickDate.Size = new System.Drawing.Size(125, 21);
             this.chbPickDate.TabIndex = 45;
             this.chbPickDate.Text = "Tarih Aralığı Seç";
             this.chbPickDate.UseVisualStyleBackColor = true;
@@ -412,10 +411,10 @@
             this.dtpFrom.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.dtpFrom.CalendarTrailingForeColor = System.Drawing.Color.Gray;
             this.dtpFrom.Enabled = false;
-            this.dtpFrom.Location = new System.Drawing.Point(100, 48);
-            this.dtpFrom.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpFrom.Location = new System.Drawing.Point(80, 38);
+            this.dtpFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(362, 28);
+            this.dtpFrom.Size = new System.Drawing.Size(290, 24);
             this.dtpFrom.TabIndex = 43;
             // 
             // dtpTo
@@ -426,10 +425,10 @@
             this.dtpTo.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.dtpTo.CalendarTrailingForeColor = System.Drawing.Color.Gray;
             this.dtpTo.Enabled = false;
-            this.dtpTo.Location = new System.Drawing.Point(100, 82);
-            this.dtpTo.Margin = new System.Windows.Forms.Padding(5);
+            this.dtpTo.Location = new System.Drawing.Point(80, 66);
+            this.dtpTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(362, 28);
+            this.dtpTo.Size = new System.Drawing.Size(290, 24);
             this.dtpTo.TabIndex = 44;
             // 
             // btExportToExcel
@@ -438,10 +437,10 @@
             this.btExportToExcel.BackColor = System.Drawing.Color.White;
             this.btExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btExportToExcel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btExportToExcel.Location = new System.Drawing.Point(1054, 11);
+            this.btExportToExcel.Location = new System.Drawing.Point(843, 9);
             this.btExportToExcel.Margin = new System.Windows.Forms.Padding(2);
             this.btExportToExcel.Name = "btExportToExcel";
-            this.btExportToExcel.Size = new System.Drawing.Size(148, 48);
+            this.btExportToExcel.Size = new System.Drawing.Size(118, 38);
             this.btExportToExcel.TabIndex = 42;
             this.btExportToExcel.Text = "Rapor Oluştur";
             this.btExportToExcel.UseVisualStyleBackColor = false;
@@ -453,10 +452,10 @@
             this.btDataBase.BackColor = System.Drawing.Color.White;
             this.btDataBase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDataBase.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btDataBase.Location = new System.Drawing.Point(1054, 62);
+            this.btDataBase.Location = new System.Drawing.Point(843, 50);
             this.btDataBase.Margin = new System.Windows.Forms.Padding(2);
             this.btDataBase.Name = "btDataBase";
-            this.btDataBase.Size = new System.Drawing.Size(148, 48);
+            this.btDataBase.Size = new System.Drawing.Size(118, 38);
             this.btDataBase.TabIndex = 41;
             this.btDataBase.Text = "Kayıtları Göster";
             this.btDataBase.UseVisualStyleBackColor = false;
@@ -473,10 +472,9 @@
             this.panel2.Controls.Add(this.btRemoveSelected);
             this.panel2.Controls.Add(this.dgwKayit);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 125);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1250, 566);
+            this.panel2.Size = new System.Drawing.Size(1000, 453);
             this.panel2.TabIndex = 30;
             this.panel2.Click += new System.EventHandler(this.panel2_Click);
             // 
@@ -485,10 +483,10 @@
             this.pnChart.Controls.Add(this.panel3);
             this.pnChart.Controls.Add(this.btCloseChart);
             this.pnChart.Enabled = false;
-            this.pnChart.Location = new System.Drawing.Point(132, 24);
+            this.pnChart.Location = new System.Drawing.Point(106, 19);
             this.pnChart.Margin = new System.Windows.Forms.Padding(2);
             this.pnChart.Name = "pnChart";
-            this.pnChart.Size = new System.Drawing.Size(908, 425);
+            this.pnChart.Size = new System.Drawing.Size(726, 340);
             this.pnChart.TabIndex = 58;
             this.pnChart.Visible = false;
             // 
@@ -499,7 +497,7 @@
             this.panel3.Location = new System.Drawing.Point(2, 2);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(842, 59);
+            this.panel3.Size = new System.Drawing.Size(674, 47);
             this.panel3.TabIndex = 60;
             // 
             // lbTitle
@@ -510,7 +508,7 @@
             this.lbTitle.Location = new System.Drawing.Point(0, 0);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(842, 59);
+            this.lbTitle.Size = new System.Drawing.Size(674, 47);
             this.lbTitle.TabIndex = 59;
             this.lbTitle.Text = "lbTitle";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -522,10 +520,10 @@
             this.btCloseChart.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btCloseChart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btCloseChart.ForeColor = System.Drawing.Color.White;
-            this.btCloseChart.Location = new System.Drawing.Point(848, 18);
+            this.btCloseChart.Location = new System.Drawing.Point(678, 14);
             this.btCloseChart.Margin = new System.Windows.Forms.Padding(2);
             this.btCloseChart.Name = "btCloseChart";
-            this.btCloseChart.Size = new System.Drawing.Size(30, 30);
+            this.btCloseChart.Size = new System.Drawing.Size(24, 24);
             this.btCloseChart.TabIndex = 58;
             this.btCloseChart.Text = "x";
             this.btCloseChart.UseVisualStyleBackColor = false;
@@ -541,10 +539,10 @@
             this.btImportDatabase.ForeColor = System.Drawing.Color.Black;
             this.btImportDatabase.Image = ((System.Drawing.Image)(resources.GetObject("btImportDatabase.Image")));
             this.btImportDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btImportDatabase.Location = new System.Drawing.Point(4, 524);
-            this.btImportDatabase.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btImportDatabase.Location = new System.Drawing.Point(3, 419);
+            this.btImportDatabase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btImportDatabase.Name = "btImportDatabase";
-            this.btImportDatabase.Size = new System.Drawing.Size(28, 40);
+            this.btImportDatabase.Size = new System.Drawing.Size(22, 32);
             this.btImportDatabase.TabIndex = 48;
             this.btImportDatabase.Text = "Yedekten Veri Yükle";
             this.btImportDatabase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -562,10 +560,10 @@
             this.btBackupDatabase.ForeColor = System.Drawing.Color.Black;
             this.btBackupDatabase.Image = ((System.Drawing.Image)(resources.GetObject("btBackupDatabase.Image")));
             this.btBackupDatabase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btBackupDatabase.Location = new System.Drawing.Point(4, 469);
-            this.btBackupDatabase.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btBackupDatabase.Location = new System.Drawing.Point(3, 375);
+            this.btBackupDatabase.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btBackupDatabase.Name = "btBackupDatabase";
-            this.btBackupDatabase.Size = new System.Drawing.Size(28, 40);
+            this.btBackupDatabase.Size = new System.Drawing.Size(22, 32);
             this.btBackupDatabase.TabIndex = 47;
             this.btBackupDatabase.Text = "Verileri Yedekle";
             this.btBackupDatabase.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -580,10 +578,10 @@
             this.btMinus.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMinus.ForeColor = System.Drawing.Color.White;
-            this.btMinus.Location = new System.Drawing.Point(1135, 8);
+            this.btMinus.Location = new System.Drawing.Point(908, 6);
             this.btMinus.Margin = new System.Windows.Forms.Padding(2);
             this.btMinus.Name = "btMinus";
-            this.btMinus.Size = new System.Drawing.Size(30, 30);
+            this.btMinus.Size = new System.Drawing.Size(24, 24);
             this.btMinus.TabIndex = 45;
             this.btMinus.Text = "-";
             this.btMinus.UseVisualStyleBackColor = false;
@@ -596,10 +594,10 @@
             this.btPlus.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btPlus.ForeColor = System.Drawing.Color.White;
-            this.btPlus.Location = new System.Drawing.Point(1171, 8);
+            this.btPlus.Location = new System.Drawing.Point(937, 6);
             this.btPlus.Margin = new System.Windows.Forms.Padding(2);
             this.btPlus.Name = "btPlus";
-            this.btPlus.Size = new System.Drawing.Size(30, 30);
+            this.btPlus.Size = new System.Drawing.Size(24, 24);
             this.btPlus.TabIndex = 44;
             this.btPlus.Text = "+";
             this.btPlus.UseVisualStyleBackColor = false;
@@ -611,10 +609,10 @@
             this.btHide.BackColor = System.Drawing.Color.White;
             this.btHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btHide.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btHide.Location = new System.Drawing.Point(892, 482);
+            this.btHide.Location = new System.Drawing.Point(714, 386);
             this.btHide.Margin = new System.Windows.Forms.Padding(2);
             this.btHide.Name = "btHide";
-            this.btHide.Size = new System.Drawing.Size(148, 52);
+            this.btHide.Size = new System.Drawing.Size(118, 42);
             this.btHide.TabIndex = 43;
             this.btHide.Text = "Gizle";
             this.btHide.UseVisualStyleBackColor = false;
@@ -626,10 +624,10 @@
             this.btRemoveSelected.BackColor = System.Drawing.Color.White;
             this.btRemoveSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRemoveSelected.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btRemoveSelected.Location = new System.Drawing.Point(1054, 482);
+            this.btRemoveSelected.Location = new System.Drawing.Point(843, 386);
             this.btRemoveSelected.Margin = new System.Windows.Forms.Padding(2);
             this.btRemoveSelected.Name = "btRemoveSelected";
-            this.btRemoveSelected.Size = new System.Drawing.Size(148, 52);
+            this.btRemoveSelected.Size = new System.Drawing.Size(118, 42);
             this.btRemoveSelected.TabIndex = 42;
             this.btRemoveSelected.Text = "Seçili Kaydı Sil";
             this.btRemoveSelected.UseVisualStyleBackColor = false;
@@ -637,16 +635,16 @@
             // 
             // FormData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(168)))));
-            this.ClientSize = new System.Drawing.Size(1250, 691);
+            this.ClientSize = new System.Drawing.Size(1000, 553);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormData";
             this.Text = "FormData";
             ((System.ComponentModel.ISupportInitialize)(this.dgwKayit)).EndInit();
