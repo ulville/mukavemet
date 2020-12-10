@@ -173,6 +173,15 @@ namespace mukavemet
                             && Settings.Default.SelectAddr.Length != 0
                             && Settings.Default.MeasureAddr.Length != 0)
                         {
+                            if (tbNmm2.Visible)
+                            {
+                                tbActMeasure.Top += 15;
+                                lbNewtonUnit.Top += 15;
+                            }
+                            tbNmm2.Visible = false;
+                            lbNmm2Unit.Visible = false;
+
+
                             tbActMeasure.ResetText();
 
                             if (lbStatus.Text == msgDisconnected ||
@@ -493,6 +502,9 @@ namespace mukavemet
                 maxMeasure = result.ToString(CultureInfo.InvariantCulture);
                 tbActMeasure.ResetText();
                 tbActMeasure.Text = result.ToString();
+                tbNmm2.Text = (result / 1600).ToString();
+                tbNmm2.Visible = true; lbNmm2Unit.Visible = true;
+                tbActMeasure.Top -= 15; lbNewtonUnit.Top -= 15;
                 //float slope = CalculateLastSlope();
                 //TimeSpan lastTime = new TimeSpan(
                 //    Convert.ToInt64((result - crtVls[crtVls.Count - 1].Value)

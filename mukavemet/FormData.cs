@@ -345,9 +345,12 @@ namespace mukavemet
             return noValues;
         }
 
-        private void ShowGraph(string noOfClicked)
+        private void ShowGraph(string noOfClicked, string mesValue, string type)
         {
             lbTitle.Text = "Ölçüm No: " + noOfClicked;
+            lbN.Text = mesValue + " N";
+            lbNmm2.Text = (Double.Parse(mesValue) / 1600).ToString() + " N/mm²";
+            lbType.Text = type + " Testi";
             int LocX = pnChart.Width / 50;
             int LocY = pnChart.Height / 8;
 
@@ -362,7 +365,7 @@ namespace mukavemet
                 Location = new Point(LocX, LocY),
                 Margin = new Padding(30),
                 Name = "cartesianChart1",
-                Size = new Size(pnChart.Width - (LocX * 2), pnChart.Height - LocY * 2),
+                Size = new Size(pnChart.Width - (LocX * 2), pnChart.Height - LocY * 3),
                 TabIndex = 57,
                 Text = "cartesianChart1",
                 BackColor = System.Drawing.Color.FromArgb(0, 86, 168),
@@ -772,7 +775,9 @@ namespace mukavemet
         {
             if (e.RowIndex != dgwKayit.Rows.GetLastRow(DataGridViewElementStates.Visible) 
                 && e.RowIndex != -1)
-                ShowGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString());
+                ShowGraph(dgwKayit.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                    dgwKayit.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                    dgwKayit.Rows[e.RowIndex].Cells[2].Value.ToString());
         }
 
         private void btCloseChart_Click(object sender, EventArgs e)

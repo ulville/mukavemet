@@ -59,12 +59,15 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbProduct = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbNewtonUnit = new System.Windows.Forms.Label();
+            this.tbNmm2 = new System.Windows.Forms.TextBox();
+            this.lbNmm2Unit = new System.Windows.Forms.Label();
             this.pnConnection.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -73,8 +76,8 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label14
@@ -83,10 +86,10 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(42, 184);
+            this.label14.Location = new System.Drawing.Point(34, 147);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(142, 29);
+            this.label14.Size = new System.Drawing.Size(111, 23);
             this.label14.TabIndex = 51;
             this.label14.Text = "Ürün Çeşidi:";
             // 
@@ -95,10 +98,10 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(42, 441);
+            this.label13.Location = new System.Drawing.Point(34, 353);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(153, 20);
+            this.label13.Size = new System.Drawing.Size(127, 17);
             this.label13.TabIndex = 49;
             this.label13.Text = "Ölçümü Yapan Kişi:";
             // 
@@ -108,10 +111,10 @@
             this.btStopMeasure.BackColor = System.Drawing.Color.White;
             this.btStopMeasure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btStopMeasure.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btStopMeasure.Location = new System.Drawing.Point(1054, 447);
+            this.btStopMeasure.Location = new System.Drawing.Point(843, 358);
             this.btStopMeasure.Margin = new System.Windows.Forms.Padding(2);
             this.btStopMeasure.Name = "btStopMeasure";
-            this.btStopMeasure.Size = new System.Drawing.Size(148, 52);
+            this.btStopMeasure.Size = new System.Drawing.Size(118, 42);
             this.btStopMeasure.TabIndex = 47;
             this.btStopMeasure.Text = "Durdur";
             this.btStopMeasure.UseVisualStyleBackColor = false;
@@ -124,23 +127,24 @@
             this.tbActMeasure.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbActMeasure.Font = new System.Drawing.Font("Century Gothic", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tbActMeasure.ForeColor = System.Drawing.Color.White;
-            this.tbActMeasure.Location = new System.Drawing.Point(524, 427);
+            this.tbActMeasure.Location = new System.Drawing.Point(389, 348);
             this.tbActMeasure.Margin = new System.Windows.Forms.Padding(2);
             this.tbActMeasure.Name = "tbActMeasure";
-            this.tbActMeasure.Size = new System.Drawing.Size(280, 58);
+            this.tbActMeasure.Size = new System.Drawing.Size(230, 47);
             this.tbActMeasure.TabIndex = 44;
             this.tbActMeasure.Text = "000000,0000";
+            this.tbActMeasure.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // chbPressure
             // 
             this.chbPressure.BackColor = System.Drawing.Color.Transparent;
             this.chbPressure.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chbPressure.ForeColor = System.Drawing.Color.White;
-            this.chbPressure.Location = new System.Drawing.Point(2, 47);
+            this.chbPressure.Location = new System.Drawing.Point(2, 38);
             this.chbPressure.Margin = new System.Windows.Forms.Padding(2);
             this.chbPressure.Name = "chbPressure";
-            this.chbPressure.Padding = new System.Windows.Forms.Padding(6);
-            this.chbPressure.Size = new System.Drawing.Size(252, 41);
+            this.chbPressure.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chbPressure.Size = new System.Drawing.Size(201, 32);
             this.chbPressure.TabIndex = 42;
             this.chbPressure.Text = "Basınç Mukavemet Ölçümü";
             this.chbPressure.UseVisualStyleBackColor = false;
@@ -154,8 +158,8 @@
             this.chbBend.Location = new System.Drawing.Point(2, 2);
             this.chbBend.Margin = new System.Windows.Forms.Padding(2);
             this.chbBend.Name = "chbBend";
-            this.chbBend.Padding = new System.Windows.Forms.Padding(6);
-            this.chbBend.Size = new System.Drawing.Size(252, 41);
+            this.chbBend.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chbBend.Size = new System.Drawing.Size(201, 32);
             this.chbBend.TabIndex = 41;
             this.chbBend.Text = "Eğilme Mukavemet Ölçümü";
             this.chbBend.UseVisualStyleBackColor = false;
@@ -166,10 +170,10 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(42, 25);
-            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label10.Location = new System.Drawing.Point(34, 20);
+            this.label10.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(142, 29);
+            this.label10.Size = new System.Drawing.Size(111, 23);
             this.label10.TabIndex = 40;
             this.label10.Text = "Ölçüm Türü:";
             // 
@@ -179,10 +183,10 @@
             this.btMeasure.BackColor = System.Drawing.Color.White;
             this.btMeasure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMeasure.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btMeasure.Location = new System.Drawing.Point(892, 447);
-            this.btMeasure.Margin = new System.Windows.Forms.Padding(38);
+            this.btMeasure.Location = new System.Drawing.Point(714, 358);
+            this.btMeasure.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
             this.btMeasure.Name = "btMeasure";
-            this.btMeasure.Size = new System.Drawing.Size(148, 52);
+            this.btMeasure.Size = new System.Drawing.Size(118, 42);
             this.btMeasure.TabIndex = 39;
             this.btMeasure.Text = "Ölç";
             this.btMeasure.UseVisualStyleBackColor = false;
@@ -193,10 +197,10 @@
             this.lbStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbStatus.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbStatus.Location = new System.Drawing.Point(0, 70);
-            this.lbStatus.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbStatus.Location = new System.Drawing.Point(0, 56);
+            this.lbStatus.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(160, 55);
+            this.lbStatus.Size = new System.Drawing.Size(128, 44);
             this.lbStatus.TabIndex = 54;
             this.lbStatus.Text = "***";
             this.lbStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -207,9 +211,9 @@
             this.label9.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(0, 0);
-            this.label9.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(160, 70);
+            this.label9.Size = new System.Drawing.Size(128, 56);
             this.label9.TabIndex = 53;
             this.label9.Text = "Bağlantı Durumu";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -226,9 +230,8 @@
             this.pnConnection.Controls.Add(this.panel6);
             this.pnConnection.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnConnection.Location = new System.Drawing.Point(0, 0);
-            this.pnConnection.Margin = new System.Windows.Forms.Padding(4);
             this.pnConnection.Name = "pnConnection";
-            this.pnConnection.Size = new System.Drawing.Size(1250, 125);
+            this.pnConnection.Size = new System.Drawing.Size(1000, 100);
             this.pnConnection.TabIndex = 55;
             // 
             // panel9
@@ -236,10 +239,9 @@
             this.panel9.Controls.Add(this.label8);
             this.panel9.Controls.Add(this.label4);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel9.Location = new System.Drawing.Point(669, 0);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4);
+            this.panel9.Location = new System.Drawing.Point(535, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(160, 125);
+            this.panel9.Size = new System.Drawing.Size(128, 100);
             this.panel9.TabIndex = 60;
             // 
             // label8
@@ -247,10 +249,10 @@
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(0, 70);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label8.Location = new System.Drawing.Point(0, 56);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(160, 55);
+            this.label8.Size = new System.Drawing.Size(128, 44);
             this.label8.TabIndex = 68;
             this.label8.Text = "****";
             this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -261,9 +263,9 @@
             this.label4.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 70);
+            this.label4.Size = new System.Drawing.Size(128, 56);
             this.label4.TabIndex = 67;
             this.label4.Text = "Slot";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -273,10 +275,9 @@
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(509, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Location = new System.Drawing.Point(407, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(160, 125);
+            this.panel5.Size = new System.Drawing.Size(128, 100);
             this.panel5.TabIndex = 58;
             // 
             // label7
@@ -284,10 +285,10 @@
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(0, 70);
-            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Location = new System.Drawing.Point(0, 56);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(160, 55);
+            this.label7.Size = new System.Drawing.Size(128, 44);
             this.label7.TabIndex = 65;
             this.label7.Text = "****";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -298,9 +299,9 @@
             this.label3.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 70);
+            this.label3.Size = new System.Drawing.Size(128, 56);
             this.label3.TabIndex = 64;
             this.label3.Text = "Rack";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -310,10 +311,9 @@
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(349, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Location = new System.Drawing.Point(279, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(160, 125);
+            this.panel4.Size = new System.Drawing.Size(128, 100);
             this.panel4.TabIndex = 57;
             // 
             // label6
@@ -321,10 +321,10 @@
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(0, 70);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label6.Location = new System.Drawing.Point(0, 56);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(160, 55);
+            this.label6.Size = new System.Drawing.Size(128, 44);
             this.label6.TabIndex = 62;
             this.label6.Text = "888.888.8.888";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -335,9 +335,9 @@
             this.label2.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 70);
+            this.label2.Size = new System.Drawing.Size(128, 56);
             this.label2.TabIndex = 63;
             this.label2.Text = "IP";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -347,10 +347,9 @@
             this.panel8.Controls.Add(this.btDisconnect);
             this.panel8.Controls.Add(this.btConnect);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel8.Location = new System.Drawing.Point(1040, 0);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4);
+            this.panel8.Location = new System.Drawing.Point(832, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(210, 125);
+            this.panel8.Size = new System.Drawing.Size(168, 100);
             this.panel8.TabIndex = 59;
             // 
             // btDisconnect
@@ -359,10 +358,10 @@
             this.btDisconnect.BackColor = System.Drawing.Color.White;
             this.btDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btDisconnect.ForeColor = System.Drawing.Color.Black;
-            this.btDisconnect.Location = new System.Drawing.Point(14, 62);
+            this.btDisconnect.Location = new System.Drawing.Point(11, 50);
             this.btDisconnect.Margin = new System.Windows.Forms.Padding(2);
             this.btDisconnect.Name = "btDisconnect";
-            this.btDisconnect.Size = new System.Drawing.Size(148, 48);
+            this.btDisconnect.Size = new System.Drawing.Size(118, 38);
             this.btDisconnect.TabIndex = 65;
             this.btDisconnect.Text = "Bağlantıyı Kes";
             this.btDisconnect.UseVisualStyleBackColor = false;
@@ -374,10 +373,10 @@
             this.btConnect.BackColor = System.Drawing.Color.White;
             this.btConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btConnect.ForeColor = System.Drawing.Color.Black;
-            this.btConnect.Location = new System.Drawing.Point(14, 11);
+            this.btConnect.Location = new System.Drawing.Point(11, 9);
             this.btConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btConnect.Name = "btConnect";
-            this.btConnect.Size = new System.Drawing.Size(148, 48);
+            this.btConnect.Size = new System.Drawing.Size(118, 38);
             this.btConnect.TabIndex = 56;
             this.btConnect.Text = "Bağlan";
             this.btConnect.UseVisualStyleBackColor = false;
@@ -388,10 +387,9 @@
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(189, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(151, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(160, 125);
+            this.panel3.Size = new System.Drawing.Size(128, 100);
             this.panel3.TabIndex = 56;
             // 
             // label5
@@ -399,10 +397,10 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(0, 70);
-            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label5.Location = new System.Drawing.Point(0, 56);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(160, 55);
+            this.label5.Size = new System.Drawing.Size(128, 44);
             this.label5.TabIndex = 61;
             this.label5.Text = "****";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -413,9 +411,9 @@
             this.label1.Font = new System.Drawing.Font("Roboto Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 70);
+            this.label1.Size = new System.Drawing.Size(128, 56);
             this.label1.TabIndex = 57;
             this.label1.Text = "CPU Type";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -425,19 +423,17 @@
             this.panel2.Controls.Add(this.lbStatus);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(29, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(23, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(160, 125);
+            this.panel2.Size = new System.Drawing.Size(128, 100);
             this.panel2.TabIndex = 55;
             // 
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(29, 125);
+            this.panel6.Size = new System.Drawing.Size(23, 100);
             this.panel6.TabIndex = 61;
             // 
             // button1
@@ -449,10 +445,9 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(0, 125);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(0, 100);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(1250, 35);
+            this.button1.Size = new System.Drawing.Size(1000, 28);
             this.button1.TabIndex = 56;
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -463,6 +458,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbNmm2Unit);
+            this.panel1.Controls.Add(this.tbNmm2);
+            this.panel1.Controls.Add(this.lbNewtonUnit);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.cartesianChart1);
             this.panel1.Controls.Add(this.cbUser);
@@ -475,20 +473,35 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.tbActMeasure);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 160);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(0, 128);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1250, 531);
+            this.panel1.Size = new System.Drawing.Size(1000, 425);
             this.panel1.TabIndex = 57;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.chbBend, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chbPressure, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(38, 46);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(205, 72);
+            this.tableLayoutPanel1.TabIndex = 57;
             // 
             // cartesianChart1
             // 
             this.cartesianChart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cartesianChart1.Location = new System.Drawing.Point(344, 44);
+            this.cartesianChart1.Location = new System.Drawing.Point(275, 35);
+            this.cartesianChart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(858, 326);
+            this.cartesianChart1.Size = new System.Drawing.Size(686, 261);
             this.cartesianChart1.TabIndex = 56;
             this.cartesianChart1.Text = "cartesianChart1";
             // 
@@ -497,20 +510,19 @@
             this.cbUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(47, 471);
-            this.cbUser.Margin = new System.Windows.Forms.Padding(4);
+            this.cbUser.Location = new System.Drawing.Point(38, 377);
             this.cbUser.Name = "cbUser";
-            this.cbUser.Size = new System.Drawing.Size(256, 28);
+            this.cbUser.Size = new System.Drawing.Size(206, 25);
             this.cbUser.TabIndex = 55;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(419, 413);
+            this.pictureBox1.Location = new System.Drawing.Point(305, 330);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 86);
+            this.pictureBox1.Size = new System.Drawing.Size(72, 69);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 54;
             this.pictureBox1.TabStop = false;
@@ -520,10 +532,9 @@
             this.cbProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbProduct.FormattingEnabled = true;
-            this.cbProduct.Location = new System.Drawing.Point(49, 236);
-            this.cbProduct.Margin = new System.Windows.Forms.Padding(4);
+            this.cbProduct.Location = new System.Drawing.Point(39, 189);
             this.cbProduct.Name = "cbProduct";
-            this.cbProduct.Size = new System.Drawing.Size(254, 28);
+            this.cbProduct.Size = new System.Drawing.Size(204, 25);
             this.cbProduct.TabIndex = 53;
             // 
             // backgroundWorker1
@@ -534,33 +545,62 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // tableLayoutPanel1
+            // lbNewtonUnit
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.chbBend, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chbPressure, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(47, 57);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(256, 90);
-            this.tableLayoutPanel1.TabIndex = 57;
+            this.lbNewtonUnit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbNewtonUnit.AutoSize = true;
+            this.lbNewtonUnit.Font = new System.Drawing.Font("Roboto", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbNewtonUnit.ForeColor = System.Drawing.Color.White;
+            this.lbNewtonUnit.Location = new System.Drawing.Point(638, 348);
+            this.lbNewtonUnit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbNewtonUnit.Name = "lbNewtonUnit";
+            this.lbNewtonUnit.Size = new System.Drawing.Size(46, 44);
+            this.lbNewtonUnit.TabIndex = 58;
+            this.lbNewtonUnit.Text = "N";
+            // 
+            // tbNmm2
+            // 
+            this.tbNmm2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tbNmm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(168)))));
+            this.tbNmm2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbNmm2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbNmm2.ForeColor = System.Drawing.Color.White;
+            this.tbNmm2.Location = new System.Drawing.Point(417, 381);
+            this.tbNmm2.Margin = new System.Windows.Forms.Padding(2);
+            this.tbNmm2.Name = "tbNmm2";
+            this.tbNmm2.Size = new System.Drawing.Size(172, 34);
+            this.tbNmm2.TabIndex = 59;
+            this.tbNmm2.Text = "000000,0000";
+            this.tbNmm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbNmm2.Visible = false;
+            // 
+            // lbNmm2Unit
+            // 
+            this.lbNmm2Unit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbNmm2Unit.AutoSize = true;
+            this.lbNmm2Unit.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbNmm2Unit.ForeColor = System.Drawing.Color.White;
+            this.lbNmm2Unit.Location = new System.Drawing.Point(593, 384);
+            this.lbNmm2Unit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbNmm2Unit.Name = "lbNmm2Unit";
+            this.lbNmm2Unit.Size = new System.Drawing.Size(91, 29);
+            this.lbNmm2Unit.TabIndex = 60;
+            this.lbNmm2Unit.Text = "N/mm²";
+            this.lbNmm2Unit.Visible = false;
             // 
             // FormMeasure
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(168)))));
-            this.ClientSize = new System.Drawing.Size(1250, 691);
+            this.ClientSize = new System.Drawing.Size(1000, 553);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pnConnection);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormMeasure";
             this.Text = "FormMeasure";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMeasure_FormClosing);
@@ -575,8 +615,8 @@
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -618,5 +658,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label lbNmm2Unit;
+        private System.Windows.Forms.TextBox tbNmm2;
+        private System.Windows.Forms.Label lbNewtonUnit;
     }
 }
