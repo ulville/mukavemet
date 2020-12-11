@@ -49,7 +49,6 @@ namespace mukavemet
             short rack = Convert.ToInt16(Settings.Default.Rack);
             short slot = Convert.ToInt16(Settings.Default.Slot);
             plc = new Plc(cpu, ip, rack, slot);
-            ConnectToPlc();
             connection = new SQLiteConnection("data source=" + dbfile);
             //connection = new SQLiteConnection(@"data source=./mukavemet.db");
             cbProduct.DataSource = Settings.Default.ProductList;
@@ -502,7 +501,13 @@ namespace mukavemet
                 maxMeasure = result.ToString(CultureInfo.InvariantCulture);
                 tbActMeasure.ResetText();
                 tbActMeasure.Text = result.ToString();
-                tbNmm2.Text = (result / 1600).ToString();
+                if (selection == "Basınç")
+                    tbNmm2.Text = (result * Settings.Default.PresCoef).ToString();
+                else if (selection == "Eğilme")
+                    tbNmm2.Text = (result / Settings.Default.BendCoef).ToString();
+                else
+                    tbNmm2.Text = "Nabıyon sen NaBıyoN?";
+
                 tbNmm2.Visible = true; lbNmm2Unit.Visible = true;
                 tbActMeasure.Top -= 15; lbNewtonUnit.Top -= 15;
                 //float slope = CalculateLastSlope();
@@ -567,6 +572,11 @@ namespace mukavemet
         private void FormMeasure_FormClosed(object sender, FormClosedEventArgs e)
         {
             DisconnectFromPlc();
+        }
+
+        private void FormMeasure_Shown(object sender, EventArgs e)
+        {
+            ConnectToPlc();
         }
     }
 }

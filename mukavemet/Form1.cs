@@ -165,10 +165,14 @@ namespace mukavemet
 
         private void btMenuSettings_Click(object sender, EventArgs e)
         {
+            string promptValue = Prompt.ShowDialog("Parola:", "Yetkilendirme");
+            if (promptValue == Settings.Default.Auth)
+            {
             ButtonColorSel((Button)sender);
             openChildForm(formSettings);
             formSettings.ReloadMainScreen += RefreshFormMeasure;
             formSettings.ReturnMainScreen += ReturnFormMeasure;
+            }
         }
 
         private void btMenuAbout_Click(object sender, EventArgs e)

@@ -59,15 +59,15 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbNmm2Unit = new System.Windows.Forms.Label();
+            this.tbNmm2 = new System.Windows.Forms.TextBox();
+            this.lbNewtonUnit = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbProduct = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lbNewtonUnit = new System.Windows.Forms.Label();
-            this.tbNmm2 = new System.Windows.Forms.TextBox();
-            this.lbNmm2Unit = new System.Windows.Forms.Label();
             this.pnConnection.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -143,7 +143,7 @@
             this.chbPressure.Location = new System.Drawing.Point(2, 38);
             this.chbPressure.Margin = new System.Windows.Forms.Padding(2);
             this.chbPressure.Name = "chbPressure";
-            this.chbPressure.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chbPressure.Padding = new System.Windows.Forms.Padding(5);
             this.chbPressure.Size = new System.Drawing.Size(201, 32);
             this.chbPressure.TabIndex = 42;
             this.chbPressure.Text = "Basınç Mukavemet Ölçümü";
@@ -158,7 +158,7 @@
             this.chbBend.Location = new System.Drawing.Point(2, 2);
             this.chbBend.Margin = new System.Windows.Forms.Padding(2);
             this.chbBend.Name = "chbBend";
-            this.chbBend.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chbBend.Padding = new System.Windows.Forms.Padding(5);
             this.chbBend.Size = new System.Drawing.Size(201, 32);
             this.chbBend.TabIndex = 41;
             this.chbBend.Text = "Eğilme Mukavemet Ölçümü";
@@ -184,7 +184,7 @@
             this.btMeasure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMeasure.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btMeasure.Location = new System.Drawing.Point(714, 358);
-            this.btMeasure.Margin = new System.Windows.Forms.Padding(30, 30, 30, 30);
+            this.btMeasure.Margin = new System.Windows.Forms.Padding(30);
             this.btMeasure.Name = "btMeasure";
             this.btMeasure.Size = new System.Drawing.Size(118, 42);
             this.btMeasure.TabIndex = 39;
@@ -478,6 +478,49 @@
             this.panel1.Size = new System.Drawing.Size(1000, 425);
             this.panel1.TabIndex = 57;
             // 
+            // lbNmm2Unit
+            // 
+            this.lbNmm2Unit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbNmm2Unit.AutoSize = true;
+            this.lbNmm2Unit.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbNmm2Unit.ForeColor = System.Drawing.Color.White;
+            this.lbNmm2Unit.Location = new System.Drawing.Point(593, 384);
+            this.lbNmm2Unit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbNmm2Unit.Name = "lbNmm2Unit";
+            this.lbNmm2Unit.Size = new System.Drawing.Size(91, 29);
+            this.lbNmm2Unit.TabIndex = 60;
+            this.lbNmm2Unit.Text = "N/mm²";
+            this.lbNmm2Unit.Visible = false;
+            // 
+            // tbNmm2
+            // 
+            this.tbNmm2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tbNmm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(168)))));
+            this.tbNmm2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbNmm2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tbNmm2.ForeColor = System.Drawing.Color.White;
+            this.tbNmm2.Location = new System.Drawing.Point(417, 381);
+            this.tbNmm2.Margin = new System.Windows.Forms.Padding(2);
+            this.tbNmm2.Name = "tbNmm2";
+            this.tbNmm2.Size = new System.Drawing.Size(172, 34);
+            this.tbNmm2.TabIndex = 59;
+            this.tbNmm2.Text = "000000,0000";
+            this.tbNmm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbNmm2.Visible = false;
+            // 
+            // lbNewtonUnit
+            // 
+            this.lbNewtonUnit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbNewtonUnit.AutoSize = true;
+            this.lbNewtonUnit.Font = new System.Drawing.Font("Roboto", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbNewtonUnit.ForeColor = System.Drawing.Color.White;
+            this.lbNewtonUnit.Location = new System.Drawing.Point(623, 349);
+            this.lbNewtonUnit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbNewtonUnit.Name = "lbNewtonUnit";
+            this.lbNewtonUnit.Size = new System.Drawing.Size(46, 44);
+            this.lbNewtonUnit.TabIndex = 58;
+            this.lbNewtonUnit.Text = "N";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -485,7 +528,7 @@
             this.tableLayoutPanel1.Controls.Add(this.chbBend, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.chbPressure, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(38, 46);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -499,7 +542,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cartesianChart1.Location = new System.Drawing.Point(275, 35);
-            this.cartesianChart1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cartesianChart1.Margin = new System.Windows.Forms.Padding(2);
             this.cartesianChart1.Name = "cartesianChart1";
             this.cartesianChart1.Size = new System.Drawing.Size(686, 261);
             this.cartesianChart1.TabIndex = 56;
@@ -545,49 +588,6 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // lbNewtonUnit
-            // 
-            this.lbNewtonUnit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbNewtonUnit.AutoSize = true;
-            this.lbNewtonUnit.Font = new System.Drawing.Font("Roboto", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbNewtonUnit.ForeColor = System.Drawing.Color.White;
-            this.lbNewtonUnit.Location = new System.Drawing.Point(623, 349);
-            this.lbNewtonUnit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbNewtonUnit.Name = "lbNewtonUnit";
-            this.lbNewtonUnit.Size = new System.Drawing.Size(46, 44);
-            this.lbNewtonUnit.TabIndex = 58;
-            this.lbNewtonUnit.Text = "N";
-            // 
-            // tbNmm2
-            // 
-            this.tbNmm2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tbNmm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(86)))), ((int)(((byte)(168)))));
-            this.tbNmm2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbNmm2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.tbNmm2.ForeColor = System.Drawing.Color.White;
-            this.tbNmm2.Location = new System.Drawing.Point(417, 381);
-            this.tbNmm2.Margin = new System.Windows.Forms.Padding(2);
-            this.tbNmm2.Name = "tbNmm2";
-            this.tbNmm2.Size = new System.Drawing.Size(172, 34);
-            this.tbNmm2.TabIndex = 59;
-            this.tbNmm2.Text = "000000,0000";
-            this.tbNmm2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbNmm2.Visible = false;
-            // 
-            // lbNmm2Unit
-            // 
-            this.lbNmm2Unit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbNmm2Unit.AutoSize = true;
-            this.lbNmm2Unit.Font = new System.Drawing.Font("Roboto", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbNmm2Unit.ForeColor = System.Drawing.Color.White;
-            this.lbNmm2Unit.Location = new System.Drawing.Point(593, 384);
-            this.lbNmm2Unit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbNmm2Unit.Name = "lbNmm2Unit";
-            this.lbNmm2Unit.Size = new System.Drawing.Size(91, 29);
-            this.lbNmm2Unit.TabIndex = 60;
-            this.lbNmm2Unit.Text = "N/mm²";
-            this.lbNmm2Unit.Visible = false;
-            // 
             // FormMeasure
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -600,12 +600,13 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMeasure";
             this.Text = "FormMeasure";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMeasure_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMeasure_FormClosed);
             this.Load += new System.EventHandler(this.FormMeasure_Load);
+            this.Shown += new System.EventHandler(this.FormMeasure_Shown);
             this.pnConnection.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel5.ResumeLayout(false);

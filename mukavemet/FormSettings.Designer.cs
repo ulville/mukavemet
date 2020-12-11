@@ -40,6 +40,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btChangePass = new System.Windows.Forms.Button();
             this.tbAddUser = new System.Windows.Forms.TextBox();
             this.btRemoveUser = new System.Windows.Forms.Button();
             this.btAddUser = new System.Windows.Forms.Button();
@@ -78,6 +79,11 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btEnableAdvancedSettings = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.tbBendCoef = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tbPressCoef = new System.Windows.Forms.TextBox();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -85,6 +91,7 @@
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // btSaveSettings
@@ -249,7 +256,14 @@
             // 
             // panel6
             // 
+            this.panel6.AutoScroll = true;
+            this.panel6.AutoScrollMargin = new System.Drawing.Size(0, 20);
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Controls.Add(this.label18);
+            this.panel6.Controls.Add(this.tbPressCoef);
+            this.panel6.Controls.Add(this.label17);
+            this.panel6.Controls.Add(this.tbBendCoef);
             this.panel6.Controls.Add(this.tbAddUser);
             this.panel6.Controls.Add(this.btRemoveUser);
             this.panel6.Controls.Add(this.btAddUser);
@@ -267,6 +281,22 @@
             this.panel6.Size = new System.Drawing.Size(500, 397);
             this.panel6.TabIndex = 42;
             this.panel6.Click += new System.EventHandler(this.panel6_Click);
+            // 
+            // btChangePass
+            // 
+            this.btChangePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(242)))));
+            this.btChangePass.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btChangePass.FlatAppearance.BorderSize = 0;
+            this.btChangePass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btChangePass.ForeColor = System.Drawing.Color.White;
+            this.btChangePass.Location = new System.Drawing.Point(150, 20);
+            this.btChangePass.Margin = new System.Windows.Forms.Padding(2);
+            this.btChangePass.Name = "btChangePass";
+            this.btChangePass.Size = new System.Drawing.Size(183, 27);
+            this.btChangePass.TabIndex = 51;
+            this.btChangePass.Text = "Parola Değiştir";
+            this.btChangePass.UseVisualStyleBackColor = false;
+            this.btChangePass.Click += new System.EventHandler(this.btChangePass_Click);
             // 
             // tbAddUser
             // 
@@ -744,6 +774,58 @@
             this.btEnableAdvancedSettings.UseVisualStyleBackColor = false;
             this.btEnableAdvancedSettings.Click += new System.EventHandler(this.btEnableAdvancedSettings_Click);
             // 
+            // tbBendCoef
+            // 
+            this.tbBendCoef.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tbBendCoef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbBendCoef.Location = new System.Drawing.Point(23, 305);
+            this.tbBendCoef.Margin = new System.Windows.Forms.Padding(16, 2, 16, 2);
+            this.tbBendCoef.Name = "tbBendCoef";
+            this.tbBendCoef.Size = new System.Drawing.Size(444, 26);
+            this.tbBendCoef.TabIndex = 52;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(22, 285);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(249, 18);
+            this.label17.TabIndex = 53;
+            this.label17.Text = "Eğilme Ölçümü Yüzey Alanı Çarpanı:";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(20, 341);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(248, 18);
+            this.label18.TabIndex = 55;
+            this.label18.Text = "Basınç Ölçümü Yüzey Alanı Çarpanı:";
+            // 
+            // tbPressCoef
+            // 
+            this.tbPressCoef.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tbPressCoef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPressCoef.Location = new System.Drawing.Point(23, 361);
+            this.tbPressCoef.Margin = new System.Windows.Forms.Padding(16, 2, 16, 2);
+            this.tbPressCoef.Name = "tbPressCoef";
+            this.tbPressCoef.Size = new System.Drawing.Size(444, 26);
+            this.tbPressCoef.TabIndex = 54;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.btChangePass);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel8.Location = new System.Drawing.Point(0, 407);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(150, 20, 150, 20);
+            this.panel8.Size = new System.Drawing.Size(483, 67);
+            this.panel8.TabIndex = 56;
+            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -770,6 +852,7 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel5.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -824,5 +907,11 @@
         private System.Windows.Forms.Button btExportSettings;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button btHamburgerMenu;
+        private System.Windows.Forms.Button btChangePass;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tbPressCoef;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tbBendCoef;
+        private System.Windows.Forms.Panel panel8;
     }
 }

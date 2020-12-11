@@ -6,7 +6,7 @@
       <Value Profile="(Default)">S7300</Value>
     </Setting>
     <Setting Name="IP" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.2.78</Value>
+      <Value Profile="(Default)">192.168.4.5</Value>
     </Setting>
     <Setting Name="Rack" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -18,28 +18,37 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="BendActAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">DB1.DBD44</Value>
     </Setting>
     <Setting Name="BendMaxAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">DB1.DBD40</Value>
     </Setting>
     <Setting Name="PresActAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">DB1.DBD44</Value>
     </Setting>
     <Setting Name="PresMaxAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">DB1.DBD40</Value>
     </Setting>
     <Setting Name="MeasureAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">M10.1</Value>
     </Setting>
     <Setting Name="SelectAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">M10.0</Value>
     </Setting>
     <Setting Name="ProductList" Type="System.String[]" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="UserList" Type="System.String[]" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Auth" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0000</Value>
+    </Setting>
+    <Setting Name="BendCoef" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.00234</Value>
+    </Setting>
+    <Setting Name="PresCoef" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.000625</Value>
     </Setting>
   </Settings>
 </SettingsFile>

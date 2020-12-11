@@ -94,6 +94,17 @@ namespace mukavemet
             Settings.Default.UserList = users;
             products = null;
             users = null;
+
+            if (Double.TryParse(tbBendCoef.Text, out double bendCoef))
+                Settings.Default.BendCoef = bendCoef;
+            else
+                MessageBox.Show("Eğilme katsayısı için girdiğiniz değer geçersiz olduğundan kaydedilmedi.");
+
+            if (Double.TryParse(tbPressCoef.Text, out double presCoef))
+                Settings.Default.PresCoef = presCoef;
+            else
+                MessageBox.Show("Basınç katsayısı için girdiğiniz değer geçersiz olduğundan kaydedilmedi.");
+
             Settings.Default.Save();
             RefreshSettingsScreen();
             ReloadMainScreen();
@@ -129,6 +140,8 @@ namespace mukavemet
                 cbProducts.Items.AddRange(Settings.Default.ProductList);
             if (Settings.Default.UserList != null)
                 cbUsers.Items.AddRange(Settings.Default.UserList);
+            tbBendCoef.Text = Settings.Default.BendCoef.ToString();
+            tbPressCoef.Text = Settings.Default.PresCoef.ToString();
         }
 
         void cbCpuType_MouseWheel(object sender, MouseEventArgs e)
@@ -332,6 +345,20 @@ namespace mukavemet
                 pnHamburger.Enabled = false;
                 pnHamburger.Visible = false;
             }
+        }
+
+        private void btChangePass_Click(object sender, EventArgs e)
+        {
+            string promptValue1 = Prompt.ShowDialog("Yeni Parola:", "Parola Değiştir");
+            string promptValue2 = Prompt.ShowDialog("Parolayı Tekrar Girin:", "Parola Değiştir");
+            if (promptValue1 == promptValue2)
+            {
+                Settings.Default.Auth = promptValue2;
+                Settings.Default.Save();
+                MessageBox.Show("Parola değiştirildi.");
+            }
+            else
+                MessageBox.Show("Parolalar farklıydı. Hiçbir şey değiştirilmedi. Yeniden deneyin.");
         }
     }
 }

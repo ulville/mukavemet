@@ -263,46 +263,50 @@ namespace mukavemet
 
         private void btRemoveSelected_Click(object sender, EventArgs e)
         {
-            string[] noValues = GetNoValues(dgwKayit.SelectedCells);
-
-            if (noValues.Length != 0)
+            string promptValue = Prompt.ShowDialog("Parola:", "Yetkilendirme");
+            if (promptValue == Settings.Default.Auth)
             {
-                StringBuilder message = new StringBuilder(
-                    "Şu numaralı kayıtlar silinecek: ");
+                string[] noValues = GetNoValues(dgwKayit.SelectedCells);
 
-                foreach (string noValue in noValues)
+                if (noValues.Length != 0)
                 {
-                    message.Append(noValue);
-                    if (noValue != noValues[noValues.Length - 1])
-                        message.Append(", ");
-                    else
-                        message.Append(". Devam etmek istediğinizden emin misiniz?\n" +
-                            "(Bu işlem geri alınamaz!)");
-                }
+                    StringBuilder message = new StringBuilder(
+                        "Şu numaralı kayıtlar silinecek: ");
 
-                var result = MessageBox.Show(
-                    message.ToString(),
-                    "Dikkat",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
-                {
-                    try
+                    foreach (string noValue in noValues)
                     {
-                        DeleteFromDB(noValues, "mukayit");
-                        DeleteFromDB(noValues, "graf");
-                        
-                        btDataBase.PerformClick();
+                        message.Append(noValue);
+                        if (noValue != noValues[noValues.Length - 1])
+                            message.Append(", ");
+                        else
+                            message.Append(". Devam etmek istediğinizden emin misiniz?\n" +
+                                "(Bu işlem geri alınamaz!)");
                     }
-                    catch (Exception ex)
+
+                    var result = MessageBox.Show(
+                        message.ToString(),
+                        "Dikkat",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
                     {
-                        MessageBox.Show(ex.Message);
-                        connection.Close();
+                        try
+                        {
+                            DeleteFromDB(noValues, "mukayit");
+                            DeleteFromDB(noValues, "graf");
+
+                            btDataBase.PerformClick();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            connection.Close();
+                        }
                     }
                 }
+                dgwKayit.AutoResizeColumns();
             }
-            dgwKayit.AutoResizeColumns();
         }
 
         private void DeleteFromDB(string[] noValues, string table)
@@ -349,7 +353,12 @@ namespace mukavemet
         {
             lbTitle.Text = "Ölçüm No: " + noOfClicked + " - " + date;
             lbN.Text = mesValue + " N";
-            lbNmm2.Text = (Double.Parse(mesValue) / 1600).ToString() + " N/mm²";
+            if(type == "Eğilme")
+                lbNmm2.Text = (Double.Parse(mesValue) * Settings.Default.BendCoef).ToString() + " N/mm²";
+            else if (type == "Basınç")
+                lbNmm2.Text = (Double.Parse(mesValue) * Settings.Default.PresCoef).ToString() + " N/mm²";
+            else
+                lbNmm2.Text = "Ölçüm tipi belli değil";
             lbType.Text = product + " " + type + " Testi (" + user + ")";
 
             int LocX = pnChart.Width / 50;

@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="MeasureModel.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Content Include="ToDo.txt" />
