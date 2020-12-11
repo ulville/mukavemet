@@ -15,7 +15,7 @@ namespace mukavemet
             Form prompt = new Form()
             {
                 Width = 360,
-                Height = 170,
+                Height = 175,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 Text = caption,
                 StartPosition = FormStartPosition.CenterScreen,
@@ -32,7 +32,7 @@ namespace mukavemet
             Panel panelTop = new Panel() 
             { 
                 Dock = DockStyle.Top,
-                Height = 40,
+                Height = 35,
                 BackColor = Color.White
             };
             Panel panelMid = new Panel()
