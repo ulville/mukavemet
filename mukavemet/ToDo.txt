@@ -32,8 +32,9 @@ Add admin and normal user ******************************************
 
 Locate database to shared folder ***********************************
 
-Create legit report document
+Fix N/mm2 calculation
 
+Create legit report document
 
 Use normal charts
 

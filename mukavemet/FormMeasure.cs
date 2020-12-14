@@ -504,7 +504,7 @@ namespace mukavemet
                 if (selection == "Basınç")
                     tbNmm2.Text = (result * Settings.Default.PresCoef).ToString();
                 else if (selection == "Eğilme")
-                    tbNmm2.Text = (result / Settings.Default.BendCoef).ToString();
+                    tbNmm2.Text = (result * Settings.Default.BendCoef).ToString();
                 else
                     tbNmm2.Text = "Nabıyon sen NaBıyoN?";
 
