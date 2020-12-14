@@ -30,7 +30,7 @@ namespace mukavemet
         private string[] selectedUsers;
         private string mesType;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
-        private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
+        private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
         private ChartValues<MeasureModel> crtVls { get; set; }
 
 

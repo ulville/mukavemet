@@ -30,9 +30,10 @@ Show both N and N/mm2 values on Measure and Database screens *******
 
 Add admin and normal user ******************************************
 
+Locate database to shared folder ***********************************
+
 Create legit report document
 
-Locate database to shared folder
 
 Use normal charts
 

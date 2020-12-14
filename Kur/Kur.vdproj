@@ -949,16 +949,17 @@
                 {
                 }
             }
-            "{1525181F-901A-416C-8A58-119130FE478E}:_A76EACA0F99C4336BA0373B9D3C4BF0E"
+            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_B0DD34DE09E2413D8F13832831E1E2CE"
             {
-            "Name" = "8:#1915"
+            "DefaultLocation" = "8:[CommonAppDataFolder]"
+            "Name" = "8:Common App Data Folder"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
-            "Property" = "8:AppDataFolder"
+            "Property" = "8:NEWPROPERTY1"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_08383BD9B0A0445685F90335786B1513"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_26DE4CBFAF734297B93B7D16DA015365"
                     {
                     "Name" = "8:ABS Alçı ve Blok Sanayi"
                     "AlwaysCreate" = "11:FALSE"
@@ -1002,7 +1003,7 @@
             "{39E1837C-0DB9-45A2-89C8-438377A77565}:_5FB4BE787B7B4EBD960ACCD14E81123D"
             {
             "Name" = "8:Search for Database"
-            "Folder" = "8:[AppDataFolder]\\ABS Alçı ve Blok Sanayi\\Mukavemet"
+            "Folder" = "8:[CommonAppDataFolder]\\ABS Alçı ve Blok Sanayi\\Mukavemet"
             "Depth" = "2:0"
             "FileName" = "8:mukavemet.db"
             "MinVesion" = "8:"
@@ -1025,7 +1026,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Mukavemet"
         "ProductCode" = "8:{EEC6F8CD-1814-440C-926B-23B1E9E3D4DF}"
-        "PackageCode" = "8:{689B2B81-54C7-4CA6-BEBA-F06591710478}"
+        "PackageCode" = "8:{AE24EDFC-B1DE-498A-B678-0C2F23498ED2}"
         "UpgradeCode" = "8:{09615572-DA3B-4044-9521-CAF25F93630A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

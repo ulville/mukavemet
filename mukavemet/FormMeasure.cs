@@ -27,7 +27,7 @@ namespace mukavemet
         private bool measuring = false;
         private SQLiteConnection connection;
         private string timeOfMeasurement;
-        private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
+        private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
 
         //Hata Mesajları ve Bildirimler:
         private string msgConnected = "Bağlandı";
