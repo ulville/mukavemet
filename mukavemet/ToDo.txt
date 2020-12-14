@@ -28,9 +28,12 @@ Fix graphical issues on low-res screens ****************************
 
 Show both N and N/mm2 values on Measure and Database screens *******
 
-Selecting chbox will send selection valve value to plc
+Add admin and normal user ******************************************
 
-Add admin and normal user 
-(normal can't access settings and delete data)
+Create legit report document
+
+Locate database to shared folder
 
 Use normal charts
+
+Selecting chbox will send selection valve value to plc
