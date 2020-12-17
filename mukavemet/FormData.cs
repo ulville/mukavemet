@@ -101,7 +101,7 @@ namespace mukavemet
                     string fromDate = dtFromDate.ToString("yyyy-MM-dd HH:mm:ss");
                     string toDate = dtToDate.ToString("yyyy-MM-dd HH:mm:ss");
 
-                        query = query + "WHERE Tarih BETWEEN \'" +
+                        query = query + " WHERE Tarih BETWEEN \'" +
                             fromDate + "\' AND \'" + toDate + "\'";
                 }
 
