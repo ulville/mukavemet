@@ -31,6 +31,7 @@ namespace mukavemet
         private string mesType;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
         private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
+        private string excelTemplate = @".\F.30 MEKANİK ÖZELLİKLERİN KONTROLÜ FORMU.xls";
         private ChartValues<MeasureModel> crtVls { get; set; }
 
 
@@ -202,6 +203,7 @@ namespace mukavemet
 
         private void btExportToExcel_Click(object sender, EventArgs e)
         {
+
             btDataBase.PerformClick();
             Excel.Application xlexcel;
             Excel.Workbook xlWorkBook;
@@ -209,36 +211,41 @@ namespace mukavemet
             object misValue = Missing.Value;
             xlexcel = new Excel.Application();
             xlexcel.Visible = true; // false;
-            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkBook = xlexcel.Workbooks.Open(excelTemplate);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            for (int i = 1; i < dgwKayit.Columns.Count + 1; i++)
-            {
-                xlWorkSheet.Cells[1, i] = dgwKayit.Columns[i - 1].HeaderText;
-                xlWorkSheet.Cells[1, i].Font.Bold = true;
-            }
             for (int i = 0; i < dgwKayit.Rows.Count - 1; i++)
             {
-                for (int j = 0; j < dgwKayit.Columns.Count; j++)
-                {
-                    xlWorkSheet.Cells[i + 2, j + 1] = dgwKayit.Rows[i].Cells[j].Value;
-                }
+                xlWorkSheet.Cells[i + 7, 1] = dgwKayit.Rows[i].Cells[4].Value;
             }
 
-            Excel.Range range;
-            range = xlWorkSheet.UsedRange;
-            range.Columns.AutoFit();
-            string time = DateTime.Now.ToString("yy-MM-dd HH-mm-ss");
-            string directory = Environment.GetEnvironmentVariable("USERPROFILE") + 
-                @"\Documents\MukavemetRaporları";
+            //for (int i = 1; i < dgwKayit.Columns.Count + 1; i++)
+            //{
+            //    xlWorkSheet.Cells[1, i] = dgwKayit.Columns[i - 1].HeaderText;
+            //    xlWorkSheet.Cells[1, i].Font.Bold = true;
+            //}
+            //for (int i = 0; i < dgwKayit.Rows.Count - 1; i++)
+            //{
+            //    for (int j = 0; j < dgwKayit.Columns.Count; j++)
+            //    {
+            //        xlWorkSheet.Cells[i + 2, j + 1] = dgwKayit.Rows[i].Cells[j].Value;
+            //    }
+            //}
 
-            if (!Directory.Exists(directory))
-                Directory.CreateDirectory(directory);
+            //Excel.Range range;
+            //range = xlWorkSheet.UsedRange;
+            //range.Columns.AutoFit();
+            //string time = DateTime.Now.ToString("yy-MM-dd HH-mm-ss");
+            //string directory = Environment.GetEnvironmentVariable("USERPROFILE") + 
+            //    @"\Documents\MukavemetRaporları";
 
-            object filename = directory + @"\Mukavemet_Ölçüm_Raporu " + time;
+            //if (!Directory.Exists(directory))
+            //    Directory.CreateDirectory(directory);
 
-            xlWorkBook.SaveAs(filename);
-            //            xlWorkBook.Close();
+            //object filename = directory + @"\Mukavemet_Ölçüm_Raporu " + time;
+
+            //xlWorkBook.SaveAs(filename);
+            ////            xlWorkBook.Close();
         }
 
         private void chbPickDate_CheckedChanged(object sender, EventArgs e)
