@@ -31,7 +31,7 @@ namespace mukavemet
         private string mesType;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
         private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
-        private string excelTemplate = @".\F.30 MEKANİK ÖZELLİKLERİN KONTROLÜ FORMU.xls";
+        private string excelTemplate = @"C:\Users\ulvican\source\repos\mukavemet\mukavemet\bin\Release\template.xls";
         private ChartValues<MeasureModel> crtVls { get; set; }
 
 
@@ -216,7 +216,15 @@ namespace mukavemet
 
             for (int i = 0; i < dgwKayit.Rows.Count - 1; i++)
             {
-                xlWorkSheet.Cells[i + 7, 1] = dgwKayit.Rows[i].Cells[4].Value;
+                xlWorkSheet.Cells[i + 7, 1] = dgwKayit.Rows[i].Cells[3].Value;
+            }
+            for (int i = 0; i < dgwKayit.Rows.Count - 1; i++)
+            {
+                xlWorkSheet.Cells[i + 7, 3] = dgwKayit.Rows[i].Cells[1].Value;
+            }
+            for (int i = 0; i < dgwKayit.Rows.Count - 1; i++)
+            {
+                xlWorkSheet.Cells[i + 7, 2] = DateTime.Parse(dgwKayit.Rows[i].Cells[1].Value.ToString()).AddDays(-7);
             }
 
             //for (int i = 1; i < dgwKayit.Columns.Count + 1; i++)
