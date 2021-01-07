@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mukavemet", "mukavemet\muka
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Kur", "Kur\Kur.vdproj", "{E7B468E2-1F0D-44B8-9625-79685BF230CE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A0FDEE69-8439-4B11-B683-236E3F6E1EE4}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
