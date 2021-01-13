@@ -43,6 +43,8 @@ namespace mukavemet
         private bool measuring = false;
         private SQLiteConnection connection;
         private string timeOfMeasurement;
+        private string productionDate;
+        private string moldDate;
         private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
 
         //Hata Mesajları ve Bildirimler:
@@ -351,10 +353,10 @@ namespace mukavemet
             {
                 connection.Open();
                 string query = "INSERT INTO mukayit(Tarih,\"Ölçüm Türü\"," +
-                    "\"Ölçüm Sonucu\",\"Ölçümü Yapan\",\"Ürün Cinsi\")" +
+                    "\"Ölçüm Sonucu\",\"Ölçümü Yapan\",\"Ürün Cinsi\",\"Üretim Tarihi\",\"Kalıp Tarihi\")" +
                     "VALUES(\'" + timeOfMeasurement + "\',\'" + selection + 
                     "\'," + maxMeasure + ",\'" + cbUser.Text + "\',\'" + 
-                    cbProduct.SelectedItem.ToString() + "\')";
+                    cbProduct.SelectedItem.ToString() + "\',\'" + productionDate + "\',\'" + moldDate + "\')";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.ExecuteNonQuery();
 
@@ -538,6 +540,11 @@ namespace mukavemet
 
                 timeOfMeasurement = DateTime.Now.ToString
                     ("yyyy-MM-dd HH:mm:ss");
+                productionDate = dtpProductionDate.Value.Date.ToString
+                    ("yyyy-MM-dd");
+                moldDate = dtpMoldDate.Value.Date.ToString
+                    ("yyyy-MM-dd");
+
                 SaveToDatabase();
                 plc.Open();
                 SystemSounds.Exclamation.Play();
