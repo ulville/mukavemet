@@ -59,6 +59,10 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpMoldDate = new System.Windows.Forms.DateTimePicker();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dtpProductionDate = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
             this.lbNmm2Unit = new System.Windows.Forms.Label();
             this.tbNmm2 = new System.Windows.Forms.TextBox();
             this.lbNewtonUnit = new System.Windows.Forms.Label();
@@ -68,10 +72,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbProduct = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dtpProductionDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpMoldDate = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
             this.pnConnection.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -147,7 +147,7 @@
             this.chbPressure.Location = new System.Drawing.Point(2, 47);
             this.chbPressure.Margin = new System.Windows.Forms.Padding(2);
             this.chbPressure.Name = "chbPressure";
-            this.chbPressure.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.chbPressure.Padding = new System.Windows.Forms.Padding(6);
             this.chbPressure.Size = new System.Drawing.Size(252, 41);
             this.chbPressure.TabIndex = 42;
             this.chbPressure.Text = "Basınç Mukavemet Ölçümü";
@@ -162,7 +162,7 @@
             this.chbBend.Location = new System.Drawing.Point(2, 2);
             this.chbBend.Margin = new System.Windows.Forms.Padding(2);
             this.chbBend.Name = "chbBend";
-            this.chbBend.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.chbBend.Padding = new System.Windows.Forms.Padding(6);
             this.chbBend.Size = new System.Drawing.Size(252, 41);
             this.chbBend.TabIndex = 41;
             this.chbBend.Text = "Eğilme Mukavemet Ölçümü";
@@ -188,7 +188,7 @@
             this.btMeasure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMeasure.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btMeasure.Location = new System.Drawing.Point(892, 448);
-            this.btMeasure.Margin = new System.Windows.Forms.Padding(38, 38, 38, 38);
+            this.btMeasure.Margin = new System.Windows.Forms.Padding(38);
             this.btMeasure.Name = "btMeasure";
             this.btMeasure.Size = new System.Drawing.Size(148, 52);
             this.btMeasure.TabIndex = 39;
@@ -234,7 +234,7 @@
             this.pnConnection.Controls.Add(this.panel6);
             this.pnConnection.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnConnection.Location = new System.Drawing.Point(0, 0);
-            this.pnConnection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnConnection.Margin = new System.Windows.Forms.Padding(4);
             this.pnConnection.Name = "pnConnection";
             this.pnConnection.Size = new System.Drawing.Size(1250, 125);
             this.pnConnection.TabIndex = 55;
@@ -245,7 +245,7 @@
             this.panel9.Controls.Add(this.label4);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel9.Location = new System.Drawing.Point(669, 0);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(160, 125);
             this.panel9.TabIndex = 60;
@@ -282,7 +282,7 @@
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel5.Location = new System.Drawing.Point(509, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(160, 125);
             this.panel5.TabIndex = 58;
@@ -319,7 +319,7 @@
             this.panel4.Controls.Add(this.label2);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(349, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(160, 125);
             this.panel4.TabIndex = 57;
@@ -356,7 +356,7 @@
             this.panel8.Controls.Add(this.btConnect);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel8.Location = new System.Drawing.Point(1040, 0);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(210, 125);
             this.panel8.TabIndex = 59;
@@ -397,7 +397,7 @@
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(189, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(160, 125);
             this.panel3.TabIndex = 56;
@@ -434,7 +434,7 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(29, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(160, 125);
             this.panel2.TabIndex = 55;
@@ -443,7 +443,7 @@
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(29, 125);
             this.panel6.TabIndex = 61;
@@ -458,7 +458,7 @@
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.Location = new System.Drawing.Point(0, 125);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(1250, 35);
             this.button1.TabIndex = 56;
@@ -491,10 +491,52 @@
             this.panel1.Controls.Add(this.tbActMeasure);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 160);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1250, 531);
             this.panel1.TabIndex = 57;
+            // 
+            // dtpMoldDate
+            // 
+            this.dtpMoldDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpMoldDate.Location = new System.Drawing.Point(47, 365);
+            this.dtpMoldDate.Name = "dtpMoldDate";
+            this.dtpMoldDate.Size = new System.Drawing.Size(257, 28);
+            this.dtpMoldDate.TabIndex = 64;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(45, 332);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(219, 29);
+            this.label12.TabIndex = 63;
+            this.label12.Text = "Kalıp Dökme Tarihi:";
+            // 
+            // dtpProductionDate
+            // 
+            this.dtpProductionDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dtpProductionDate.Location = new System.Drawing.Point(48, 290);
+            this.dtpProductionDate.Name = "dtpProductionDate";
+            this.dtpProductionDate.Size = new System.Drawing.Size(257, 28);
+            this.dtpProductionDate.TabIndex = 62;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(46, 257);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(156, 29);
+            this.label11.TabIndex = 61;
+            this.label11.Text = "Üretim Tarihi:";
             // 
             // lbNmm2Unit
             // 
@@ -572,7 +614,7 @@
             this.cbUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbUser.FormattingEnabled = true;
             this.cbUser.Location = new System.Drawing.Point(48, 471);
-            this.cbUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbUser.Margin = new System.Windows.Forms.Padding(4);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(256, 28);
             this.cbUser.TabIndex = 55;
@@ -595,7 +637,7 @@
             this.cbProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbProduct.FormattingEnabled = true;
             this.cbProduct.Location = new System.Drawing.Point(48, 217);
-            this.cbProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbProduct.Margin = new System.Windows.Forms.Padding(4);
             this.cbProduct.Name = "cbProduct";
             this.cbProduct.Size = new System.Drawing.Size(256, 28);
             this.cbProduct.TabIndex = 53;
@@ -607,46 +649,6 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(46, 257);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(156, 29);
-            this.label11.TabIndex = 61;
-            this.label11.Text = "Üretim Tarihi:";
-            // 
-            // dtpProductionDate
-            // 
-            this.dtpProductionDate.Location = new System.Drawing.Point(48, 290);
-            this.dtpProductionDate.Name = "dtpProductionDate";
-            this.dtpProductionDate.Size = new System.Drawing.Size(257, 28);
-            this.dtpProductionDate.TabIndex = 62;
-            // 
-            // dtpMoldDate
-            // 
-            this.dtpMoldDate.Location = new System.Drawing.Point(47, 365);
-            this.dtpMoldDate.Name = "dtpMoldDate";
-            this.dtpMoldDate.Size = new System.Drawing.Size(257, 28);
-            this.dtpMoldDate.TabIndex = 64;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(45, 332);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(219, 29);
-            this.label12.TabIndex = 63;
-            this.label12.Text = "Kalıp Dökme Tarihi:";
             // 
             // FormMeasure
             // 
@@ -660,7 +662,7 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Roboto", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FormMeasure";
             this.Text = "FormMeasure";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMeasure_FormClosing);

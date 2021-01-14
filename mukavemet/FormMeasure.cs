@@ -357,7 +357,7 @@ namespace mukavemet
                     "VALUES(\'" + timeOfMeasurement + "\',\'" + selection + 
                     "\'," + maxMeasure + ",\'" + cbUser.Text + "\',\'" + 
                     cbProduct.SelectedItem.ToString() + "\',\'" + productionDate + "\',\'" + moldDate + "\',\'" +
-                    float.Parse(tbNmm2.Text).ToString(CultureInfo.InvariantCulture) + ")";
+                    float.Parse(tbNmm2.Text).ToString(CultureInfo.InvariantCulture) + "\')";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.ExecuteNonQuery();
 
