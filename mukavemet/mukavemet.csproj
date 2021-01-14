@@ -158,7 +158,7 @@
     <Content Include="mukavemet.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="F.30 MEKANİK ÖZELLİKLERİN KONTROLÜ FORMU.xls">
+    <Content Include="template.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
