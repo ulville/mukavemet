@@ -47,7 +47,8 @@ namespace mukavemet
         private string mesType;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
         private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
-        private string excelTemplate = @"C:\Users\ulvican\source\repos\mukavemet\mukavemet\bin\Release\template.xls";
+        private string excelTemplate = @".\template.xls";
+        private string reportFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + @"\Mukavemet-Raporları";
         private ChartValues<MeasureModel> crtVls { get; set; }
 
 
@@ -247,7 +248,14 @@ namespace mukavemet
 
         private void btExportToExcel_Click(object sender, EventArgs e)
         {
-
+            if (!Directory.Exists(reportFolderPath))
+            {
+                Directory.CreateDirectory(reportFolderPath);
+            }
+            File.Copy(excelTemplate, reportFolderPath + @"\template.xls");
+            string time = DateTime.Now.ToString("yy-MM-dd HH-mm-ss");
+            string file = reportFolderPath + @"\Mukavemet_Rapor " + time + ".xls";
+            File.Move(reportFolderPath + @"\template.xls", file);
             btDataBase.PerformClick();
             Excel.Application xlexcel;
             Excel.Workbook xlWorkBook;
@@ -255,7 +263,7 @@ namespace mukavemet
             object misValue = Missing.Value;
             xlexcel = new Excel.Application();
             xlexcel.Visible = true; // false;
-            xlWorkBook = xlexcel.Workbooks.Open(excelTemplate);
+            xlWorkBook = xlexcel.Workbooks.Open(file);
             xlWorkSheet = xlWorkBook.Sheets[1];
             xlWorkSheet.Cells[2, 11] = "TARİH: " + DateTime.Now.Date.ToString("dd.MM.yyyy"); ;
             xlWorkSheet.Copy(After: xlWorkSheet);
