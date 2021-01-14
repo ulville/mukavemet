@@ -353,10 +353,11 @@ namespace mukavemet
             {
                 connection.Open();
                 string query = "INSERT INTO mukayit(Tarih,\"Ölçüm Türü\"," +
-                    "\"Ölçüm Sonucu\",\"Ölçümü Yapan\",\"Ürün Cinsi\",\"Üretim Tarihi\",\"Kalıp Tarihi\")" +
+                    "\"Ölçüm Sonucu\",\"Ölçümü Yapan\",\"Ürün Cinsi\",\"Üretim Tarihi\",\"Kalıp Tarihi\",\"N/mm2\")" +
                     "VALUES(\'" + timeOfMeasurement + "\',\'" + selection + 
                     "\'," + maxMeasure + ",\'" + cbUser.Text + "\',\'" + 
-                    cbProduct.SelectedItem.ToString() + "\',\'" + productionDate + "\',\'" + moldDate + "\')";
+                    cbProduct.SelectedItem.ToString() + "\',\'" + productionDate + "\',\'" + moldDate + "\',\'" +
+                    float.Parse(tbNmm2.Text).ToString(CultureInfo.InvariantCulture) + ")";
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.ExecuteNonQuery();
 

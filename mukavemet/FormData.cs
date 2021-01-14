@@ -217,6 +217,34 @@ namespace mukavemet
             }
         }
 
+        private bool HasCouple(int thisIndex, string thisMesType) 
+        {
+            if(thisMesType == "Eğilme")
+            {
+                if (thisIndex == dgwKayit.Rows.Count - 2)
+                    return false;
+                else
+                    return
+                        (
+                        dgwKayit.Rows[thisIndex + 1].Cells[2].Value.ToString() == "Basınç" && // Bi sonraki basıç ölçümüyse
+                        dgwKayit.Rows[thisIndex].Cells[3].Value.ToString() == dgwKayit.Rows[thisIndex + 1].Cells[3].Value.ToString() // Ürün tipi aynıysa
+                        && DateTime.Parse(dgwKayit.Rows[thisIndex + 1].Cells[1].Value.ToString()).Subtract(
+                            DateTime.Parse(dgwKayit.Rows[thisIndex].Cells[1].Value.ToString())).TotalMinutes <= 5d // Kırma zamanı farkı 5 dk'dan azsa
+                        //&& dgwKayit.Rows[thisIndex + 1].Cells[7].Value == dgwKayit.Rows[thisIndex].Cells[7].Value // Döküm tarihi aynıysa
+                        );
+
+            }
+            else
+                return
+                    (
+                    dgwKayit.Rows[thisIndex - 1].Cells[2].Value.ToString() == "Eğilme" && // Bi önceki eğilme ölçümüyse
+                    dgwKayit.Rows[thisIndex].Cells[3].Value.ToString() == dgwKayit.Rows[thisIndex - 1].Cells[3].Value.ToString() // Ürün tipi aynıysa
+                    && DateTime.Parse(dgwKayit.Rows[thisIndex].Cells[1].Value.ToString()).Subtract(
+                        DateTime.Parse(dgwKayit.Rows[thisIndex - 1].Cells[1].Value.ToString())).TotalMinutes <= 5d // Kırma zamanı farkı 5 dk'dan azsa
+                    //&& dgwKayit.Rows[thisIndex - 1].Cells[7].Value == dgwKayit.Rows[thisIndex].Cells[7].Value // Döküm tarihi aynıysa
+                    );
+        }
+
         private void btExportToExcel_Click(object sender, EventArgs e)
         {
 
@@ -228,20 +256,75 @@ namespace mukavemet
             xlexcel = new Excel.Application();
             xlexcel.Visible = true; // false;
             xlWorkBook = xlexcel.Workbooks.Open(excelTemplate);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            xlWorkSheet = xlWorkBook.Sheets[1];
+            xlWorkSheet.Cells[2, 11] = "TARİH: " + DateTime.Now.Date.ToString("dd.MM.yyyy"); ;
+            xlWorkSheet.Copy(After: xlWorkSheet);
 
+            int row = 0;
             for (int i = 0; i < dgwKayit.Rows.Count - 1; i++)
             {
-                xlWorkSheet.Cells[i + 7, 1] = dgwKayit.Rows[i].Cells[3].Value;
+                if (row >= 16)
+                {
+                    xlWorkSheet = xlWorkBook.Sheets[xlWorkBook.Sheets.Count];
+                    xlWorkSheet.Name = "Boş";
+                    xlWorkSheet.Copy(Before: xlWorkSheet);
+                    xlWorkSheet = xlWorkBook.Sheets[xlWorkBook.Sheets.Count - 1];
+                    xlWorkSheet.Name = "Form " + (xlWorkBook.Sheets.Count - 1);
+                    row = 0;
+                }
+
+                string mType = dgwKayit.Rows[i].Cells[2].Value.ToString();
+
+                if (mType == "Eğilme")
+                {
+                    //Ürün Cinsi (Product Type)
+                    xlWorkSheet.Cells[row + 7, 1] = dgwKayit.Rows[i].Cells[3].Value;
+                    //Kırma Tarihi(Measuremet Date)
+                    xlWorkSheet.Cells[row + 7, 3] = dgwKayit.Rows[i].Cells[1].Value;
+                    //Döküm Tarihi(Molding Date)
+                    DateTime moldtime = new DateTime();
+                    if(DateTime.TryParse(dgwKayit.Rows[i].Cells[8].Value.ToString(), out moldtime))
+                        xlWorkSheet.Cells[row + 7, 2] = moldtime.Date;
+                    //Ölçüm Sonucu N(Measurement Result N)                
+                    xlWorkSheet.Cells[row + 7, 8] = dgwKayit.Rows[i].Cells[4].Value;
+                    //Ölçüm Sonucu Nmm2(Measurement Result Nmm2)
+                    if (dgwKayit.Rows[i].Cells[5].Value == DBNull.Value)
+                        xlWorkSheet.Cells[row + 7, 9] = (double)dgwKayit.Rows[i].Cells[4].Value * Settings.Default.BendCoef;
+                    else
+                        xlWorkSheet.Cells[row + 7, 9] = dgwKayit.Rows[i].Cells[5].Value;
+
+
+                    if (!HasCouple(i, mType))
+                    {
+                        row++;
+                    }
+                }
+
+                else if (mType == "Basınç")
+                {
+                    if (!HasCouple(i, mType))
+                    {
+                        //Ürün Cinsi (Product Type)
+                        xlWorkSheet.Cells[row + 7, 1] = dgwKayit.Rows[i].Cells[3].Value;
+                        //Kırma Tarihi(Measuremet Date)
+                        xlWorkSheet.Cells[row + 7, 3] = dgwKayit.Rows[i].Cells[1].Value;
+                        //Döküm Tarihi(Molding Date)
+                        DateTime moldtime = new DateTime();
+                        if(DateTime.TryParse(dgwKayit.Rows[i].Cells[8].Value.ToString(), out moldtime))
+                            xlWorkSheet.Cells[row + 7, 2] = moldtime.Date;
+                    }
+                    //Ölçüm Sonucu N(Measurement Result N)                
+                    xlWorkSheet.Cells[row + 7, 12] = dgwKayit.Rows[i].Cells[4].Value;
+                    //Ölçüm Sonucu Nmm2(Measurement Result Nmm2)          
+                    if (dgwKayit.Rows[i].Cells[5].Value == DBNull.Value)
+                        xlWorkSheet.Cells[row + 7, 13] = (double)dgwKayit.Rows[i].Cells[4].Value * Settings.Default.BendCoef;
+                    else
+                        xlWorkSheet.Cells[row + 7, 13] = dgwKayit.Rows[i].Cells[5].Value;
+
+                    row++; 
+                }
             }
-            for (int i = 0; i < dgwKayit.Rows.Count - 1; i++)
-            {
-                xlWorkSheet.Cells[i + 7, 3] = dgwKayit.Rows[i].Cells[1].Value;
-            }
-            for (int i = 0; i < dgwKayit.Rows.Count - 1; i++)
-            {
-                xlWorkSheet.Cells[i + 7, 2] = DateTime.Parse(dgwKayit.Rows[i].Cells[1].Value.ToString()).AddDays(-7);
-            }
+
 
             //for (int i = 1; i < dgwKayit.Columns.Count + 1; i++)
             //{
@@ -821,7 +904,7 @@ namespace mukavemet
                     dgwKayit.Rows[e.RowIndex].Cells[2].Value.ToString(),
                     dgwKayit.Rows[e.RowIndex].Cells[1].Value.ToString(),
                     dgwKayit.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                    dgwKayit.Rows[e.RowIndex].Cells[5].Value.ToString());
+                    dgwKayit.Rows[e.RowIndex].Cells[6].Value.ToString());
         }
 
         private void btCloseChart_Click(object sender, EventArgs e)
