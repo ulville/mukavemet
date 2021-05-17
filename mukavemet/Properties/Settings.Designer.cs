@@ -212,5 +212,29 @@ namespace mukavemet.Properties {
                 this["PresCoef"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TestModeAddr {
+            get {
+                return ((string)(this["TestModeAddr"]));
+            }
+            set {
+                this["TestModeAddr"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TestValSetAddr {
+            get {
+                return ((string)(this["TestValSetAddr"]));
+            }
+            set {
+                this["TestValSetAddr"] = value;
+            }
+        }
     }
 }

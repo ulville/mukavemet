@@ -40,7 +40,12 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.btChangePass = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tbPressCoef = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tbBendCoef = new System.Windows.Forms.TextBox();
             this.tbAddUser = new System.Windows.Forms.TextBox();
             this.btRemoveUser = new System.Windows.Forms.Button();
             this.btAddUser = new System.Windows.Forms.Button();
@@ -54,6 +59,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tbTestModeAddr = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.cbCpuType = new System.Windows.Forms.ComboBox();
@@ -79,19 +86,16 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btEnableAdvancedSettings = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.tbBendCoef = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.tbPressCoef = new System.Windows.Forms.TextBox();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tbTestValSetAddr = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // btSaveSettings
@@ -219,7 +223,7 @@
             // label11
             // 
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label11.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(0, 0);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
@@ -232,7 +236,7 @@
             // label12
             // 
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label12.Location = new System.Drawing.Point(0, 0);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
@@ -282,6 +286,16 @@
             this.panel6.TabIndex = 42;
             this.panel6.Click += new System.EventHandler(this.panel6_Click);
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.btChangePass);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel8.Location = new System.Drawing.Point(0, 407);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(150, 20, 150, 20);
+            this.panel8.Size = new System.Drawing.Size(483, 67);
+            this.panel8.TabIndex = 56;
+            // 
             // btChangePass
             // 
             this.btChangePass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(121)))), ((int)(((byte)(242)))));
@@ -297,6 +311,48 @@
             this.btChangePass.Text = "Parola Değiştir";
             this.btChangePass.UseVisualStyleBackColor = false;
             this.btChangePass.Click += new System.EventHandler(this.btChangePass_Click);
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(20, 341);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(248, 18);
+            this.label18.TabIndex = 55;
+            this.label18.Text = "Basınç Ölçümü Yüzey Alanı Çarpanı:";
+            // 
+            // tbPressCoef
+            // 
+            this.tbPressCoef.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tbPressCoef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPressCoef.Location = new System.Drawing.Point(23, 361);
+            this.tbPressCoef.Margin = new System.Windows.Forms.Padding(16, 2, 16, 2);
+            this.tbPressCoef.Name = "tbPressCoef";
+            this.tbPressCoef.Size = new System.Drawing.Size(444, 26);
+            this.tbPressCoef.TabIndex = 54;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(22, 285);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(249, 18);
+            this.label17.TabIndex = 53;
+            this.label17.Text = "Eğilme Ölçümü Yüzey Alanı Çarpanı:";
+            // 
+            // tbBendCoef
+            // 
+            this.tbBendCoef.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tbBendCoef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbBendCoef.Location = new System.Drawing.Point(23, 305);
+            this.tbBendCoef.Margin = new System.Windows.Forms.Padding(16, 2, 16, 2);
+            this.tbBendCoef.Name = "tbBendCoef";
+            this.tbBendCoef.Size = new System.Drawing.Size(444, 26);
+            this.tbBendCoef.TabIndex = 52;
             // 
             // tbAddUser
             // 
@@ -459,6 +515,10 @@
             // 
             this.panel7.AutoScroll = true;
             this.panel7.AutoScrollMargin = new System.Drawing.Size(0, 20);
+            this.panel7.Controls.Add(this.tbTestValSetAddr);
+            this.panel7.Controls.Add(this.label20);
+            this.panel7.Controls.Add(this.label19);
+            this.panel7.Controls.Add(this.tbTestModeAddr);
             this.panel7.Controls.Add(this.label15);
             this.panel7.Controls.Add(this.label14);
             this.panel7.Controls.Add(this.cbCpuType);
@@ -491,11 +551,34 @@
             this.panel7.Visible = false;
             this.panel7.Click += new System.EventHandler(this.panel7_Click);
             // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(22, 603);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(130, 18);
+            this.label19.TabIndex = 56;
+            this.label19.Text = "Test Modu Adresi:";
+            // 
+            // tbTestModeAddr
+            // 
+            this.tbTestModeAddr.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tbTestModeAddr.BackColor = System.Drawing.Color.White;
+            this.tbTestModeAddr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTestModeAddr.ForeColor = System.Drawing.Color.Black;
+            this.tbTestModeAddr.Location = new System.Drawing.Point(18, 623);
+            this.tbTestModeAddr.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tbTestModeAddr.Name = "tbTestModeAddr";
+            this.tbTestModeAddr.Size = new System.Drawing.Size(450, 26);
+            this.tbTestModeAddr.TabIndex = 55;
+            // 
             // label15
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label15.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label15.Location = new System.Drawing.Point(14, 10);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
@@ -507,7 +590,7 @@
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label14.Font = new System.Drawing.Font("Roboto", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label14.Location = new System.Drawing.Point(14, 262);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
@@ -774,57 +857,28 @@
             this.btEnableAdvancedSettings.UseVisualStyleBackColor = false;
             this.btEnableAdvancedSettings.Click += new System.EventHandler(this.btEnableAdvancedSettings_Click);
             // 
-            // tbBendCoef
+            // label20
             // 
-            this.tbBendCoef.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tbBendCoef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbBendCoef.Location = new System.Drawing.Point(23, 305);
-            this.tbBendCoef.Margin = new System.Windows.Forms.Padding(16, 2, 16, 2);
-            this.tbBendCoef.Name = "tbBendCoef";
-            this.tbBendCoef.Size = new System.Drawing.Size(444, 26);
-            this.tbBendCoef.TabIndex = 52;
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(18, 652);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(135, 18);
+            this.label20.TabIndex = 57;
+            this.label20.Text = "Test Değeri Adresi:";
             // 
-            // label17
+            // tbTestValSetAddr
             // 
-            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(22, 285);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(249, 18);
-            this.label17.TabIndex = 53;
-            this.label17.Text = "Eğilme Ölçümü Yüzey Alanı Çarpanı:";
-            // 
-            // label18
-            // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(20, 341);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(248, 18);
-            this.label18.TabIndex = 55;
-            this.label18.Text = "Basınç Ölçümü Yüzey Alanı Çarpanı:";
-            // 
-            // tbPressCoef
-            // 
-            this.tbPressCoef.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tbPressCoef.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbPressCoef.Location = new System.Drawing.Point(23, 361);
-            this.tbPressCoef.Margin = new System.Windows.Forms.Padding(16, 2, 16, 2);
-            this.tbPressCoef.Name = "tbPressCoef";
-            this.tbPressCoef.Size = new System.Drawing.Size(444, 26);
-            this.tbPressCoef.TabIndex = 54;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.btChangePass);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(0, 407);
-            this.panel8.Name = "panel8";
-            this.panel8.Padding = new System.Windows.Forms.Padding(150, 20, 150, 20);
-            this.panel8.Size = new System.Drawing.Size(483, 67);
-            this.panel8.TabIndex = 56;
+            this.tbTestValSetAddr.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tbTestValSetAddr.BackColor = System.Drawing.Color.White;
+            this.tbTestValSetAddr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTestValSetAddr.ForeColor = System.Drawing.Color.Black;
+            this.tbTestValSetAddr.Location = new System.Drawing.Point(18, 673);
+            this.tbTestValSetAddr.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.tbTestValSetAddr.Name = "tbTestValSetAddr";
+            this.tbTestValSetAddr.Size = new System.Drawing.Size(450, 26);
+            this.tbTestValSetAddr.TabIndex = 58;
             // 
             // FormSettings
             // 
@@ -836,7 +890,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormSettings";
@@ -847,12 +901,12 @@
             this.panel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel8.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel5.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -913,5 +967,9 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tbBendCoef;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox tbTestModeAddr;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox tbTestValSetAddr;
     }
 }

@@ -24,6 +24,10 @@
   <PropertyGroup>
     <ApplicationIcon>abs-flat.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>TRACE; </DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Windows.Forms.DataVisualization" />

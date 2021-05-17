@@ -13,6 +13,8 @@
 //    You should have received a copy of the GNU General Public License
 //    along with Mukavemet.  If not, see <https://www.gnu.org/licenses/>.
 
+//    Copyright, 2020, Ulvican Kahya
+
 
 using System;
 using System.Collections.Generic;

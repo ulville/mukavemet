@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ABS Alçı ve Blok Sanayi")]
 [assembly: AssemblyProduct("Mukavemet")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright ©  2020 Ulvican Kahya")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

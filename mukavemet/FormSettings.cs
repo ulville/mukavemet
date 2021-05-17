@@ -13,6 +13,7 @@
 //    You should have received a copy of the GNU General Public License
 //    along with Mukavemet.  If not, see <https://www.gnu.org/licenses/>.
 
+//    Copyright, 2020, Ulvican Kahya
 
 using System;
 using System.Collections.Generic;
@@ -35,8 +36,6 @@ namespace mukavemet
     {
         public event Action ReloadMainScreen;
         public event Action ReturnMainScreen;
-        private string[] products;
-        private string[] users;
 
         private Panel pnHamburger = new Panel();
         private Timer tmrDelayHiding = new Timer { Interval = 10 };
@@ -94,13 +93,13 @@ namespace mukavemet
             Settings.Default.PresMaxAddr = tbPresMaxAddr.Text.ToUpper();
             Settings.Default.MeasureAddr = tbMeasureAddr.Text.ToUpper();
             Settings.Default.SelectAddr = tbSelectionAddr.Text.ToUpper();
-            products = new string[0];
+            string[] products = new string[0];
             foreach (var item in cbProducts.Items)
             {
                 Array.Resize(ref products, products.Length + 1);
                 products[products.Length - 1] = item.ToString();
             }
-            users = new string[0];
+            string[] users = new string[0];
             foreach (var item in cbUsers.Items)
             {
                 Array.Resize(ref users, users.Length + 1);
@@ -108,8 +107,8 @@ namespace mukavemet
             }
             Settings.Default.ProductList = products;
             Settings.Default.UserList = users;
-            products = null;
-            users = null;
+            Settings.Default.TestModeAddr = tbTestModeAddr.Text.ToUpper();
+            Settings.Default.TestValSetAddr = tbTestValSetAddr.Text.ToUpper();
 
             if (Double.TryParse(tbBendCoef.Text, out double bendCoef))
                 Settings.Default.BendCoef = bendCoef;
@@ -158,6 +157,9 @@ namespace mukavemet
                 cbUsers.Items.AddRange(Settings.Default.UserList);
             tbBendCoef.Text = Settings.Default.BendCoef.ToString();
             tbPressCoef.Text = Settings.Default.PresCoef.ToString();
+            tbTestValSetAddr.Text = Settings.Default.TestValSetAddr;
+            tbTestModeAddr.Text = Settings.Default.TestModeAddr;
+
         }
 
         void cbCpuType_MouseWheel(object sender, MouseEventArgs e)

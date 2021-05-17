@@ -50,5 +50,11 @@
     <Setting Name="PresCoef" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.000625</Value>
     </Setting>
+    <Setting Name="TestModeAddr" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TestValSetAddr" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

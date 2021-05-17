@@ -13,6 +13,8 @@
 //    You should have received a copy of the GNU General Public License
 //    along with Mukavemet.  If not, see <https://www.gnu.org/licenses/>.
 
+//    Copyright, 2020, Ulvican Kahya
+
 
 using LiveCharts;
 using LiveCharts.Configurations;
@@ -46,6 +48,13 @@ namespace mukavemet
         private string productionDate;
         private string moldDate;
         private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
+        private double testValue;
+        private bool isTestModeOn = false;
+
+
+        //Colors
+        private System.Drawing.Color defaultBlue = System.Drawing.Color.FromArgb(0, 86, 168);
+        private System.Drawing.Color testModeColor = System.Drawing.Color.FromArgb(143, 24, 24);
 
         //Hata Mesajları ve Bildirimler:
         private string msgConnected = "Bağlandı";
@@ -171,6 +180,87 @@ namespace mukavemet
             }
         }
 
+        private bool IsAdressesDefined()
+        {
+            return Settings.Default.BendActAddr.Length != 0
+                && Settings.Default.BendMaxAddr.Length != 0
+                && Settings.Default.PresActAddr.Length != 0
+                && Settings.Default.PresMaxAddr.Length != 0
+                && Settings.Default.SelectAddr.Length != 0
+                && Settings.Default.MeasureAddr.Length != 0
+                && Settings.Default.TestModeAddr.Length != 0
+                && Settings.Default.TestValSetAddr.Length != 0;
+        }
+
+        private void IndicateConnected()
+        {
+            if (lbStatus.Text == msgDisconnected ||
+                lbStatus.Text == msgConTimeout)
+            {
+                lbStatus.Text = msgConnected;
+                lbStatus.ForeColor = System.Drawing.Color.Lime;
+            }
+        }
+
+        private void SetTestMode()
+        {
+            try
+            {
+                plc.Write(Settings.Default.TestValSetAddr.ToUpper(), ((float)testValue).ConvertToUInt());
+                plc.Write(Settings.Default.TestModeAddr.ToUpper(), true);
+                tbTestSetVal.ForeColor = default;
+                isTestModeOn = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void UnsetTestMode()
+        {
+            try
+            {
+                plc.Write(Settings.Default.TestValSetAddr.ToUpper(), ((float)0).ConvertToUInt());
+                plc.Write(Settings.Default.TestModeAddr.ToUpper(), false);
+                isTestModeOn = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void StartMeasurement(bool isBendMeasurement)
+        {
+            crtVls.Clear();
+            cartesianChart1.Refresh();
+            
+            if (isBendMeasurement)
+            {
+                addressAct = Settings.Default.BendActAddr.ToUpper();
+                addressMax = Settings.Default.BendMaxAddr.ToUpper();
+            }
+            else
+            {
+                addressAct = Settings.Default.PresActAddr.ToUpper();
+                addressMax = Settings.Default.PresMaxAddr.ToUpper();
+            }
+            
+            try
+            {
+                plc.Write(Settings.Default.SelectAddr.ToUpper(),
+                    isBendMeasurement);
+            
+                plc.Close();
+                backgroundWorker1.RunWorkerAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void btMeasure_Click(object sender, EventArgs e)
         {
             if (plc == null)
@@ -183,77 +273,64 @@ namespace mukavemet
                 {
                     if (PlcPinging(Settings.Default.IP))
                     {
-                        if (Settings.Default.BendActAddr.Length != 0
-                            && Settings.Default.BendMaxAddr.Length != 0
-                            && Settings.Default.PresActAddr.Length != 0
-                            && Settings.Default.PresMaxAddr.Length != 0
-                            && Settings.Default.SelectAddr.Length != 0
-                            && Settings.Default.MeasureAddr.Length != 0)
+                        if (IsAdressesDefined())
                         {
                             if (tbNmm2.Visible)
                             {
                                 tbActMeasure.Top += 15;
                                 lbNewtonUnit.Top += 15;
                             }
+
                             tbNmm2.Visible = false;
                             lbNmm2Unit.Visible = false;
-
-
                             tbActMeasure.ResetText();
+                            IndicateConnected();
 
-                            if (lbStatus.Text == msgDisconnected ||
-                                lbStatus.Text == msgConTimeout)
+                            if (chbTestMode.Checked)
                             {
-                                lbStatus.Text = msgConnected;
-                                lbStatus.ForeColor = System.Drawing.Color.Lime;
+                                if (IsStringValidAndInRange())
+                                {
+                                    SetTestMode();
+                                }
+                                else
+                                    MessageBox.Show("Düzgün bir değer girin", "Lütfen :')");
                             }
+                            else
+                            {
+                                UnsetTestMode();
+                            }
+
+                            //if (chbTestMode.Checked)
+                            //{
+                            //    try
+                            //    {
+                            //        if (IsStringValidAndInRange())
+                            //        {
+                            //            plc.Write(Settings.Default.TestValSetAddr.ToUpper(),
+                            //                ((float)testValue).ConvertToUInt());
+                            //            plc.Write(Settings.Default.TestModeAddr.ToUpper(),
+                            //                true);
+                            //            tbTestSetVal.ForeColor = default;
+                            //        }
+                            //        else
+                            //            MessageBox.Show("Düzgün bir değer girin", "Lütfen :')");
+                            //    }
+                            //    catch (Exception ex)
+                            //    {
+                            //        MessageBox.Show(ex.Message);
+                            //    }
+                            //}
 
                             if (chbBend.Checked && !chbPressure.Checked)
                             {
-                                crtVls.Clear();
-                                cartesianChart1.Refresh();
-
-                                addressAct = Settings.Default.BendActAddr.ToUpper();
-                                addressMax = Settings.Default.BendMaxAddr.ToUpper();
-
-                                try
-                                {
-                                    plc.Write(Settings.Default.SelectAddr.ToUpper(),
-                                        true);
-
-                                    selection = "Eğilme";
-
-                                    plc.Close();
-                                    backgroundWorker1.RunWorkerAsync();
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.Message);
-                                }
+                                selection = "Eğilme";
+                                StartMeasurement(true);
 
                             }
                             else if (!chbBend.Checked && chbPressure.Checked)
                             {
-                                crtVls.Clear();
-                                cartesianChart1.Refresh();
-
-                                addressAct = Settings.Default.PresActAddr.ToUpper();
-                                addressMax = Settings.Default.PresMaxAddr.ToUpper();
-
-                                try
-                                {
-                                    plc.Write(Settings.Default.SelectAddr.ToUpper(),
-                                        false);
-
-                                    selection = "Basınç";
-
-                                    plc.Close();
-                                    backgroundWorker1.RunWorkerAsync();
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.Message);
-                                }
+                                selection = "Basınç";
+                                StartMeasurement(false);
                             }
                             else
                             {
@@ -331,13 +408,14 @@ namespace mukavemet
             }
         }
 
+        /////////////////////////////////////////////////////////////////////////////
 
-        private float CalculateLastSlope()
-        {
-            return (crtVls[crtVls.Count - 1].Value - crtVls[crtVls.Count - 2].Value)
-                / (crtVls[crtVls.Count - 1].Time.Ticks
-                - crtVls[crtVls.Count - 2].Time.Ticks);
-        }
+        //private float CalculateLastSlope()
+        //{
+        //    return (crtVls[crtVls.Count - 1].Value - crtVls[crtVls.Count - 2].Value)
+        //        / (crtVls[crtVls.Count - 1].Time.Ticks
+        //        - crtVls[crtVls.Count - 2].Time.Ticks);
+        //}
 
         private void btStopMeasure_Click(object sender, EventArgs e)
         {
@@ -602,5 +680,99 @@ namespace mukavemet
         {
             ConnectToPlc();
         }
+
+        private void chbTestMode_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chb = sender as CheckBox;
+            bool varChecked = chb.Checked;
+            panel12.Visible = !varChecked;
+            panel12.Enabled = !varChecked;
+
+
+            panel10.Visible = varChecked;
+            panel10.Enabled = varChecked;
+            tbTestSetVal.Enabled = varChecked;
+            tbTestSetVal.Visible = varChecked;
+            label15.Visible = varChecked;
+
+            if (varChecked)
+            {
+                chb.BackColor = testModeColor;
+                chb.ForeColor = defaultBlue;
+                foreach (Control control in this.Controls)
+                {
+                    if (control.BackColor == defaultBlue)
+                    {
+                        control.BackColor = testModeColor;
+                    }
+                }
+                tbActMeasure.BackColor = testModeColor;
+            }
+            else
+            {
+                chb.BackColor = default(System.Drawing.Color);
+                chb.ForeColor = default(System.Drawing.Color);
+                foreach (Control control in this.Controls)
+                {
+                    if (control.BackColor == testModeColor)
+                    {
+                        control.BackColor = default(System.Drawing.Color);
+                    }
+                }
+                tbActMeasure.BackColor = defaultBlue;
+            }
+        }
+
+        /*
+        private void UpdateTextBox(object sender, bool updatetext)
+        {
+            TrackBar trb = (TrackBar)sender;
+            double height = Convert.ToDouble(trb.Height);
+            double value = Convert.ToDouble(trb.Value);
+            double max = Convert.ToDouble(trb.Maximum);
+            double top = Convert.ToDouble(trb.Top);
+            tbTestSetVal.Top = Convert.ToInt32(100.0 / max * (-(height + 39.0 - top) / 100 * value) + height + 39.0);
+            if (updatetext)
+            {
+                tbTestSetVal.Text = (Convert.ToDouble(trb.Value)/10.0).ToString();
+            }
+        }
+        */
+        private bool IsStringValidAndInRange()
+        {
+            return double.TryParse(tbTestSetVal.Text, out testValue) && testValue * 10 <= (double)trackBar1.Maximum && testValue * 10 >= (double)trackBar1.Minimum;
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            //UpdateTextBox(sender, true);
+
+            TrackBar trb = (TrackBar)sender;
+            tbTestSetVal.Text = (Convert.ToDouble(trb.Value) / 10.0).ToString();
+            tbTestSetVal.ForeColor = default;
+        }
+
+        private void tbTestSetVal_Enter(object sender, EventArgs e)
+        {
+            tbTestSetVal.ForeColor = System.Drawing.Color.Gray;
+        }
+
+        private void tbTestSetVal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (IsStringValidAndInRange())
+                {
+                    trackBar1.Value = Convert.ToInt32(testValue * 10);
+                    tbTestSetVal.ForeColor = default;
+                }
+                else
+                {
+                    tbTestSetVal.ForeColor = System.Drawing.Color.Red;
+                }
+            }
+            
+        }
+
     }
 }
