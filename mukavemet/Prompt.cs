@@ -78,7 +78,7 @@ namespace mukavemet
             panelBottom.Controls.Add(confirmation);
             panelTop.Controls.Add(textLabel);
             prompt.AcceptButton = confirmation;
-
+            prompt.ActiveControl = textBox;
             return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
         }
     }

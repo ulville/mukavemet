@@ -131,14 +131,53 @@ namespace mukavemet
             panicButton.Top = chbTestMode.Bottom + 4;
             panicButton.Width = chbTestMode.Height;
             panicButton.Height = panicButton.Width;
+            panicButton.Name = "panicButton";
             panicButton.FlatStyle = FlatStyle.Flat;
             panicButton.FlatAppearance.BorderSize = 0;
             panicButton.BackColor = System.Drawing.Color.Red;
             panicButton.ForeColor = System.Drawing.Color.White;
             panicButton.Text = " !";
             panicButton.Font = new Font(panicButton.Font, FontStyle.Bold);
+            panicButton.UseVisualStyleBackColor = false;
             pnConnection.Controls.Add(panicButton);
+            panicButton.Click += new System.EventHandler(this.panicButton_Click);
 
+        }
+
+        private void panicButton_Click(object sender, EventArgs e)
+        {
+            btStopMeasure.PerformClick();
+            if (plc != null)
+            {
+                if (PlcPinging(Settings.Default.IP))
+                {
+                    if (plc.IsConnected)
+                    {
+                        ZeroFillEverything();
+                    }
+                    else
+                    {
+                        btConnect.PerformClick();
+                        ZeroFillEverything();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(msgConTimeout);
+                }
+            }
+            else
+            {
+                MessageBox.Show(msgNotConnected);
+            }
+
+            SystemSounds.Exclamation.Play();
+        }
+
+        private void ZeroFillEverything()
+        {
+            UnsetTestMode();
+            plc.Write(Settings.Default.MeasureAddr.ToUpper(), false);
         }
 
         private void DrawChart(TimeSpan t, float value)
