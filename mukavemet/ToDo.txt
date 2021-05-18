@@ -34,8 +34,10 @@ Locate database to shared folder ***********************************
 
 Fix N/mm2 calculation **********************************************
 
+Selecting chbox will send selection valve value to plc
+
+Selecting chbox will send testmode selection bit to plc 
+
 Create legit report document
 
 Use normal charts
-
-Selecting chbox will send selection valve value to plc

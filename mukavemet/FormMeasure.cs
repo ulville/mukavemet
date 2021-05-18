@@ -291,6 +291,98 @@ namespace mukavemet
             }
         }
 
+        private bool TestModeOn()
+        {
+            if (plc == null)
+            {
+                MessageBox.Show(msgNotConnected);
+                return false;
+            }
+            else
+            {
+                if (plc.IsConnected)
+                {
+                    if (PlcPinging(Settings.Default.IP))
+                    {
+                        if (IsAdressesDefined())
+                        {
+                            try
+                            {
+                                plc.Write(Settings.Default.TestModeAddr.ToUpper(), true);
+                                return true;
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(msgAddressLineEmpty);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(msgConTimeout);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(msgNotConnected);
+                    return false;
+                }
+            }
+        }
+
+        private bool TestModeOff()
+        {
+            if (plc == null)
+            {
+                MessageBox.Show(msgNotConnected);
+                return false;
+            }
+            else
+            {
+                if (plc.IsConnected)
+                {
+                    if (PlcPinging(Settings.Default.IP))
+                    {
+                        if (IsAdressesDefined())
+                        {
+                            try
+                            {
+                                plc.Write(Settings.Default.TestModeAddr.ToUpper(), false);
+                                return true;
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(msgAddressLineEmpty);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(msgConTimeout);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(msgNotConnected);
+                    return false;
+                }
+            }
+        }
+
         private void StartMeasurement(bool isBendMeasurement)
         {
             crtVls.Clear();
@@ -752,7 +844,7 @@ namespace mukavemet
             tbTestSetVal.Visible = varChecked;
             label15.Visible = varChecked;
 
-            if (varChecked)
+            if (varChecked && TestModeOn())
             {
                 chb.BackColor = testModeColor;
                 chb.ForeColor = defaultBlue;
@@ -765,7 +857,7 @@ namespace mukavemet
                 }
                 tbActMeasure.BackColor = testModeColor;
             }
-            else
+            else if (!varChecked && TestModeOff())
             {
                 chb.BackColor = default(System.Drawing.Color);
                 chb.ForeColor = default(System.Drawing.Color);
