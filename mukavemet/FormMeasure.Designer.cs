@@ -40,6 +40,7 @@
             this.lbStatus = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pnConnection = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.chbTestMode = new System.Windows.Forms.CheckBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -243,6 +244,7 @@
             // pnConnection
             // 
             this.pnConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnConnection.Controls.Add(this.label17);
             this.pnConnection.Controls.Add(this.chbTestMode);
             this.pnConnection.Controls.Add(this.panel9);
             this.pnConnection.Controls.Add(this.panel5);
@@ -257,13 +259,26 @@
             this.pnConnection.Size = new System.Drawing.Size(1000, 100);
             this.pnConnection.TabIndex = 55;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(701, 73);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(82, 15);
+            this.label17.TabIndex = 72;
+            this.label17.Text = "Panik Butonu";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // chbTestMode
             // 
             this.chbTestMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.chbTestMode.Appearance = System.Windows.Forms.Appearance.Button;
             this.chbTestMode.AutoSize = true;
             this.chbTestMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chbTestMode.Location = new System.Drawing.Point(701, 34);
+            this.chbTestMode.Location = new System.Drawing.Point(699, 12);
             this.chbTestMode.Name = "chbTestMode";
             this.chbTestMode.Size = new System.Drawing.Size(83, 27);
             this.chbTestMode.TabIndex = 71;
@@ -914,5 +929,6 @@
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox tbTestSetVal;
+        public System.Windows.Forms.Label label17;
     }
 }

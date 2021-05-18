@@ -49,7 +49,6 @@ namespace mukavemet
         private string moldDate;
         private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
         private double testValue;
-        private bool isTestModeOn = false;
 
 
         //Colors
@@ -70,6 +69,10 @@ namespace mukavemet
         public FormMeasure()
         {
             InitializeComponent();
+
+
+
+
             CpuType cpu = (CpuType)Enum.Parse(typeof(CpuType),
                 Settings.Default.CpuType);
             string ip = Settings.Default.IP;
@@ -81,6 +84,8 @@ namespace mukavemet
             cbProduct.DataSource = Settings.Default.ProductList;
             cbUser.DataSource = Settings.Default.UserList;
             FlipButtonIcon(button1);
+
+
             /////////////////////////////////////////////////////////////////////////
 
             var mapper = Mappers.Xy<MeasureModel>()
@@ -120,6 +125,20 @@ namespace mukavemet
             cartesianChart1.AxisX[0].MinValue = TimeSpan.FromMilliseconds(0).Ticks;
             cartesianChart1.AnimationsSpeed = TimeSpan.FromMilliseconds(20);
             ////////////////////////////////////////////////////////////////////
+
+            RoundButton panicButton = new RoundButton();
+            panicButton.Left = chbTestMode.Left + chbTestMode.Width / 2 - chbTestMode.Height / 2;
+            panicButton.Top = chbTestMode.Bottom + 4;
+            panicButton.Width = chbTestMode.Height;
+            panicButton.Height = panicButton.Width;
+            panicButton.FlatStyle = FlatStyle.Flat;
+            panicButton.FlatAppearance.BorderSize = 0;
+            panicButton.BackColor = System.Drawing.Color.Red;
+            panicButton.ForeColor = System.Drawing.Color.White;
+            panicButton.Text = " !";
+            panicButton.Font = new Font(panicButton.Font, FontStyle.Bold);
+            pnConnection.Controls.Add(panicButton);
+
         }
 
         private void DrawChart(TimeSpan t, float value)
@@ -202,32 +221,34 @@ namespace mukavemet
             }
         }
 
-        private void SetTestMode()
+        private bool SetTestMode()
         {
             try
             {
                 plc.Write(Settings.Default.TestValSetAddr.ToUpper(), ((float)testValue).ConvertToUInt());
                 plc.Write(Settings.Default.TestModeAddr.ToUpper(), true);
                 tbTestSetVal.ForeColor = default;
-                isTestModeOn = true;
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
-        private void UnsetTestMode()
+        private bool UnsetTestMode()
         {
             try
             {
                 plc.Write(Settings.Default.TestValSetAddr.ToUpper(), ((float)0).ConvertToUInt());
                 plc.Write(Settings.Default.TestModeAddr.ToUpper(), false);
-                isTestModeOn = false;
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
@@ -290,51 +311,49 @@ namespace mukavemet
                             {
                                 if (IsStringValidAndInRange())
                                 {
-                                    SetTestMode();
+                                    if (SetTestMode())
+                                    {
+                                        if (chbBend.Checked && !chbPressure.Checked)
+                                        {
+                                            selection = "Eğilme";
+                                            StartMeasurement(true);
+
+                                        }
+                                        else if (!chbBend.Checked && chbPressure.Checked)
+                                        {
+                                            selection = "Basınç";
+                                            StartMeasurement(false);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(msgNotSelected);
+                                        }
+                                    }
+
                                 }
                                 else
                                     MessageBox.Show("Düzgün bir değer girin", "Lütfen :')");
                             }
                             else
                             {
-                                UnsetTestMode();
-                            }
+                                if (UnsetTestMode())
+                                {
+                                    if (chbBend.Checked && !chbPressure.Checked)
+                                    {
+                                        selection = "Eğilme";
+                                        StartMeasurement(true);
 
-                            //if (chbTestMode.Checked)
-                            //{
-                            //    try
-                            //    {
-                            //        if (IsStringValidAndInRange())
-                            //        {
-                            //            plc.Write(Settings.Default.TestValSetAddr.ToUpper(),
-                            //                ((float)testValue).ConvertToUInt());
-                            //            plc.Write(Settings.Default.TestModeAddr.ToUpper(),
-                            //                true);
-                            //            tbTestSetVal.ForeColor = default;
-                            //        }
-                            //        else
-                            //            MessageBox.Show("Düzgün bir değer girin", "Lütfen :')");
-                            //    }
-                            //    catch (Exception ex)
-                            //    {
-                            //        MessageBox.Show(ex.Message);
-                            //    }
-                            //}
-
-                            if (chbBend.Checked && !chbPressure.Checked)
-                            {
-                                selection = "Eğilme";
-                                StartMeasurement(true);
-
-                            }
-                            else if (!chbBend.Checked && chbPressure.Checked)
-                            {
-                                selection = "Basınç";
-                                StartMeasurement(false);
-                            }
-                            else
-                            {
-                                MessageBox.Show(msgNotSelected);
+                                    }
+                                    else if (!chbBend.Checked && chbPressure.Checked)
+                                    {
+                                        selection = "Basınç";
+                                        StartMeasurement(false);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(msgNotSelected);
+                                    }
+                                }
                             }
                         }
                         else
@@ -348,7 +367,6 @@ namespace mukavemet
                         lbStatus.ForeColor = System.Drawing.Color.Red;
                         MessageBox.Show(msgNotConnected);
                     }
-
                 }
                 else
                 {
