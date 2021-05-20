@@ -208,9 +208,101 @@ namespace mukavemet
             label8.Text = Settings.Default.Slot;
         }
 
+        private bool SelectBend()
+        {
+            if (plc == null)
+            {
+                MessageBox.Show(msgNotConnected);
+                return false;
+            }
+            else
+            {
+                if (plc.IsConnected)
+                {
+                    if (PlcPinging(Settings.Default.IP))
+                    {
+                        if (IsAdressesDefined())
+                        {
+                            try
+                            {
+                                plc.Write(Settings.Default.SelectAddr.ToUpper(), true);
+                                return true;
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(msgAddressLineEmpty);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(msgConTimeout);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(msgNotConnected);
+                    return false;
+                }
+            }
+        }
+
+        private bool SelectPressure()
+        {
+            if (plc == null)
+            {
+                MessageBox.Show(msgNotConnected);
+                return false;
+            }
+            else
+            {
+                if (plc.IsConnected)
+                {
+                    if (PlcPinging(Settings.Default.IP))
+                    {
+                        if (IsAdressesDefined())
+                        {
+                            try
+                            {
+                                plc.Write(Settings.Default.SelectAddr.ToUpper(), false);
+                                return true;
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(msgAddressLineEmpty);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(msgConTimeout);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(msgNotConnected);
+                    return false;
+                }
+            }
+        }
+
         private void chbBend_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbBend.Checked)
+            if (chbBend.Checked && SelectBend())
             {
                 chbBend.BackColor = System.Drawing.Color.White;
                 chbBend.ForeColor = System.Drawing.Color.FromArgb(237, 28, 36);
@@ -220,12 +312,13 @@ namespace mukavemet
             {
                 chbBend.BackColor = System.Drawing.Color.Transparent;
                 chbBend.ForeColor = System.Drawing.Color.White;
+                chbBend.CheckState = CheckState.Unchecked;
             }
         }
 
         private void chbPressure_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbPressure.Checked)
+            if (chbPressure.Checked && SelectPressure())
             {
                 chbPressure.BackColor = System.Drawing.Color.White;
                 chbPressure.ForeColor = System.Drawing.Color.FromArgb(237, 28, 36);
@@ -235,6 +328,7 @@ namespace mukavemet
             {
                 chbPressure.BackColor = System.Drawing.Color.Transparent;
                 chbPressure.ForeColor = System.Drawing.Color.White;
+                chbPressure.CheckState = CheckState.Unchecked;
             }
         }
 
