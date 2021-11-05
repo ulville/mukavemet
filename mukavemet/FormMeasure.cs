@@ -49,6 +49,7 @@ namespace mukavemet
         private string moldDate;
         private string dbfile = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\ABS Alçı ve Blok Sanayi\Mukavemet\mukavemet.db";
         private double testValue;
+        private bool testValueChanged = false;
 
 
         //Colors
@@ -785,6 +786,15 @@ namespace mukavemet
                             break;
                         }
 
+                        if (testValueChanged)
+                        {
+                            plc1.Write(Settings.Default.TestValSetAddr.ToUpper(), ((float)testValue).ConvertToUInt());
+                            testValueChanged = false;
+                            float debuggi = ((uint)plc1.Read(Settings.Default.TestValSetAddr.ToUpper())).ConvertToFloat();
+                            Debug.WriteLine("written: " + testValue.ToString());
+                            Debug.WriteLine("read   : " + debuggi.ToString());
+                        }
+
                         long time1 = st.ElapsedTicks;
                         uint uintres = (uint)plc1.Read(addressActMes);
                         long time2 = st.ElapsedTicks;
@@ -797,9 +807,13 @@ namespace mukavemet
                             Time = time
                         };
 
+
                         measuring = (bool)plc1.Read(Settings.Default.MeasureAddr);
                         if (measuring)
                             worker.ReportProgress(0, resAndTime);
+
+                        if (chbTestMode.Checked && (bool)plc1.Read(Settings.Default.TestModeAddr))
+                            System.Threading.Thread.Sleep(100);
                     }
 
                     if (!worker.CancellationPending)
@@ -993,6 +1007,8 @@ namespace mukavemet
             TrackBar trb = (TrackBar)sender;
             tbTestSetVal.Text = (Convert.ToDouble(trb.Value) / 10.0).ToString();
             tbTestSetVal.ForeColor = default;
+            IsStringValidAndInRange();
+            testValueChanged = true;
         }
 
         private void tbTestSetVal_Enter(object sender, EventArgs e)
@@ -1008,6 +1024,7 @@ namespace mukavemet
                 {
                     trackBar1.Value = Convert.ToInt32(testValue * 10);
                     tbTestSetVal.ForeColor = default;
+                    testValueChanged = true;
                 }
                 else
                 {
